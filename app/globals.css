@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+:root {
+  --fb-navy: #0D1F3C;
+  --fb-navy-mid: #1B3A6B;
+  --fb-red: #C8102E;
+  --fb-gold: #D4A017;
+  --fb-white: #FFFFFF;
+  --fb-off-white: #F9F8F5;
+  --fb-text: #1A1A1A;
+  --fb-text-secondary: #555555;
+  --fb-text-muted: #767676;
+  --fb-border: rgba(0, 0, 0, 0.08);
+  --fb-card-bg: #FFFFFF;
+  --fb-card-hover: #F5F5F5;
+  --fb-nav-bg: rgba(255, 255, 255, 0.97);
+  --fb-nav-border: rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #FFFFFF;
+  color: var(--fb-text);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 3px solid var(--fb-navy);
+  outline-offset: 3px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
