@@ -40,35 +40,11 @@ function Nav() {
             gap: 10,
           }}
         >
-          <span
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 6,
-            }}
-          >
-            <span
-              style={{
-                width: 28,
-                height: 20,
-                background: "linear-gradient(180deg, #C8102E 33%, #FFFFFF 33% 66%, #002868 66%)",
-                borderRadius: 3,
-                border: "1px solid rgba(0,0,0,0.1)",
-                flexShrink: 0,
-              }}
-            />
-            <span
-              style={{
-                fontWeight: 800,
-                fontSize: 18,
-                letterSpacing: "0.08em",
-                color: "var(--fb-navy)",
-                textTransform: "uppercase",
-              }}
-            >
-              Flag Bands
-            </span>
-          </span>
+          <img
+            src="/logo.svg"
+            alt="Flag Bands"
+            style={{ height: 44, width: "auto" }}
+          />
         </a>
 
         {/* Desktop Links */}
@@ -1621,20 +1597,8 @@ function Footer() {
         >
           {/* Brand */}
           <div style={{ maxWidth: 280 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-              <span
-                style={{
-                  width: 24,
-                  height: 18,
-                  background: "linear-gradient(180deg, #C8102E 33%, #FFFFFF 33% 66%, #002868 66%)",
-                  borderRadius: 3,
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  flexShrink: 0,
-                }}
-              />
-              <span style={{ color: "#FFFFFF", fontWeight: 800, fontSize: 16, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                Flag Bands
-              </span>
+            <div style={{ marginBottom: 12 }}>
+              <img src="/logo.svg" alt="Flag Bands" style={{ height: 36, width: "auto", filter: "brightness(0) invert(1)" }} />
             </div>
             <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, lineHeight: 1.6, margin: 0 }}>
               Wearable identity and community fundraising. Wear Your Flag. Find Your People.
