@@ -1,9 +1,268 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 
-// ─── Nav ───────────────────────────────────────────────────────────────────
-function Nav() {
+// ─── Flag SVGs ────────────────────────────────────────────────────────────────
+
+function FlagUSA() {
+  const stripes = Array.from({ length: 13 });
+  return (
+    <svg viewBox="0 0 190 100" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", display: "block" }}>
+      {stripes.map((_, i) => (
+        <rect key={i} x="0" y={i * (100 / 13)} width="190" height={100 / 13 + 0.5} fill={i % 2 === 0 ? "#B22234" : "#FFFFFF"} />
+      ))}
+      <rect x="0" y="0" width="76" height={100 * 7 / 13} fill="#3C3B6E" />
+      {/* Stars - 5 rows of 6, 4 rows of 5, offset */}
+      {Array.from({ length: 9 }).map((_, row) =>
+        Array.from({ length: row % 2 === 0 ? 6 : 5 }).map((_, col) => (
+          <circle
+            key={`${row}-${col}`}
+            cx={row % 2 === 0 ? 5 + col * 12 : 11 + col * 12}
+            cy={4 + row * 6}
+            r="1.6"
+            fill="#FFFFFF"
+          />
+        ))
+      )}
+    </svg>
+  );
+}
+
+function FlagJamaica() {
+  return (
+    <svg viewBox="0 0 190 100" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", display: "block" }}>
+      {/* Black triangles left/right */}
+      <polygon points="0,0 95,50 0,100" fill="#000000" />
+      <polygon points="190,0 95,50 190,100" fill="#000000" />
+      {/* Gold triangles top/bottom */}
+      <polygon points="0,0 190,0 95,50" fill="#FED100" />
+      <polygon points="0,100 190,100 95,50" fill="#FED100" />
+      {/* Green — actually Jamaica: black=hardships, gold=sun, green=land */}
+      {/* Saltire in gold, triangles: top & bottom green, left & right black */}
+      {/* Redraw: top/bottom = green, left/right = black */}
+      <polygon points="0,0 190,0 95,50" fill="#009B3A" />
+      <polygon points="0,100 190,100 95,50" fill="#009B3A" />
+      {/* Gold saltire cross stripes */}
+      <polygon points="0,0 20,0 95,50 20,100 0,100" fill="#FED100" />
+      <polygon points="190,0 170,0 95,50 170,100 190,100" fill="#FED100" />
+      <polygon points="0,0 190,0 190,20 95,50 0,20" fill="#FED100" />
+      <polygon points="0,100 190,100 190,80 95,50 0,80" fill="#FED100" />
+    </svg>
+  );
+}
+
+function FlagHaiti() {
+  return (
+    <svg viewBox="0 0 190 100" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", display: "block" }}>
+      <rect width="190" height="50" fill="#00209F" />
+      <rect y="50" width="190" height="50" fill="#D21034" />
+      {/* Simplified coat of arms: white rectangle center */}
+      <rect x="75" y="30" width="40" height="40" rx="3" fill="white" opacity="0.9" />
+      <rect x="81" y="36" width="28" height="28" rx="2" fill="#009A44" />
+      {/* Palm tree simplified */}
+      <rect x="93" y="38" width="4" height="16" fill="#8B4513" />
+      <ellipse cx="95" cy="38" rx="8" ry="5" fill="#009A44" />
+      {/* Cannons (dots) */}
+      <circle cx="84" cy="58" r="2" fill="#333" />
+      <circle cx="106" cy="58" r="2" fill="#333" />
+    </svg>
+  );
+}
+
+function FlagVenezuela() {
+  return (
+    <svg viewBox="0 0 190 100" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", display: "block" }}>
+      <rect width="190" height="33.4" fill="#CF142B" />
+      <rect y="33.4" width="190" height="33.3" fill="#00247D" />
+      <rect y="66.7" width="190" height="33.3" fill="#F4CF17" />
+      {/* 8 white stars in arc */}
+      {Array.from({ length: 8 }).map((_, i) => {
+        const angle = Math.PI + (i / 7) * Math.PI;
+        const cx = 95 + 22 * Math.cos(angle);
+        const cy = 50 + 14 * Math.sin(angle);
+        return <circle key={i} cx={cx} cy={cy} r="3" fill="#FFFFFF" />;
+      })}
+    </svg>
+  );
+}
+
+function FlagPuertoRico() {
+  return (
+    <svg viewBox="0 0 190 100" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", display: "block" }}>
+      {[0, 1, 2, 3, 4].map((i) => (
+        <rect key={i} x="0" y={i * 20} width="190" height="20.5" fill={i % 2 === 0 ? "#C8102E" : "#FFFFFF"} />
+      ))}
+      {/* Blue equilateral triangle */}
+      <polygon points="0,0 87,50 0,100" fill="#002868" />
+      {/* White star */}
+      <polygon
+        points="44,36 47,46 58,46 50,53 53,63 44,57 35,63 38,53 30,46 41,46"
+        fill="#FFFFFF"
+      />
+    </svg>
+  );
+}
+
+function FlagCuba() {
+  return (
+    <svg viewBox="0 0 190 100" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", display: "block" }}>
+      {[0, 1, 2, 3, 4].map((i) => (
+        <rect key={i} x="0" y={i * 20} width="190" height="20.5" fill={i % 2 === 0 ? "#002A8F" : "#FFFFFF"} />
+      ))}
+      {/* Red equilateral triangle */}
+      <polygon points="0,0 80,50 0,100" fill="#CF142B" />
+      {/* White star */}
+      <polygon
+        points="38,36 41,46 52,46 44,53 47,63 38,57 29,63 32,53 24,46 35,46"
+        fill="#FFFFFF"
+      />
+    </svg>
+  );
+}
+
+function FlagLGBT() {
+  const colors = ["#FF0018", "#FF8C00", "#FFEF00", "#008026", "#004DFF", "#750787"];
+  return (
+    <svg viewBox="0 0 190 100" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", display: "block" }}>
+      {colors.map((color, i) => (
+        <rect key={i} x="0" y={i * (100 / 6)} width="190" height={100 / 6 + 0.5} fill={color} />
+      ))}
+    </svg>
+  );
+}
+
+function FlagVegan() {
+  return (
+    <svg viewBox="0 0 190 100" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", display: "block" }}>
+      {/* Vegan flag: blue top-left triangle, white diagonal band, green bottom-right */}
+      <rect width="190" height="100" fill="#3A7DC9" />
+      <polygon points="0,100 190,0 190,100" fill="#3DAE2B" />
+      {/* White diagonal band */}
+      <polygon points="0,75 115,0 190,0 75,100 0,100" fill="rgba(255,255,255,0.2)" />
+      <polygon points="0,60 100,0 130,0 30,100 0,100" fill="rgba(255,255,255,0.85)" />
+      {/* V checkmark in white */}
+      <polyline
+        points="75,38 90,58 115,28"
+        fill="none"
+        stroke="#3A7DC9"
+        strokeWidth="7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function FlagPeru() {
+  return (
+    <svg viewBox="0 0 190 100" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", display: "block" }}>
+      <rect width="63" height="100" fill="#D91023" />
+      <rect x="63" width="64" height="100" fill="#FFFFFF" />
+      <rect x="127" width="63" height="100" fill="#D91023" />
+      {/* Simplified coat of arms */}
+      <ellipse cx="95" cy="45" rx="14" ry="10" fill="#009A44" opacity="0.8" />
+      <rect x="90" y="55" width="10" height="12" fill="#9B7426" opacity="0.7" />
+      <circle cx="81" cy="42" r="5" fill="#4FB5E6" opacity="0.8" />
+    </svg>
+  );
+}
+
+// ─── Products ─────────────────────────────────────────────────────────────────
+
+const PRODUCTS = [
+  {
+    id: "usa",
+    name: "United States",
+    label: "USA",
+    price: "$30",
+    available: true,
+    FlagComponent: FlagUSA,
+    accentColor: "#002868",
+  },
+  {
+    id: "jamaica",
+    name: "Jamaica",
+    label: "JAM",
+    price: "$30",
+    available: true,
+    FlagComponent: FlagJamaica,
+    accentColor: "#009B3A",
+  },
+  {
+    id: "haiti",
+    name: "Haiti",
+    label: "HTI",
+    price: "$30",
+    available: true,
+    FlagComponent: FlagHaiti,
+    accentColor: "#00209F",
+  },
+  {
+    id: "venezuela",
+    name: "Venezuela",
+    label: "VEN",
+    price: "$30",
+    available: true,
+    FlagComponent: FlagVenezuela,
+    accentColor: "#00247D",
+  },
+  {
+    id: "puerto-rico",
+    name: "Puerto Rico",
+    label: "PRI",
+    price: "$30",
+    available: true,
+    FlagComponent: FlagPuertoRico,
+    accentColor: "#002868",
+  },
+  {
+    id: "cuba",
+    name: "Cuba",
+    label: "CUB",
+    price: "$30",
+    available: true,
+    FlagComponent: FlagCuba,
+    accentColor: "#002A8F",
+  },
+  {
+    id: "lgbtq",
+    name: "Pride",
+    label: "PRIDE",
+    price: "$30",
+    available: true,
+    FlagComponent: FlagLGBT,
+    accentColor: "#750787",
+  },
+  {
+    id: "vegan",
+    name: "Vegan",
+    label: "VGN",
+    price: "$30",
+    available: true,
+    FlagComponent: FlagVegan,
+    accentColor: "#3DAE2B",
+  },
+  {
+    id: "peru",
+    name: "Peru",
+    label: "PER",
+    price: "$30",
+    available: true,
+    FlagComponent: FlagPeru,
+    accentColor: "#D91023",
+  },
+];
+
+// ─── Nav ──────────────────────────────────────────────────────────────────────
+
+const NAV_ITEMS = [
+  { label: "Shop", section: 1 },
+  { label: "How It Works", section: 2 },
+  { label: "Fundraising", section: 3 },
+  { label: "Partners", section: 4 },
+];
+
+function Nav({ current, onNav }: { current: number; onNav: (i: number) => void }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -13,10 +272,11 @@ function Nav() {
         top: 0,
         left: 0,
         right: 0,
-        zIndex: 100,
-        background: "var(--fb-nav-bg)",
-        borderBottom: "1px solid var(--fb-nav-border)",
-        backdropFilter: "blur(12px)",
+        zIndex: 200,
+        background: current === 0 ? "transparent" : "rgba(255,255,255,0.96)",
+        borderBottom: current === 0 ? "none" : "1px solid rgba(0,0,0,0.08)",
+        backdropFilter: "blur(16px)",
+        transition: "background 0.4s ease, border-color 0.4s ease",
       }}
     >
       <div
@@ -30,73 +290,52 @@ function Nav() {
           justifyContent: "space-between",
         }}
       >
-        {/* Logo */}
-        <a
-          href="/"
-          style={{
-            textDecoration: "none",
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-          }}
+        <button
+          onClick={() => onNav(0)}
+          style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}
         >
-          <img
-            src="/logo.svg"
-            alt="Flag Bands"
-            style={{ height: 44, width: "auto" }}
-          />
-        </a>
+          <img src="/logo.svg" alt="Flag Bands" style={{ height: 44, width: "auto" }} />
+        </button>
 
-        {/* Desktop Links */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 32,
-          }}
-          className="hide-mobile"
-        >
-          {[
-            { label: "Shop", href: "#browse" },
-            { label: "How It Works", href: "#how-it-works" },
-            { label: "Fundraising", href: "#fundraising" },
-            { label: "Partners", href: "#partners" },
-          ].map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+        <div style={{ display: "flex", alignItems: "center", gap: 32 }} className="hide-mobile">
+          {NAV_ITEMS.map((item) => (
+            <button
+              key={item.section}
+              onClick={() => onNav(item.section)}
               style={{
-                textDecoration: "none",
-                color: "var(--fb-text-secondary)",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                color: current === 0 ? "rgba(255,255,255,0.85)" : "var(--fb-text-secondary)",
                 fontWeight: 500,
                 fontSize: 14,
                 letterSpacing: "0.02em",
                 transition: "color 0.15s ease",
+                padding: "4px 0",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--fb-navy)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--fb-text-secondary)")}
+              onMouseEnter={(e) => (e.currentTarget.style.color = current === 0 ? "#fff" : "var(--fb-navy)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = current === 0 ? "rgba(255,255,255,0.85)" : "var(--fb-text-secondary)")}
             >
-              {link.label}
-            </a>
+              {item.label}
+            </button>
           ))}
-          <a
-            href="#start-fundraiser"
+          <button
+            onClick={() => onNav(3)}
             style={{
-              background: "var(--fb-navy)",
+              background: current === 0 ? "rgba(255,255,255,0.15)" : "var(--fb-navy)",
               color: "#FFFFFF",
+              border: current === 0 ? "1.5px solid rgba(255,255,255,0.4)" : "none",
               padding: "10px 20px",
               borderRadius: 8,
-              textDecoration: "none",
+              cursor: "pointer",
               fontWeight: 700,
               fontSize: 13,
               letterSpacing: "0.04em",
-              transition: "background 0.15s ease",
+              transition: "all 0.15s ease",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "var(--fb-navy-mid)")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "var(--fb-navy)")}
           >
             Start a Fundraiser
-          </a>
+          </button>
         </div>
 
         {/* Mobile hamburger */}
@@ -121,7 +360,7 @@ function Nav() {
                 display: "block",
                 width: 22,
                 height: 2,
-                background: "var(--fb-navy)",
+                background: current === 0 ? "#FFFFFF" : "var(--fb-navy)",
                 borderRadius: 2,
               }}
             />
@@ -129,56 +368,48 @@ function Nav() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
-        <div
-          style={{
-            background: "#FFFFFF",
-            borderTop: "1px solid var(--fb-border)",
-            padding: "16px 24px 24px",
-          }}
-        >
-          {[
-            { label: "Shop", href: "#browse" },
-            { label: "How It Works", href: "#how-it-works" },
-            { label: "Fundraising", href: "#fundraising" },
-            { label: "Partners", href: "#partners" },
-          ].map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
+        <div style={{ background: "#FFFFFF", borderTop: "1px solid var(--fb-border)", padding: "16px 24px 24px" }}>
+          {NAV_ITEMS.map((item) => (
+            <button
+              key={item.section}
+              onClick={() => { onNav(item.section); setOpen(false); }}
               style={{
                 display: "block",
+                width: "100%",
+                textAlign: "left",
                 padding: "12px 0",
-                textDecoration: "none",
+                background: "none",
+                border: "none",
+                borderBottom: "1px solid var(--fb-border)",
+                cursor: "pointer",
                 color: "var(--fb-text)",
                 fontWeight: 600,
                 fontSize: 15,
-                borderBottom: "1px solid var(--fb-border)",
               }}
             >
-              {link.label}
-            </a>
+              {item.label}
+            </button>
           ))}
-          <a
-            href="#start-fundraiser"
-            onClick={() => setOpen(false)}
+          <button
+            onClick={() => { onNav(3); setOpen(false); }}
             style={{
               display: "block",
+              width: "100%",
               marginTop: 16,
               background: "var(--fb-navy)",
               color: "#FFFFFF",
+              border: "none",
               padding: "14px 20px",
               borderRadius: 8,
-              textDecoration: "none",
+              cursor: "pointer",
               fontWeight: 700,
               fontSize: 14,
               textAlign: "center",
             }}
           >
             Start a Fundraiser
-          </a>
+          </button>
         </div>
       )}
 
@@ -196,27 +427,27 @@ function Nav() {
   );
 }
 
-// ─── Section 1: Hero ───────────────────────────────────────────────────────
-function HeroSection() {
+// ─── Section 1: Hero ──────────────────────────────────────────────────────────
+
+function HeroSection({ onShop }: { onShop: () => void }) {
   return (
-    <section
+    <div
       style={{
-        minHeight: "100vh",
+        width: "100%",
+        height: "100%",
         background: "var(--fb-navy)",
         display: "flex",
         alignItems: "center",
-        paddingTop: 64,
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Background texture - subtle stars pattern */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: `radial-gradient(circle at 20% 50%, rgba(200,16,46,0.12) 0%, transparent 50%),
-                            radial-gradient(circle at 80% 20%, rgba(212,160,23,0.08) 0%, transparent 40%)`,
+          backgroundImage: `radial-gradient(circle at 15% 50%, rgba(200,16,46,0.15) 0%, transparent 55%),
+                            radial-gradient(circle at 85% 20%, rgba(212,160,23,0.1) 0%, transparent 45%)`,
         }}
       />
 
@@ -224,7 +455,7 @@ function HeroSection() {
         style={{
           maxWidth: 1200,
           margin: "0 auto",
-          padding: "80px 24px",
+          padding: "0 24px",
           width: "100%",
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
@@ -235,7 +466,6 @@ function HeroSection() {
         }}
         className="hero-grid"
       >
-        {/* Left: Copy */}
         <div>
           <div
             style={{
@@ -249,8 +479,8 @@ function HeroSection() {
               marginBottom: 28,
             }}
           >
-            <span style={{ fontSize: 13, color: "rgba(255,255,255,0.8)", fontWeight: 500, letterSpacing: "0.05em" }}>
-              NOW AVAILABLE: USA FLAG BAND
+            <span style={{ fontSize: 13, color: "rgba(255,255,255,0.85)", fontWeight: 600, letterSpacing: "0.05em" }}>
+              9 FLAGS NOW AVAILABLE
             </span>
           </div>
 
@@ -266,7 +496,7 @@ function HeroSection() {
           >
             Wear Your Flag.
             <br />
-            <span style={{ color: "rgba(255,255,255,0.55)" }}>Find Your People.</span>
+            <span style={{ color: "rgba(255,255,255,0.5)" }}>Find Your People.</span>
           </h1>
 
           <p
@@ -276,7 +506,6 @@ function HeroSection() {
               lineHeight: 1.6,
               margin: "0 0 40px",
               maxWidth: 460,
-              fontWeight: 400,
             }}
           >
             Handcrafted beaded wristbands featuring custom flag plates. Represent your heritage,
@@ -284,19 +513,19 @@ function HeroSection() {
           </p>
 
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-            <a
-              href="#browse"
+            <button
+              onClick={onShop}
               style={{
                 background: "#FFFFFF",
                 color: "var(--fb-navy)",
                 padding: "16px 32px",
                 borderRadius: 10,
-                textDecoration: "none",
+                border: "none",
+                cursor: "pointer",
                 fontWeight: 800,
                 fontSize: 15,
                 letterSpacing: "0.03em",
                 transition: "transform 0.15s ease, box-shadow 0.15s ease",
-                display: "inline-block",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
@@ -307,49 +536,19 @@ function HeroSection() {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              Shop USA Flag Band
-            </a>
-            <a
-              href="#start-fundraiser"
-              style={{
-                background: "transparent",
-                color: "#FFFFFF",
-                padding: "16px 32px",
-                borderRadius: 10,
-                textDecoration: "none",
-                fontWeight: 700,
-                fontSize: 15,
-                letterSpacing: "0.03em",
-                border: "2px solid rgba(255,255,255,0.3)",
-                transition: "border-color 0.15s ease",
-                display: "inline-block",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.7)")}
-              onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)")}
-            >
-              Start a Fundraiser
-            </a>
+              Shop All Flags
+            </button>
           </div>
 
-          {/* Trust badges */}
-          <div
-            style={{
-              display: "flex",
-              gap: 28,
-              marginTop: 48,
-              flexWrap: "wrap",
-            }}
-          >
+          <div style={{ display: "flex", gap: 36, marginTop: 48, flexWrap: "wrap" }}>
             {[
               { num: "$30", label: "Per Band" },
+              { num: "9", label: "Flags Available" },
               { num: "$5", label: "Community Contribution" },
-              { num: "100+", label: "Flags Coming" },
             ].map((stat) => (
               <div key={stat.label}>
-                <div style={{ color: "#FFFFFF", fontWeight: 800, fontSize: 22, lineHeight: 1 }}>
-                  {stat.num}
-                </div>
-                <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, fontWeight: 500, marginTop: 4, letterSpacing: "0.04em" }}>
+                <div style={{ color: "#FFFFFF", fontWeight: 800, fontSize: 22, lineHeight: 1 }}>{stat.num}</div>
+                <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 12, fontWeight: 500, marginTop: 4, letterSpacing: "0.04em" }}>
                   {stat.label}
                 </div>
               </div>
@@ -357,255 +556,83 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* Right: Product Display */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          className="hero-product"
-        >
+        {/* Flag mosaic */}
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} className="hero-product">
           <div
             style={{
-              position: "relative",
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              gap: 8,
               width: "100%",
-              maxWidth: 480,
-              aspectRatio: "4/5",
+              maxWidth: 420,
+              opacity: 0.9,
             }}
           >
-            {/* Main product card */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                borderRadius: 24,
-                overflow: "hidden",
-                background: "linear-gradient(135deg, #1B3A6B 0%, #0D1F3C 100%)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                boxShadow: "0 40px 80px rgba(0,0,0,0.5)",
-              }}
-            >
-              {/* Product image area */}
-              <div
+            {PRODUCTS.slice(0, 9).map((p) => (
+              <button
+                key={p.id}
+                onClick={onShop}
                 style={{
-                  position: "absolute",
-                  inset: 0,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  gap: 24,
-                  padding: 40,
+                  aspectRatio: "3/2",
+                  borderRadius: 8,
+                  overflow: "hidden",
+                  border: "2px solid rgba(255,255,255,0.15)",
+                  background: "none",
+                  cursor: "pointer",
+                  padding: 0,
+                  transition: "transform 0.15s ease, border-color 0.15s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "scale(1.05)";
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.6)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
                 }}
               >
-                {/* USA Flag Band visual */}
-                <div
-                  style={{
-                    width: 220,
-                    height: 220,
-                    borderRadius: "50%",
-                    background: "linear-gradient(135deg, rgba(200,16,46,0.2), rgba(13,31,60,0.8))",
-                    border: "2px solid rgba(255,255,255,0.15)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    position: "relative",
-                  }}
-                >
-                  {/* Band representation */}
-                  <div
-                    style={{
-                      width: 160,
-                      height: 40,
-                      borderRadius: 20,
-                      background: "linear-gradient(90deg, #4a3520 0%, #5a4020 30%, #3d2b15 100%)",
-                      position: "relative",
-                      boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 8,
-                      padding: "0 10px",
-                      overflow: "hidden",
-                    }}
-                  >
-                    {/* Beads */}
-                    {Array.from({ length: 8 }).map((_, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          width: 14,
-                          height: 14,
-                          borderRadius: "50%",
-                          background: i % 3 === 0 ? "#2a1810" : i % 3 === 1 ? "#3d2b1a" : "#1a0f08",
-                          flexShrink: 0,
-                          boxShadow: "inset 0 2px 4px rgba(255,255,255,0.1)",
-                        }}
-                      />
-                    ))}
-                    {/* Flag plate */}
-                    <div
-                      style={{
-                        width: 32,
-                        height: 22,
-                        borderRadius: 4,
-                        overflow: "hidden",
-                        flexShrink: 0,
-                        border: "1px solid rgba(255,255,255,0.3)",
-                      }}
-                    >
-                      <div style={{ height: "33%", background: "#C8102E" }} />
-                      <div style={{ height: "34%", background: "#FFFFFF" }} />
-                      <div style={{ height: "33%", background: "#002868" }} />
-                    </div>
-                    {/* More beads */}
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <div
-                        key={i}
-                        style={{
-                          width: 14,
-                          height: 14,
-                          borderRadius: "50%",
-                          background: i % 2 === 0 ? "#2a1810" : "#3d2b1a",
-                          flexShrink: 0,
-                          boxShadow: "inset 0 2px 4px rgba(255,255,255,0.1)",
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                <div style={{ textAlign: "center" }}>
-                  <div style={{ color: "#FFFFFF", fontWeight: 800, fontSize: 18, letterSpacing: "0.04em" }}>
-                    USA FLAG BAND
-                  </div>
-                  <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, marginTop: 4 }}>
-                    Lava Stone + Wood Plate + Copper
-                  </div>
-                </div>
-              </div>
-
-              {/* Price tag */}
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 24,
-                  right: 24,
-                  background: "#FFFFFF",
-                  borderRadius: 12,
-                  padding: "10px 18px",
-                }}
-              >
-                <div style={{ color: "var(--fb-navy)", fontWeight: 900, fontSize: 22 }}>$30</div>
-                <div style={{ color: "var(--fb-text-muted)", fontSize: 11, fontWeight: 500 }}>Free shipping</div>
-              </div>
-            </div>
-
-            {/* Floating badge */}
-            <div
-              style={{
-                position: "absolute",
-                top: -16,
-                left: -16,
-                background: "var(--fb-red)",
-                color: "#FFFFFF",
-                borderRadius: 12,
-                padding: "10px 16px",
-                fontWeight: 800,
-                fontSize: 12,
-                letterSpacing: "0.06em",
-                boxShadow: "0 4px 16px rgba(200,16,46,0.4)",
-              }}
-            >
-              LIMITED LAUNCH
-            </div>
+                <p.FlagComponent />
+              </button>
+            ))}
           </div>
         </div>
       </div>
 
       <style>{`
         @media (max-width: 768px) {
-          .hero-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+          .hero-grid { grid-template-columns: 1fr !important; padding-top: 80px !important; }
           .hero-product { display: none !important; }
         }
       `}</style>
-    </section>
+    </div>
   );
 }
 
-// ─── Section 2: Browse By Country ─────────────────────────────────────────
-const countries = [
-  {
-    name: "United States",
-    code: "USA",
-    available: true,
-    price: "$30",
-    colors: ["#C8102E", "#FFFFFF", "#002868"],
-    description: "The founding design. Lava stone, wood plate, copper hardware.",
-  },
-  {
-    name: "Jamaica",
-    code: "JAM",
-    available: false,
-    colors: ["#009B3A", "#FED100", "#000000"],
-    description: "Coming Q2 2026.",
-  },
-  {
-    name: "Puerto Rico",
-    code: "PRI",
-    available: false,
-    colors: ["#C8102E", "#FFFFFF", "#002868"],
-    description: "Coming Q2 2026.",
-  },
-  {
-    name: "Trinidad",
-    code: "TRI",
-    available: false,
-    colors: ["#C8102E", "#FFFFFF", "#000000"],
-    description: "Coming Q3 2026.",
-  },
-  {
-    name: "Brazil",
-    code: "BRA",
-    available: false,
-    colors: ["#009C3B", "#FFDF00", "#002776"],
-    description: "Coming Q3 2026.",
-  },
-  {
-    name: "Japan",
-    code: "JPN",
-    available: false,
-    colors: ["#FFFFFF", "#BC002D", "#FFFFFF"],
-    description: "Coming Q3 2026.",
-  },
-  {
-    name: "United Kingdom",
-    code: "GBR",
-    available: false,
-    colors: ["#012169", "#FFFFFF", "#C8102E"],
-    description: "Coming Q4 2026.",
-  },
-  {
-    name: "South Africa",
-    code: "ZAF",
-    available: false,
-    colors: ["#007A4D", "#FFB81C", "#000000"],
-    description: "Coming Q4 2026.",
-  },
-];
+// ─── Section 2: Collection ────────────────────────────────────────────────────
 
-function BrowseSection() {
+function CollectionSection() {
+  const [selected, setSelected] = useState<string | null>(null);
+
   return (
-    <section id="browse" style={{ background: "#FFFFFF", padding: "96px 0" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
-        <div style={{ textAlign: "center", marginBottom: 56 }}>
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        background: "#F8F7F4",
+        overflowY: "auto",
+        paddingTop: 64,
+      }}
+    >
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px 80px" }}>
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
           <div
             style={{
               display: "inline-block",
               background: "var(--fb-off-white)",
+              border: "1px solid rgba(0,0,0,0.08)",
               borderRadius: 100,
               padding: "6px 16px",
-              marginBottom: 16,
+              marginBottom: 14,
             }}
           >
             <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", color: "var(--fb-navy)", textTransform: "uppercase" }}>
@@ -614,192 +641,217 @@ function BrowseSection() {
           </div>
           <h2
             style={{
-              fontSize: "clamp(28px, 4vw, 48px)",
+              fontSize: "clamp(26px, 3.5vw, 44px)",
               fontWeight: 900,
               color: "var(--fb-navy)",
-              margin: "0 0 16px",
+              margin: "0 0 12px",
               letterSpacing: "-0.02em",
             }}
           >
             Browse By Flag
           </h2>
-          <p style={{ color: "var(--fb-text-secondary)", fontSize: 17, maxWidth: 520, margin: "0 auto", lineHeight: 1.6 }}>
-            One flag. One community. One cause. Start with the USA. 100+ designs coming.
+          <p style={{ color: "var(--fb-text-secondary)", fontSize: 16, maxWidth: 480, margin: "0 auto", lineHeight: 1.6 }}>
+            9 flags available now. Every band is $30 with free shipping and a $5 community contribution.
           </p>
         </div>
 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
-            gap: 24,
+            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+            gap: 20,
           }}
+          className="flag-grid"
         >
-          {countries.map((country) => (
-            <div
-              key={country.code}
-              style={{
-                background: "#FFFFFF",
-                borderRadius: 16,
-                border: "1px solid var(--fb-border)",
-                overflow: "hidden",
-                transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                cursor: country.available ? "pointer" : "default",
-                opacity: country.available ? 1 : 0.75,
-              }}
-              onMouseEnter={(e) => {
-                if (country.available) {
-                  e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.boxShadow = "0 12px 32px rgba(13,31,60,0.12)";
-                }
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
-            >
-              {/* Flag stripe header */}
-              <div style={{ height: 8, display: "flex" }}>
-                {country.colors.map((color, i) => (
-                  <div key={i} style={{ flex: 1, background: color }} />
-                ))}
-              </div>
-
-              <div style={{ padding: 24 }}>
-                {/* Flag icon */}
+          {PRODUCTS.map((product) => {
+            const isSelected = selected === product.id;
+            return (
+              <div
+                key={product.id}
+                onClick={() => setSelected(isSelected ? null : product.id)}
+                style={{
+                  background: "#FFFFFF",
+                  borderRadius: 14,
+                  border: isSelected ? `2px solid ${product.accentColor}` : "2px solid transparent",
+                  overflow: "hidden",
+                  cursor: "pointer",
+                  transition: "transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
+                  boxShadow: isSelected ? `0 8px 32px ${product.accentColor}30` : "0 2px 12px rgba(0,0,0,0.06)",
+                }}
+                onMouseEnter={(e) => {
+                  if (!isSelected) {
+                    e.currentTarget.style.transform = "translateY(-4px)";
+                    e.currentTarget.style.boxShadow = "0 12px 32px rgba(13,31,60,0.12)";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isSelected) {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.06)";
+                  }
+                }}
+              >
+                {/* Flag image - large, proportional */}
                 <div
                   style={{
-                    width: 56,
-                    height: 40,
-                    borderRadius: 6,
+                    width: "100%",
+                    aspectRatio: "3/2",
                     overflow: "hidden",
-                    marginBottom: 16,
-                    border: "1px solid rgba(0,0,0,0.08)",
-                    display: "flex",
-                    flexDirection: "column",
+                    borderBottom: "1px solid rgba(0,0,0,0.06)",
                   }}
                 >
-                  {country.colors.map((color, i) => (
-                    <div key={i} style={{ flex: 1, background: color }} />
-                  ))}
+                  <product.FlagComponent />
                 </div>
 
-                <h3
-                  style={{
-                    fontWeight: 800,
-                    fontSize: 17,
-                    color: "var(--fb-navy)",
-                    margin: "0 0 6px",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {country.name}
-                </h3>
-                <p style={{ color: "var(--fb-text-muted)", fontSize: 13, margin: "0 0 20px", lineHeight: 1.5 }}>
-                  {country.description}
-                </p>
-
-                {country.available ? (
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                    <span style={{ fontWeight: 900, fontSize: 20, color: "var(--fb-navy)" }}>
-                      {country.price}
-                    </span>
-                    <a
-                      href="#shop-usa"
+                <div style={{ padding: "14px 16px 18px" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
+                    <h3
                       style={{
-                        background: "var(--fb-navy)",
-                        color: "#FFFFFF",
-                        padding: "10px 20px",
-                        borderRadius: 8,
-                        textDecoration: "none",
-                        fontWeight: 700,
-                        fontSize: 13,
-                        letterSpacing: "0.03em",
+                        fontWeight: 800,
+                        fontSize: 15,
+                        color: "var(--fb-navy)",
+                        margin: 0,
+                        letterSpacing: "-0.01em",
                       }}
                     >
-                      Shop Now
-                    </a>
-                  </div>
-                ) : (
-                  <div
-                    style={{
-                      background: "var(--fb-off-white)",
-                      borderRadius: 8,
-                      padding: "10px 16px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <span style={{ color: "var(--fb-text-muted)", fontSize: 13, fontWeight: 600 }}>
-                      Notify Me When Available
+                      {product.name}
+                    </h3>
+                    <span
+                      style={{
+                        background: product.accentColor,
+                        color: "#FFFFFF",
+                        fontSize: 10,
+                        fontWeight: 700,
+                        padding: "2px 7px",
+                        borderRadius: 4,
+                        letterSpacing: "0.04em",
+                      }}
+                    >
+                      {product.label}
                     </span>
                   </div>
-                )}
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 8 }}>
+                    <span style={{ fontWeight: 900, fontSize: 18, color: "var(--fb-navy)" }}>{product.price}</span>
+                    <button
+                      style={{
+                        background: isSelected ? product.accentColor : "var(--fb-navy)",
+                        color: "#FFFFFF",
+                        border: "none",
+                        borderRadius: 7,
+                        padding: "7px 14px",
+                        cursor: "pointer",
+                        fontWeight: 700,
+                        fontSize: 12,
+                        letterSpacing: "0.02em",
+                        transition: "background 0.15s ease",
+                      }}
+                    >
+                      {isSelected ? "Selected" : "Add to Cart"}
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        <div style={{ textAlign: "center", marginTop: 48 }}>
-          <p style={{ color: "var(--fb-text-muted)", fontSize: 14, fontWeight: 500 }}>
-            100+ country designs in development. Want your flag next?{" "}
-            <a
-              href="#start-fundraiser"
-              style={{ color: "var(--fb-navy)", fontWeight: 700, textDecoration: "underline" }}
+        {selected && (
+          <div
+            style={{
+              marginTop: 32,
+              background: "#FFFFFF",
+              borderRadius: 16,
+              padding: "24px 32px",
+              border: "1px solid var(--fb-border)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 24,
+              flexWrap: "wrap",
+            }}
+          >
+            <div>
+              <div style={{ fontWeight: 700, color: "var(--fb-navy)", fontSize: 16 }}>
+                {PRODUCTS.find((p) => p.id === selected)?.name} Flag Band - $30
+              </div>
+              <div style={{ color: "var(--fb-text-muted)", fontSize: 13, marginTop: 4 }}>
+                Free shipping. $5 goes to the community. Ships in 3-5 business days.
+              </div>
+            </div>
+            <button
+              style={{
+                background: "var(--fb-navy)",
+                color: "#FFFFFF",
+                border: "none",
+                borderRadius: 10,
+                padding: "14px 32px",
+                cursor: "pointer",
+                fontWeight: 800,
+                fontSize: 14,
+                letterSpacing: "0.03em",
+                whiteSpace: "nowrap",
+              }}
             >
-              Start a campaign.
-            </a>
-          </p>
-        </div>
+              Checkout - $30
+            </button>
+          </div>
+        )}
       </div>
-    </section>
+
+      <style>{`
+        @media (max-width: 600px) {
+          .flag-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+        }
+      `}</style>
+    </div>
   );
 }
 
-// ─── Section 3: How It Works ───────────────────────────────────────────────
-const steps = [
-  {
-    num: "01",
-    title: "Build Community",
-    body: "Your organization promotes the campaign to your network. Pre-orders open with no financial risk to you.",
-    icon: "community",
-  },
-  {
-    num: "02",
-    title: "Reach the Threshold",
-    body: "Once minimum pre-orders are met, production begins. Every milestone unlocks bonus contributions.",
-    icon: "threshold",
-  },
-  {
-    num: "03",
-    title: "We Manufacture",
-    body: "Each band is handcrafted with lava stone beads, a natural wood backing plate, and your custom flag plate.",
-    icon: "manufacture",
-  },
-  {
-    num: "04",
-    title: "You Get Paid",
-    body: "$5 from every band goes directly to your organization. No inventory. No upfront cost. No fulfillment burden.",
-    icon: "paid",
-  },
-];
+// ─── Section 3: How It Works ──────────────────────────────────────────────────
 
 function HowItWorksSection() {
+  const steps = [
+    {
+      num: "01",
+      title: "Choose Your Flag",
+      body: "Browse 9 available flags — USA, Jamaica, Haiti, Venezuela, Puerto Rico, Cuba, Pride, Vegan, and Peru. Each one represents a community.",
+    },
+    {
+      num: "02",
+      title: "We Build Your Band",
+      body: "Each wristband is handcrafted with genuine lava stone beads, a custom-printed wood flag plate, and copper hardware.",
+    },
+    {
+      num: "03",
+      title: "It Ships to You",
+      body: "Free shipping, 3-5 business days. $5 from every sale funds a community cause tied to that flag.",
+    },
+  ];
+
   return (
-    <section id="how-it-works" style={{ background: "var(--fb-off-white)", padding: "96px 0" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        background: "#FFFFFF",
+        display: "flex",
+        alignItems: "center",
+        paddingTop: 64,
+      }}
+    >
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px", width: "100%" }}>
         <div style={{ textAlign: "center", marginBottom: 64 }}>
           <div
             style={{
               display: "inline-block",
-              background: "#FFFFFF",
-              border: "1px solid var(--fb-border)",
+              background: "var(--fb-off-white)",
               borderRadius: 100,
               padding: "6px 16px",
-              marginBottom: 16,
+              marginBottom: 14,
             }}
           >
             <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", color: "var(--fb-navy)", textTransform: "uppercase" }}>
-              The Model
+              How It Works
             </span>
           </div>
           <h2
@@ -807,129 +859,42 @@ function HowItWorksSection() {
               fontSize: "clamp(28px, 4vw, 48px)",
               fontWeight: 900,
               color: "var(--fb-navy)",
-              margin: "0 0 16px",
+              margin: "0 0 14px",
               letterSpacing: "-0.02em",
             }}
           >
-            Community Before Capacity
+            Simple. Personal. Purposeful.
           </h2>
-          <p style={{ color: "var(--fb-text-secondary)", fontSize: 17, maxWidth: 540, margin: "0 auto", lineHeight: 1.6 }}>
-            We do not build inventory and hope it sells. We build community, secure orders, then manufacture.
-            Zero inventory risk. Maximum community impact.
+          <p style={{ color: "var(--fb-text-secondary)", fontSize: 17, maxWidth: 480, margin: "0 auto", lineHeight: 1.6 }}>
+            From flag to wrist in three steps.
           </p>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: 24,
-          }}
-        >
-          {steps.map((step, i) => (
-            <div
-              key={step.num}
-              style={{
-                background: "#FFFFFF",
-                borderRadius: 16,
-                padding: 32,
-                border: "1px solid var(--fb-border)",
-                position: "relative",
-              }}
-            >
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 40 }} className="steps-grid">
+          {steps.map((step) => (
+            <div key={step.num}>
               <div
                 style={{
-                  fontWeight: 900,
-                  fontSize: 48,
-                  color: "rgba(13,31,60,0.06)",
-                  lineHeight: 1,
-                  marginBottom: 16,
-                  fontVariantNumeric: "tabular-nums",
+                  width: 64,
+                  height: 64,
+                  borderRadius: 16,
+                  background: "var(--fb-navy)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: 24,
                 }}
               >
-                {step.num}
+                <span style={{ color: "#FFFFFF", fontWeight: 900, fontSize: 20, letterSpacing: "0.02em" }}>
+                  {step.num}
+                </span>
               </div>
-              <h3
-                style={{
-                  fontWeight: 800,
-                  fontSize: 18,
-                  color: "var(--fb-navy)",
-                  margin: "0 0 12px",
-                  letterSpacing: "-0.01em",
-                }}
-              >
+              <h3 style={{ fontWeight: 800, fontSize: 20, color: "var(--fb-navy)", margin: "0 0 12px", letterSpacing: "-0.01em" }}>
                 {step.title}
               </h3>
-              <p style={{ color: "var(--fb-text-secondary)", fontSize: 14, lineHeight: 1.65, margin: 0 }}>
+              <p style={{ color: "var(--fb-text-secondary)", fontSize: 15, lineHeight: 1.7, margin: 0 }}>
                 {step.body}
               </p>
-              {i < steps.length - 1 && (
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    right: -13,
-                    width: 24,
-                    height: 24,
-                    background: "var(--fb-navy)",
-                    borderRadius: "50%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    zIndex: 1,
-                  }}
-                  className="step-arrow"
-                >
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M3 5h4M5 3l2 2-2 2" stroke="#FFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Thresholds */}
-        <div
-          style={{
-            marginTop: 48,
-            background: "var(--fb-navy)",
-            borderRadius: 20,
-            padding: "40px 48px",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-            gap: 32,
-          }}
-        >
-          <div style={{ gridColumn: "1 / -1", marginBottom: 8 }}>
-            <h3 style={{ color: "#FFFFFF", fontWeight: 800, fontSize: 20, margin: 0, letterSpacing: "-0.01em" }}>
-              Campaign Milestones
-            </h3>
-            <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, margin: "6px 0 0" }}>
-              Hit a milestone and unlock more for your community.
-            </p>
-          </div>
-          {[
-            { orders: "50 Orders", unlock: "Production Begins", color: "rgba(255,255,255,0.12)" },
-            { orders: "100 Orders", unlock: "Bonus Contribution Unlocks", color: "rgba(200,16,46,0.25)" },
-            { orders: "250 Orders", unlock: "Limited Edition Version", color: "rgba(200,16,46,0.35)" },
-            { orders: "500 Orders", unlock: "Founder Recognition Tier", color: "rgba(212,160,23,0.25)" },
-          ].map((tier) => (
-            <div
-              key={tier.orders}
-              style={{
-                background: tier.color,
-                borderRadius: 12,
-                padding: "20px 24px",
-                border: "1px solid rgba(255,255,255,0.1)",
-              }}
-            >
-              <div style={{ color: "#FFFFFF", fontWeight: 800, fontSize: 18, marginBottom: 6 }}>
-                {tier.orders}
-              </div>
-              <div style={{ color: "rgba(255,255,255,0.7)", fontSize: 13, lineHeight: 1.4 }}>
-                {tier.unlock}
-              </div>
             </div>
           ))}
         </div>
@@ -937,19 +902,40 @@ function HowItWorksSection() {
 
       <style>{`
         @media (max-width: 768px) {
-          .step-arrow { display: none !important; }
+          .steps-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
         }
       `}</style>
-    </section>
+    </div>
   );
 }
 
-// ─── Section 4: Community Impact ───────────────────────────────────────────
-function ImpactSection() {
+// ─── Section 4: Fundraising ───────────────────────────────────────────────────
+
+function FundraisingSection() {
   return (
-    <section id="impact" style={{ background: "var(--fb-navy)", padding: "96px 0" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
-        <div style={{ textAlign: "center", marginBottom: 64 }}>
+    <div
+      id="fundraising"
+      style={{
+        width: "100%",
+        height: "100%",
+        background: "var(--fb-navy)",
+        display: "flex",
+        alignItems: "center",
+        paddingTop: 64,
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: `radial-gradient(circle at 70% 30%, rgba(200,16,46,0.1) 0%, transparent 55%)`,
+        }}
+      />
+
+      <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 24px", width: "100%", position: "relative", zIndex: 1 }}>
+        <div style={{ textAlign: "center" }}>
           <div
             style={{
               display: "inline-block",
@@ -957,288 +943,115 @@ function ImpactSection() {
               border: "1px solid rgba(255,255,255,0.15)",
               borderRadius: 100,
               padding: "6px 16px",
-              marginBottom: 16,
+              marginBottom: 24,
             }}
           >
             <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", color: "rgba(255,255,255,0.8)", textTransform: "uppercase" }}>
-              The Impact
+              Fundraising
             </span>
           </div>
+
           <h2
             style={{
-              fontSize: "clamp(28px, 4vw, 48px)",
+              fontSize: "clamp(28px, 4vw, 52px)",
               fontWeight: 900,
               color: "#FFFFFF",
-              margin: "0 0 16px",
+              margin: "0 0 20px",
               letterSpacing: "-0.02em",
+              lineHeight: 1.1,
             }}
           >
-            Every Band Funds a Cause
+            Run a Flag Band Campaign
+            <br />
+            <span style={{ color: "rgba(255,255,255,0.5)" }}>for Your Organization</span>
           </h2>
-          <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 17, maxWidth: 480, margin: "0 auto", lineHeight: 1.6 }}>
-            Built-in community contribution. No extra fees. No extra steps.
+
+          <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 18, maxWidth: 600, margin: "0 auto 48px", lineHeight: 1.6 }}>
+            Schools, nonprofits, cultural organizations, and teams. We handle fulfillment.
+            You keep a portion of every sale and build community at the same time.
           </p>
-        </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: 24,
-            marginBottom: 56,
-          }}
-        >
-          {[
-            { value: "$5", label: "Per Band to Community", sub: "Guaranteed contribution on every sale" },
-            { value: "$30", label: "Retail Price", sub: "Premium quality, accessible pricing" },
-            { value: "$50K", label: "Year One Goal", sub: "Returned to partner communities" },
-            { value: "100+", label: "Partner Organizations", sub: "Nonprofits, schools, cultural groups" },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              style={{
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                borderRadius: 16,
-                padding: "32px 28px",
-                textAlign: "center",
-              }}
-            >
-              <div style={{ color: "#FFFFFF", fontWeight: 900, fontSize: 44, lineHeight: 1, marginBottom: 8 }}>
-                {stat.value}
-              </div>
-              <div style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 15, marginBottom: 8 }}>
-                {stat.label}
-              </div>
-              <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 13, lineHeight: 1.5 }}>
-                {stat.sub}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Revenue breakdown */}
-        <div
-          style={{
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            borderRadius: 20,
-            padding: "40px 48px",
-          }}
-        >
-          <h3 style={{ color: "#FFFFFF", fontWeight: 800, fontSize: 20, margin: "0 0 32px", letterSpacing: "-0.01em" }}>
-            Where Every $30 Goes
-          </h3>
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24, marginBottom: 48 }} className="fundraise-grid">
             {[
-              { label: "Flag plate", amount: "$1", width: 3 },
-              { label: "Bracelet components & assembly", amount: "$9", width: 30 },
-              { label: "Community contribution", amount: "$5", width: 17, highlight: true },
-              { label: "Operations, fulfillment, marketing & growth", amount: "$15", width: 50 },
+              { icon: "🏫", title: "Schools", desc: "Custom flag bands for your school community. Perfect for spirit weeks and multicultural events." },
+              { icon: "🏛", title: "Nonprofits", desc: "Raise awareness and funds simultaneously. Flag Bands tell your story on every wrist." },
+              { icon: "🤝", title: "Organizations", desc: "Cultural organizations, unions, clubs. Any group with a flag and a cause." },
             ].map((item) => (
-              <div key={item.label} style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                <div style={{ width: 200, flexShrink: 0, color: "rgba(255,255,255,0.7)", fontSize: 14 }}>
-                  {item.label}
-                </div>
-                <div style={{ flex: 1, height: 12, background: "rgba(255,255,255,0.08)", borderRadius: 6, overflow: "hidden" }}>
-                  <div
-                    style={{
-                      width: `${item.width}%`,
-                      height: "100%",
-                      background: item.highlight ? "var(--fb-red)" : "rgba(255,255,255,0.3)",
-                      borderRadius: 6,
-                    }}
-                  />
-                </div>
-                <div style={{ width: 40, flexShrink: 0, color: "#FFFFFF", fontWeight: 700, fontSize: 14, textAlign: "right" }}>
-                  {item.amount}
-                </div>
+              <div
+                key={item.title}
+                style={{
+                  background: "rgba(255,255,255,0.07)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  borderRadius: 16,
+                  padding: "28px 24px",
+                  textAlign: "left",
+                }}
+              >
+                <div style={{ fontSize: 32, marginBottom: 14 }}>{item.icon}</div>
+                <h3 style={{ color: "#FFFFFF", fontWeight: 800, fontSize: 17, margin: "0 0 8px" }}>{item.title}</h3>
+                <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 14, lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
               </div>
             ))}
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
-// ─── Section 5: Partner Organizations ─────────────────────────────────────
-const partnerTypes = [
-  { label: "Nonprofits", icon: "heart" },
-  { label: "Cultural Organizations", icon: "globe" },
-  { label: "Community Groups", icon: "users" },
-  { label: "Alumni Associations", icon: "graduation" },
-  { label: "Student Organizations", icon: "star" },
-  { label: "Advocacy Groups", icon: "megaphone" },
-  { label: "Heritage Organizations", icon: "flag" },
-  { label: "Festivals & Events", icon: "calendar" },
-];
-
-function PartnersSection() {
-  return (
-    <section id="partners" style={{ background: "#FFFFFF", padding: "96px 0" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 80,
-            alignItems: "center",
-          }}
-          className="partners-grid"
-        >
-          <div>
-            <div
-              style={{
-                display: "inline-block",
-                background: "var(--fb-off-white)",
-                borderRadius: 100,
-                padding: "6px 16px",
-                marginBottom: 16,
-              }}
-            >
-              <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", color: "var(--fb-navy)", textTransform: "uppercase" }}>
-                For Organizations
-              </span>
-            </div>
-            <h2
-              style={{
-                fontSize: "clamp(28px, 3.5vw, 44px)",
-                fontWeight: 900,
-                color: "var(--fb-navy)",
-                margin: "0 0 20px",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Zero Risk.
-              <br />
-              Real Revenue.
-            </h2>
-            <p style={{ color: "var(--fb-text-secondary)", fontSize: 16, lineHeight: 1.7, marginBottom: 32 }}>
-              Your organization receives a custom campaign page. Promote it to your community. Supporters
-              place pre-orders. You receive $5 for every band sold. No inventory. No upfront investment.
-              No fulfillment burden. No financial risk.
-            </p>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 40 }}>
-              {[
-                "Custom campaign page for your organization",
-                "$5 per wristband sold goes to your cause",
-                "No inventory or upfront investment required",
-                "We handle production and fulfillment",
-                "Campaigns close when threshold is met",
-              ].map((item) => (
-                <div key={item} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <div
-                    style={{
-                      width: 22,
-                      height: 22,
-                      borderRadius: "50%",
-                      background: "var(--fb-navy)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                      marginTop: 1,
-                    }}
-                  >
-                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                      <path d="M1 4l3 3 5-6" stroke="#FFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <span style={{ color: "var(--fb-text)", fontSize: 15, lineHeight: 1.5 }}>{item}</span>
-                </div>
-              ))}
-            </div>
-
-            <a
-              href="#start-fundraiser"
-              style={{
-                display: "inline-block",
-                background: "var(--fb-navy)",
-                color: "#FFFFFF",
-                padding: "16px 32px",
-                borderRadius: 10,
-                textDecoration: "none",
-                fontWeight: 800,
-                fontSize: 15,
-                letterSpacing: "0.02em",
-              }}
-            >
-              Apply to Partner
-            </a>
-          </div>
-
-          <div>
-            <h3
-              style={{
-                fontWeight: 700,
-                fontSize: 14,
-                color: "var(--fb-text-muted)",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                marginBottom: 20,
-              }}
-            >
-              Eligible Organizations
-            </h3>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 12,
-              }}
-            >
-              {partnerTypes.map((type) => (
-                <div
-                  key={type.label}
-                  style={{
-                    background: "var(--fb-off-white)",
-                    border: "1px solid var(--fb-border)",
-                    borderRadius: 12,
-                    padding: "18px 20px",
-                    fontWeight: 600,
-                    fontSize: 14,
-                    color: "var(--fb-navy)",
-                  }}
-                >
-                  {type.label}
-                </div>
-              ))}
-            </div>
-          </div>
+          <a
+            href="mailto:contact@flagbands.com"
+            style={{
+              display: "inline-block",
+              background: "#FFFFFF",
+              color: "var(--fb-navy)",
+              padding: "18px 40px",
+              borderRadius: 12,
+              textDecoration: "none",
+              fontWeight: 800,
+              fontSize: 15,
+              letterSpacing: "0.03em",
+            }}
+          >
+            Start a Fundraiser
+          </a>
         </div>
       </div>
 
       <style>{`
         @media (max-width: 768px) {
-          .partners-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+          .fundraise-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
         }
       `}</style>
-    </section>
+    </div>
   );
 }
 
-// ─── Section 6: Featured Campaigns ─────────────────────────────────────────
-function CampaignsSection() {
-  const progress = 12; // placeholder %
+// ─── Section 5: Partners / About ──────────────────────────────────────────────
 
+function PartnersSection() {
   return (
-    <section id="fundraising" style={{ background: "var(--fb-off-white)", padding: "96px 0" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
+    <div
+      id="partners"
+      style={{
+        width: "100%",
+        height: "100%",
+        background: "#F8F7F4",
+        display: "flex",
+        alignItems: "center",
+        paddingTop: 64,
+        overflowY: "auto",
+      }}
+    >
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px 80px", width: "100%" }}>
         <div style={{ textAlign: "center", marginBottom: 56 }}>
           <div
             style={{
               display: "inline-block",
-              background: "#FFFFFF",
-              border: "1px solid var(--fb-border)",
+              background: "var(--fb-off-white)",
+              border: "1px solid rgba(0,0,0,0.08)",
               borderRadius: 100,
               padding: "6px 16px",
-              marginBottom: 16,
+              marginBottom: 14,
             }}
           >
             <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", color: "var(--fb-navy)", textTransform: "uppercase" }}>
-              Active Campaigns
+              Partners
             </span>
           </div>
           <h2
@@ -1246,442 +1059,270 @@ function CampaignsSection() {
               fontSize: "clamp(28px, 4vw, 48px)",
               fontWeight: 900,
               color: "var(--fb-navy)",
-              margin: "0 0 16px",
+              margin: "0 0 14px",
               letterSpacing: "-0.02em",
             }}
           >
-            Support a Campaign
+            Built on Community
           </h2>
-          <p style={{ color: "var(--fb-text-secondary)", fontSize: 17, maxWidth: 480, margin: "0 auto", lineHeight: 1.6 }}>
-            Every pre-order supports production and contributes to a community cause.
+          <p style={{ color: "var(--fb-text-secondary)", fontSize: 17, maxWidth: 520, margin: "0 auto", lineHeight: 1.6 }}>
+            Flag Bands partners with cultural organizations, community leaders, and schools to deliver
+            impact alongside every wristband.
           </p>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
-            gap: 28,
-          }}
-        >
-          {/* USA Launch Campaign */}
-          <div
-            style={{
-              background: "#FFFFFF",
-              borderRadius: 20,
-              border: "1px solid var(--fb-border)",
-              overflow: "hidden",
-            }}
-          >
-            {/* Header */}
+        {/* Partner placeholder grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 20, marginBottom: 56 }}>
+          {[1, 2, 3, 4].map((i) => (
             <div
+              key={i}
               style={{
-                background: "var(--fb-navy)",
-                padding: "28px 28px 24px",
-                position: "relative",
-              }}
-            >
-              <div style={{ display: "flex", gap: 4, marginBottom: 16 }}>
-                {["#C8102E", "#FFFFFF", "#002868"].map((c, i) => (
-                  <div key={i} style={{ flex: 1, height: 8, background: c, borderRadius: i === 0 ? "4px 0 0 4px" : i === 2 ? "0 4px 4px 0" : 0 }} />
-                ))}
-              </div>
-              <h3 style={{ color: "#FFFFFF", fontWeight: 800, fontSize: 20, margin: "0 0 6px" }}>
-                USA Flag Band - Launch Campaign
-              </h3>
-              <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, margin: 0 }}>
-                The founding design. Pre-order to launch production.
-              </p>
-              <div
-                style={{
-                  position: "absolute",
-                  top: 24,
-                  right: 24,
-                  background: "var(--fb-red)",
-                  color: "#FFFFFF",
-                  borderRadius: 8,
-                  padding: "4px 10px",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: "0.06em",
-                }}
-              >
-                LIVE
-              </div>
-            </div>
-
-            <div style={{ padding: "24px 28px 28px" }}>
-              {/* Progress */}
-              <div style={{ marginBottom: 20 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: "var(--fb-text-secondary)" }}>
-                    Pre-orders toward launch
-                  </span>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: "var(--fb-navy)" }}>
-                    {progress} / 50 minimum
-                  </span>
-                </div>
-                <div style={{ height: 8, background: "var(--fb-off-white)", borderRadius: 100 }}>
-                  <div
-                    style={{
-                      height: "100%",
-                      width: `${(progress / 50) * 100}%`,
-                      background: "var(--fb-navy)",
-                      borderRadius: 100,
-                      transition: "width 0.4s ease",
-                    }}
-                  />
-                </div>
-                <p style={{ fontSize: 12, color: "var(--fb-text-muted)", marginTop: 8 }}>
-                  {50 - progress} more orders needed before production begins
-                </p>
-              </div>
-
-              {/* Details */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr 1fr",
-                  gap: 16,
-                  marginBottom: 24,
-                  padding: "16px 0",
-                  borderTop: "1px solid var(--fb-border)",
-                  borderBottom: "1px solid var(--fb-border)",
-                }}
-              >
-                {[
-                  { label: "Price", value: "$30" },
-                  { label: "To Community", value: "$5" },
-                  { label: "Ships", value: "Est. Q3 2026" },
-                ].map((d) => (
-                  <div key={d.label} style={{ textAlign: "center" }}>
-                    <div style={{ fontWeight: 800, fontSize: 16, color: "var(--fb-navy)" }}>{d.value}</div>
-                    <div style={{ fontSize: 12, color: "var(--fb-text-muted)", marginTop: 4 }}>{d.label}</div>
-                  </div>
-                ))}
-              </div>
-
-              <a
-                href="#shop-usa"
-                style={{
-                  display: "block",
-                  background: "var(--fb-navy)",
-                  color: "#FFFFFF",
-                  padding: "14px 24px",
-                  borderRadius: 10,
-                  textDecoration: "none",
-                  fontWeight: 800,
-                  fontSize: 15,
-                  textAlign: "center",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                Pre-Order USA Flag Band - $30
-              </a>
-            </div>
-          </div>
-
-          {/* Start your own */}
-          <div
-            style={{
-              background: "var(--fb-navy)",
-              borderRadius: 20,
-              padding: 40,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "flex-start",
-              border: "1px solid rgba(255,255,255,0.08)",
-            }}
-          >
-            <div
-              style={{
-                width: 48,
-                height: 48,
-                background: "rgba(255,255,255,0.1)",
-                borderRadius: 12,
+                background: "#FFFFFF",
+                border: "1px solid var(--fb-border)",
+                borderRadius: 14,
+                height: 100,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                marginBottom: 24,
               }}
             >
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M11 3v16M3 11h16" stroke="#FFF" strokeWidth="2.5" strokeLinecap="round" />
-              </svg>
+              <span style={{ color: "var(--fb-text-muted)", fontSize: 13, fontWeight: 600, letterSpacing: "0.05em" }}>
+                PARTNER {i}
+              </span>
             </div>
-            <h3 style={{ color: "#FFFFFF", fontWeight: 800, fontSize: 22, margin: "0 0 12px", letterSpacing: "-0.01em" }}>
-              Start Your Own Campaign
-            </h3>
-            <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 15, lineHeight: 1.6, margin: "0 0 32px" }}>
-              Any eligible organization can launch a Flag Bands fundraising campaign.
-              Your flag. Your community. Your cause.
-            </p>
-            <a
-              href="#start-fundraiser"
-              style={{
-                background: "#FFFFFF",
-                color: "var(--fb-navy)",
-                padding: "14px 28px",
-                borderRadius: 10,
-                textDecoration: "none",
-                fontWeight: 800,
-                fontSize: 14,
-                letterSpacing: "0.03em",
-              }}
-            >
-              Apply to Fundraise
-            </a>
-          </div>
+          ))}
         </div>
-      </div>
-    </section>
-  );
-}
 
-// ─── Section 7: Start a Fundraiser CTA ─────────────────────────────────────
-function FundraiserCTASection() {
-  return (
-    <section id="start-fundraiser" style={{ background: "var(--fb-navy)", padding: "96px 0" }}>
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
+        {/* Footer */}
         <div
           style={{
-            display: "inline-flex",
+            borderTop: "1px solid var(--fb-border)",
+            paddingTop: 40,
+            display: "flex",
             alignItems: "center",
-            gap: 8,
-            background: "rgba(255,255,255,0.1)",
-            border: "1px solid rgba(255,255,255,0.15)",
-            borderRadius: 100,
-            padding: "6px 14px",
-            marginBottom: 28,
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: 24,
           }}
         >
-          <span style={{ fontSize: 13, color: "rgba(255,255,255,0.8)", fontWeight: 500, letterSpacing: "0.05em" }}>
-            FOR ORGANIZATIONS
-          </span>
-        </div>
-
-        <h2
-          style={{
-            fontSize: "clamp(32px, 5vw, 60px)",
-            fontWeight: 900,
-            color: "#FFFFFF",
-            margin: "0 0 24px",
-            letterSpacing: "-0.02em",
-            lineHeight: 1.1,
-          }}
-        >
-          Your Organization.
-          <br />
-          <span style={{ color: "rgba(255,255,255,0.5)" }}>Our Platform.</span>
-          <br />
-          Community Funded.
-        </h2>
-
-        <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 18, lineHeight: 1.7, marginBottom: 48, maxWidth: 600, margin: "0 auto 48px" }}>
-          Launch a custom Flag Bands fundraising campaign for your nonprofit, school,
-          cultural organization, or community group. Zero risk. $5 per band back to you.
-        </p>
-
-        {/* Application teaser */}
-        <div
-          style={{
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.12)",
-            borderRadius: 20,
-            padding: "40px 48px",
-            marginBottom: 40,
-            textAlign: "left",
-          }}
-        >
-          <h3 style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 16, margin: "0 0 24px", letterSpacing: "0.04em", textTransform: "uppercase" }}>
-            To get started, tell us about your organization
-          </h3>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 16,
-              marginBottom: 16,
-            }}
-            className="form-grid"
-          >
-            {["Organization Name", "Organization Type", "Your Name", "Email Address"].map((field) => (
-              <div
-                key={field}
-                style={{
-                  background: "rgba(255,255,255,0.08)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  borderRadius: 10,
-                  padding: "14px 18px",
-                  color: "rgba(255,255,255,0.35)",
-                  fontSize: 14,
-                }}
+          <div>
+            <img src="/logo.svg" alt="Flag Bands" style={{ height: 36, width: "auto" }} />
+            <p style={{ color: "var(--fb-text-muted)", fontSize: 13, marginTop: 8, maxWidth: 320, lineHeight: 1.5 }}>
+              Handcrafted wristbands. Real flags. Real causes.
+            </p>
+          </div>
+          <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+            {["Contact", "Fundraising", "Returns", "FAQ"].map((link) => (
+              <a
+                key={link}
+                href="#"
+                style={{ color: "var(--fb-text-muted)", fontSize: 13, textDecoration: "none", fontWeight: 500 }}
               >
-                {field}
-              </div>
-            ))}
-          </div>
-          <div
-            style={{
-              background: "rgba(255,255,255,0.08)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              borderRadius: 10,
-              padding: "14px 18px",
-              marginBottom: 24,
-              color: "rgba(255,255,255,0.35)",
-              fontSize: 14,
-            }}
-          >
-            Which flag would you like to represent your campaign?
-          </div>
-          <button
-            style={{
-              background: "#FFFFFF",
-              color: "var(--fb-navy)",
-              padding: "16px 36px",
-              borderRadius: 10,
-              border: "none",
-              fontWeight: 800,
-              fontSize: 15,
-              cursor: "pointer",
-              fontFamily: "inherit",
-              letterSpacing: "0.02em",
-              width: "100%",
-            }}
-          >
-            Submit Application
-          </button>
-          <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, marginTop: 12, textAlign: "center" }}>
-            Applications reviewed within 48 hours. No commitment required.
-          </p>
-        </div>
-
-        <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14 }}>
-          Questions?{" "}
-          <a href="mailto:hello@flagbands.com" style={{ color: "rgba(255,255,255,0.8)", fontWeight: 600 }}>
-            hello@flagbands.com
-          </a>
-        </p>
-      </div>
-
-      <style>{`
-        @media (max-width: 640px) {
-          .form-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
-    </section>
-  );
-}
-
-// ─── Footer ────────────────────────────────────────────────────────────────
-function Footer() {
-  return (
-    <footer
-      style={{
-        background: "#0A1628",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-        padding: "48px 0 32px",
-      }}
-    >
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            gap: 40,
-            marginBottom: 40,
-            flexWrap: "wrap",
-          }}
-        >
-          {/* Brand */}
-          <div style={{ maxWidth: 280 }}>
-            <div style={{ marginBottom: 12 }}>
-              <img src="/logo.svg" alt="Flag Bands" style={{ height: 36, width: "auto", filter: "brightness(0) invert(1)" }} />
-            </div>
-            <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 13, lineHeight: 1.6, margin: 0 }}>
-              Wearable identity and community fundraising. Wear Your Flag. Find Your People.
-            </p>
-          </div>
-
-          {/* Links */}
-          <div style={{ display: "flex", gap: 48, flexWrap: "wrap" }}>
-            <div>
-              <div style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>
-                Shop
-              </div>
-              {["USA Flag Band", "Coming Soon", "Gift Ideas"].map((l) => (
-                <a key={l} href="#" style={{ display: "block", color: "rgba(255,255,255,0.45)", fontSize: 14, textDecoration: "none", marginBottom: 10 }}>
-                  {l}
-                </a>
-              ))}
-            </div>
-            <div>
-              <div style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>
-                Organization
-              </div>
-              {["Start a Fundraiser", "Partner Program", "Apply"].map((l) => (
-                <a key={l} href="#" style={{ display: "block", color: "rgba(255,255,255,0.45)", fontSize: 14, textDecoration: "none", marginBottom: 10 }}>
-                  {l}
-                </a>
-              ))}
-            </div>
-            <div>
-              <div style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 16 }}>
-                Contact
-              </div>
-              {["hello@flagbands.com"].map((l) => (
-                <a key={l} href={`mailto:${l}`} style={{ display: "block", color: "rgba(255,255,255,0.45)", fontSize: 14, textDecoration: "none", marginBottom: 10 }}>
-                  {l}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div
-          style={{
-            borderTop: "1px solid rgba(255,255,255,0.06)",
-            paddingTop: 24,
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: 12,
-          }}
-        >
-          <p style={{ color: "rgba(255,255,255,0.25)", fontSize: 13, margin: 0 }}>
-            &copy; {new Date().getFullYear()} Flag Bands. A LESARUSS brand.
-          </p>
-          <div style={{ display: "flex", gap: 20 }}>
-            {["Privacy", "Terms"].map((l) => (
-              <a key={l} href="#" style={{ color: "rgba(255,255,255,0.25)", fontSize: 13, textDecoration: "none" }}>
-                {l}
+                {link}
               </a>
             ))}
           </div>
+          <div style={{ color: "var(--fb-text-muted)", fontSize: 12 }}>
+            2026 Flag Bands. All rights reserved.
+          </div>
         </div>
       </div>
-    </footer>
+    </div>
   );
 }
 
-// ─── Main Export ────────────────────────────────────────────────────────────
+// ─── Main Page ────────────────────────────────────────────────────────────────
+
+const SECTION_COUNT = 5;
+
 export default function Home() {
+  const [current, setCurrent] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const [direction, setDirection] = useState<"forward" | "backward">("forward");
+
+  const goTo = useCallback(
+    (index: number) => {
+      if (animating || index === current) return;
+      setDirection(index > current ? "forward" : "backward");
+      setAnimating(true);
+      setTimeout(() => {
+        setCurrent(index);
+        setAnimating(false);
+      }, 40);
+    },
+    [animating, current]
+  );
+
+  const goNext = useCallback(() => goTo(Math.min(current + 1, SECTION_COUNT - 1)), [goTo, current]);
+  const goPrev = useCallback(() => goTo(Math.max(current - 1, 0)), [goTo, current]);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") goNext();
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") goPrev();
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [goNext, goPrev]);
+
+  const sections = [
+    <HeroSection key="hero" onShop={() => goTo(1)} />,
+    <CollectionSection key="browse" />,
+    <HowItWorksSection key="how" />,
+    <FundraisingSection key="fundraise" />,
+    <PartnersSection key="partners" />,
+  ];
+
   return (
     <>
-      <Nav />
-      <main>
-        <HeroSection />
-        <BrowseSection />
-        <HowItWorksSection />
-        <ImpactSection />
-        <PartnersSection />
-        <CampaignsSection />
-        <FundraiserCTASection />
+      <Nav current={current} onNav={goTo} />
+
+      <main
+        style={{
+          position: "fixed",
+          inset: 0,
+          overflow: "hidden",
+        }}
+      >
+        {sections.map((section, i) => {
+          const offset = i - current;
+          return (
+            <div
+              key={i}
+              style={{
+                position: "absolute",
+                inset: 0,
+                transition: animating ? "none" : "transform 0.55s cubic-bezier(0.77,0,0.18,1), opacity 0.55s ease",
+                transform: `translateX(${offset * 100}%)`,
+                opacity: Math.abs(offset) > 1 ? 0 : 1,
+                willChange: "transform",
+              }}
+            >
+              {section}
+            </div>
+          );
+        })}
+
+        {/* Navigation Controls */}
+        <div
+          style={{
+            position: "fixed",
+            bottom: 32,
+            left: "50%",
+            transform: "translateX(-50%)",
+            display: "flex",
+            alignItems: "center",
+            gap: 20,
+            zIndex: 300,
+          }}
+        >
+          {/* Prev */}
+          <button
+            onClick={goPrev}
+            disabled={current === 0}
+            aria-label="Previous section"
+            style={{
+              width: 44,
+              height: 44,
+              borderRadius: "50%",
+              border: "none",
+              background: current === 0
+                ? "rgba(255,255,255,0.15)"
+                : current === 0 || current === 2
+                  ? "rgba(255,255,255,0.85)"
+                  : "rgba(255,255,255,0.85)",
+              cursor: current === 0 ? "default" : "pointer",
+              opacity: current === 0 ? 0.3 : 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backdropFilter: "blur(8px)",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+              transition: "opacity 0.2s ease",
+            }}
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M10 12L6 8L10 4" stroke="var(--fb-navy)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
+          {/* Dots */}
+          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+            {Array.from({ length: SECTION_COUNT }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                aria-label={`Go to section ${i + 1}`}
+                style={{
+                  width: i === current ? 24 : 8,
+                  height: 8,
+                  borderRadius: 4,
+                  border: "none",
+                  background:
+                    current === 0 || current === 3
+                      ? i === current
+                        ? "rgba(255,255,255,0.95)"
+                        : "rgba(255,255,255,0.35)"
+                      : i === current
+                        ? "var(--fb-navy)"
+                        : "rgba(13,31,60,0.25)",
+                  cursor: "pointer",
+                  padding: 0,
+                  transition: "width 0.25s ease, background 0.25s ease",
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Next */}
+          <button
+            onClick={goNext}
+            disabled={current === SECTION_COUNT - 1}
+            aria-label="Next section"
+            style={{
+              width: 44,
+              height: 44,
+              borderRadius: "50%",
+              border: "none",
+              background: "rgba(255,255,255,0.85)",
+              cursor: current === SECTION_COUNT - 1 ? "default" : "pointer",
+              opacity: current === SECTION_COUNT - 1 ? 0.3 : 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backdropFilter: "blur(8px)",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+              transition: "opacity 0.2s ease",
+            }}
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 4L10 8L6 12" stroke="var(--fb-navy)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Section label */}
+        <div
+          style={{
+            position: "fixed",
+            bottom: 44,
+            right: 32,
+            zIndex: 300,
+          }}
+        >
+          <span
+            style={{
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: current === 0 || current === 3 ? "rgba(255,255,255,0.4)" : "rgba(13,31,60,0.25)",
+            }}
+          >
+            {current + 1} / {SECTION_COUNT}
+          </span>
+        </div>
       </main>
-      <Footer />
     </>
   );
 }
