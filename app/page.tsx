@@ -31,22 +31,17 @@ function FlagUSA() {
 function FlagJamaica() {
   return (
     <svg viewBox="0 0 190 100" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%", display: "block" }}>
-      {/* Black triangles left/right */}
-      <polygon points="0,0 95,50 0,100" fill="#000000" />
-      <polygon points="190,0 95,50 190,100" fill="#000000" />
-      {/* Gold triangles top/bottom */}
-      <polygon points="0,0 190,0 95,50" fill="#FED100" />
-      <polygon points="0,100 190,100 95,50" fill="#FED100" />
-      {/* Green — actually Jamaica: black=hardships, gold=sun, green=land */}
-      {/* Saltire in gold, triangles: top & bottom green, left & right black */}
-      {/* Redraw: top/bottom = green, left/right = black */}
+      {/* Top green triangle */}
       <polygon points="0,0 190,0 95,50" fill="#009B3A" />
+      {/* Bottom green triangle */}
       <polygon points="0,100 190,100 95,50" fill="#009B3A" />
-      {/* Gold saltire cross stripes */}
-      <polygon points="0,0 20,0 95,50 20,100 0,100" fill="#FED100" />
-      <polygon points="190,0 170,0 95,50 170,100 190,100" fill="#FED100" />
-      <polygon points="0,0 190,0 190,20 95,50 0,20" fill="#FED100" />
-      <polygon points="0,100 190,100 190,80 95,50 0,80" fill="#FED100" />
+      {/* Left black triangle */}
+      <polygon points="0,0 95,50 0,100" fill="#000000" />
+      {/* Right black triangle */}
+      <polygon points="190,0 95,50 190,100" fill="#000000" />
+      {/* Gold saltire X cross */}
+      <line x1="0" y1="0" x2="190" y2="100" stroke="#FED100" strokeWidth="16" />
+      <line x1="190" y1="0" x2="0" y2="100" stroke="#FED100" strokeWidth="16" />
     </svg>
   );
 }
