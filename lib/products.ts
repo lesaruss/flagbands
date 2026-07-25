@@ -57,7 +57,7 @@ export const PRODUCTS: ProductContent[] = [
     studioPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233430_43c6a8d2-6d05-4934-802c-9abfffa6d352.png",
     wristPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233432_c1cfcfd7-081f-4669-b8dd-76ad031c5e00.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_234305_4d0872c8-268f-470a-9604-22a20b7aa97f.png",
     cause: {
       org: null,
       body:
@@ -76,7 +76,7 @@ export const PRODUCTS: ProductContent[] = [
     studioPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233435_0a8b464e-60da-40ac-92c7-d4d849de8a7a.png",
     wristPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233437_f5506a4d-a0c6-4307-883e-838b6f13da33.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_234304_756c417e-918d-4fd6-bf97-d064cfdebf86.png",
     cause: {
       org: null,
       body:
