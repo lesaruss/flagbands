@@ -1005,8 +1005,9 @@ function FundraisingSection() {
           </h2>
 
           <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 18, maxWidth: 600, margin: "0 auto 48px", lineHeight: 1.6 }}>
-            Schools, nonprofits, cultural organizations, and teams. We handle fulfillment.
-            You keep a portion of every sale and build community at the same time.
+            Schools, nonprofits, cultural organizations, and teams. We build your branded pre-order
+            landing page and you keep $5 for every wristband sold through it. Your organization
+            fulfills and ships the orders, due within 30 days of your pre-order window closing.
           </p>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24, marginBottom: 48 }} className="fundraise-grid">
@@ -1032,8 +1033,8 @@ function FundraisingSection() {
             ))}
           </div>
 
-          <a
-            href="mailto:contact@flagbands.com"
+          <Link
+            href="/fundraiser"
             style={{
               display: "inline-block",
               background: "#FFFFFF",
@@ -1047,7 +1048,7 @@ function FundraisingSection() {
             }}
           >
             Start a Fundraiser
-          </a>
+          </Link>
         </div>
       </div>
 
