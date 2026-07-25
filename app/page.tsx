@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
 
 // ─── Flag SVGs ────────────────────────────────────────────────────────────────
 
@@ -772,6 +773,20 @@ function CollectionSection() {
                       {isSelected ? "Selected" : "Add to Cart"}
                     </button>
                   </div>
+                  <Link
+                    href={`/products/${product.id}`}
+                    onClick={(e) => e.stopPropagation()}
+                    style={{
+                      display: "block",
+                      marginTop: 10,
+                      fontSize: 12,
+                      fontWeight: 700,
+                      color: "var(--fb-navy)",
+                      textDecoration: "none",
+                    }}
+                  >
+                    View details →
+                  </Link>
                 </div>
               </div>
             );
