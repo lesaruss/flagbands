@@ -141,6 +141,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </p>
           </div>
           <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+            <Link
+              href="/stones"
+              style={{ color: "var(--fb-text-muted)", fontSize: 13, textDecoration: "none", fontWeight: 500 }}
+            >
+              Stone Meanings
+            </Link>
             {["Contact", "Fundraising", "Returns", "FAQ"].map((link) => (
               <a
                 key={link}
