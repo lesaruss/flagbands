@@ -168,7 +168,7 @@ function FlagPeru() {
 const PRODUCTS = [
   {
     id: "usa",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091917_9abbb205-4a74-4075-93f0-f2b37245a0f4.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102826_60facf1c-9ad4-4159-932b-f5ed6ef473fa.png",
     name: "United States",
     label: "USA",
     price: "$30",
@@ -178,7 +178,7 @@ const PRODUCTS = [
   },
   {
     id: "jamaica",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091920_4387ec6d-debd-412f-99fd-c188910d57a4.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102831_c92f9e38-8c66-47d9-9e26-ca7e2021001b.png",
     name: "Jamaica",
     label: "JAM",
     price: "$30",
@@ -188,7 +188,7 @@ const PRODUCTS = [
   },
   {
     id: "haiti",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091923_ce296847-efb5-4baf-a4b9-d1e1ace34b9f.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102832_b6fde7c3-f1b8-432c-934f-92ed976141fb.png",
     name: "Haiti",
     label: "HTI",
     price: "$30",
@@ -198,7 +198,7 @@ const PRODUCTS = [
   },
   {
     id: "venezuela",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091925_5423ff97-f534-4ed7-9724-e46c178cb85e.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102834_4714d313-f745-461e-bd00-a0eab0e4a3a4.png",
     name: "Venezuela",
     label: "VEN",
     price: "$30",
@@ -208,7 +208,7 @@ const PRODUCTS = [
   },
   {
     id: "puerto-rico",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091928_6ca886ef-29cf-464c-aa3c-46e753b61388.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102835_3aee44f6-62ef-4918-b4dd-97f070440cb0.png",
     name: "Puerto Rico",
     label: "PRI",
     price: "$30",
@@ -218,7 +218,7 @@ const PRODUCTS = [
   },
   {
     id: "cuba",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091931_ce431d3d-3b13-4e36-b8da-b3bd31e9fd00.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102837_8e3cd80a-40df-425b-a709-328bed00754e.png",
     name: "Cuba",
     label: "CUB",
     price: "$30",
@@ -228,7 +228,7 @@ const PRODUCTS = [
   },
   {
     id: "lgbtq",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091933_3bb901fb-1f0d-4d13-bae7-fa1152bd0f01.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102839_5f5b8c1d-480d-41d2-9055-84217059767e.png",
     name: "Pride",
     label: "PRIDE",
     price: "$30",
@@ -238,7 +238,7 @@ const PRODUCTS = [
   },
   {
     id: "vegan",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091936_39034643-0737-4edb-842c-565c902a079f.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102840_4247059d-7e28-4dd1-a886-555c48c9b25c.png",
     name: "Vegan",
     label: "VGN",
     price: "$30",
@@ -248,7 +248,7 @@ const PRODUCTS = [
   },
   {
     id: "peru",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091939_5292e9f4-7f91-47b4-814f-e3af296d3637.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102841_1591e3be-084c-4312-b349-f05c197df2cc.png",
     name: "Peru",
     label: "PER",
     price: "$30",
