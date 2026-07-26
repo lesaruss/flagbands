@@ -45,12 +45,14 @@ export async function POST(req: NextRequest) {
           sessionAny.customer_details?.address ??
           null;
 
+        const customerEmail = session.customer_details?.email ?? null;
+
         await supabase
           .from("flagbands_orders")
           .update({
             status: "paid",
             paid_at: new Date().toISOString(),
-            customer_email: session.customer_details?.email ?? null,
+            customer_email: customerEmail,
             customer_name: session.customer_details?.name ?? null,
             shipping_address: shippingAddress,
           })
@@ -87,10 +89,27 @@ export async function POST(req: NextRequest) {
           task_id: `order-${orderId}`,
           summary: `Flag Bands order paid: ${lineItems.length} line item(s), $${(
             (order.subtotal_cents ?? 0) / 100
-          ).toFixed(2)} subtotal. ${session.customer_details?.email ?? "no email captured"}.`,
+          ).toFixed(2)} subtotal. ${customerEmail ?? "no email captured"}.`,
           status: "completed",
           context_link: `https://dashboard.stripe.com/${event.livemode ? "" : "test/"}payments`,
         });
+
+        // Provision (or find) the buyer's Flag Bands account and email them a
+        // sign-in link to their new order dashboard. This is what turns a
+        // one-time purchase into "you now have a Flag Bands account" -
+        // best-effort: a failure here should never fail the webhook, since
+        // the order itself is already correctly recorded as paid above.
+        if (customerEmail && process.env.SUPABASE_URL) {
+          try {
+            await fetch(`${process.env.SUPABASE_URL}/functions/v1/brand-auth-email`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ brand: "flagbands", mode: "login", email: customerEmail }),
+            });
+          } catch (e) {
+            console.error("Failed to send Flag Bands account email", e);
+          }
+        }
       }
     }
   }
