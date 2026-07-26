@@ -111,7 +111,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   <img
                     src={p.heroPhoto}
                     alt={`${p.name} flag band`}
-                    style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                    style={{ width: "100%", height: "100%", objectFit: "contain", transform: p.slug === "jamaica" ? "rotate(180deg)" : p.slug === "peru" ? "scale(1.22)" : "none" }}
                   />
                 </div>
                 <div style={{ fontSize: 13, fontWeight: 700, color: "var(--fb-navy)" }}>{p.name}</div>
