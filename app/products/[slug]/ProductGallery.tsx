@@ -11,6 +11,13 @@ import { useCart } from "../../../lib/cart-context";
 // here; once approved, replace this with every slug to apply it broadly.
 const NEW_LAYOUT_SLUGS = ["jamaica"];
 
+// Short (~150 char) teaser shown under the title in the new layout, in place
+// of price/shipping up top. Add an entry here when a flag joins NEW_LAYOUT_SLUGS.
+const SHORT_DESCRIPTIONS: Record<string, string> = {
+  jamaica:
+    "A handcrafted wristband featuring Jamaica's black, gold, and green flag, strung with genuine stone beads. Every purchase supports a real cause.",
+};
+
 export default function ProductGallery({
   product,
   materialsDescription,
@@ -138,6 +145,12 @@ export default function ProductGallery({
       )}
     </div>
   );
+
+  const descriptionBlock = SHORT_DESCRIPTIONS[product.slug] ? (
+    <p style={{ fontSize: 16, lineHeight: 1.6, color: "var(--fb-text-secondary)", margin: 0 }}>
+      {SHORT_DESCRIPTIONS[product.slug]}
+    </p>
+  ) : null;
 
   const imageBlock = (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -319,7 +332,7 @@ export default function ProductGallery({
     return (
       <div style={{ maxWidth: 560, margin: "0 auto", display: "flex", flexDirection: "column", gap: 28 }}>
         {titleBlock}
-        {priceBlock(true)}
+        {descriptionBlock}
         {imageBlock}
         {chooseStoneBlock}
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
