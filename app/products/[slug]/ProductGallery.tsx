@@ -4,6 +4,13 @@ import { useEffect, useState } from "react";
 import type { ProductContent } from "../../../lib/products";
 import { useCart } from "../../../lib/cart-context";
 
+// Layout test: Sean wants to try a new stacked product-page order on Jamaica
+// only before deciding whether to roll it out everywhere. New order is
+// Title -> Price -> Image -> Choose Your Stone -> Price -> Add to Cart ->
+// What It's Made Of -> everything else. Toggle by adding/removing a slug
+// here; once approved, replace this with every slug to apply it broadly.
+const NEW_LAYOUT_SLUGS = ["jamaica"];
+
 export default function ProductGallery({
   product,
   materialsDescription,
@@ -14,6 +21,8 @@ export default function ProductGallery({
   /** quantity in stock per material id, e.g. { "tigers-eye": 2, "hematite": 0 } */
   inventory: Record<string, number>;
 }) {
+  const useNewLayout = NEW_LAYOUT_SLUGS.includes(product.slug);
+
   const variants = product.variants;
   const [selectedId, setSelectedId] = useState<string | undefined>(variants?.[0]?.id);
   const selected = variants?.find((v) => v.id === selectedId) ?? variants?.[0];
@@ -77,6 +86,253 @@ export default function ProductGallery({
     window.setTimeout(() => setAdded(false), 1800);
   };
 
+  const sectionLabelStyle = {
+    fontSize: 12,
+    fontWeight: 800,
+    textTransform: "uppercase" as const,
+    letterSpacing: "0.12em",
+    color: "var(--fb-text-muted)",
+    marginBottom: 10,
+  };
+
+  // --- Shared building blocks (identical markup/behavior in either layout) ---
+
+  const titleBlock = (
+    <div>
+      <span
+        style={{
+          display: "inline-block",
+          background: product.accentColor,
+          color: "#FFFFFF",
+          fontSize: 11,
+          fontWeight: 700,
+          padding: "4px 10px",
+          borderRadius: 4,
+          letterSpacing: "0.05em",
+          marginBottom: 12,
+        }}
+      >
+        {product.label}
+      </span>
+      <h1
+        style={{
+          fontSize: 36,
+          fontWeight: 800,
+          color: "var(--fb-navy)",
+          margin: "0 0 8px",
+          letterSpacing: "-0.01em",
+        }}
+      >
+        {product.name} Flag Band
+      </h1>
+    </div>
+  );
+
+  const priceBlock = (showShipping: boolean) => (
+    <div>
+      <div style={{ fontSize: 28, fontWeight: 900, color: "var(--fb-text)", marginBottom: 4 }}>
+        {product.price}
+      </div>
+      {showShipping && (
+        <div style={{ fontSize: 13, color: "var(--fb-text-muted)" }}>Free shipping included.</div>
+      )}
+    </div>
+  );
+
+  const imageBlock = (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      <div
+        style={{
+          aspectRatio: "1/1",
+          borderRadius: 16,
+          overflow: "hidden",
+          border: "1px solid var(--fb-border)",
+          background: "#FFFFFF",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: main.fit === "contain" ? "10%" : 0,
+          boxSizing: "border-box",
+        }}
+      >
+        <img
+          key={main.src}
+          src={main.src}
+          alt={main.alt}
+          style={{ width: "100%", height: "100%", objectFit: main.fit, transform: main.transform }}
+        />
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+        {[thumb1, thumb2].map((img, i) => {
+          const position = i + 1; // thumb1 is order[1], thumb2 is order[2]
+          return (
+            <button
+              key={img.key}
+              type="button"
+              onClick={() => promote(position)}
+              aria-label={`Show ${img.alt} as the main image`}
+              style={{
+                aspectRatio: "1/1",
+                borderRadius: 16,
+                overflow: "hidden",
+                border: "1px solid var(--fb-border)",
+                background: "#FFFFFF",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: img.fit === "contain" ? "10%" : 0,
+                boxSizing: "border-box",
+                cursor: "pointer",
+                transition: "border-color 0.15s ease, transform 0.15s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "var(--fb-navy)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "var(--fb-border)";
+              }}
+            >
+              <img
+                key={img.src}
+                src={img.src}
+                alt={img.alt}
+                style={{ width: "100%", height: "100%", objectFit: img.fit, transform: img.transform }}
+              />
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+
+  const chooseStoneBlock =
+    variants && variants.length > 1 ? (
+      <section>
+        <h2 style={sectionLabelStyle}>Choose Your Stone</h2>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+          {variants.map((v) => {
+            const isSelected = v.id === selected?.id;
+            const outOfStock = (inventory[v.id] ?? 0) <= 0;
+            return (
+              <button
+                key={v.id}
+                onClick={() => setSelectedId(v.id)}
+                style={{
+                  padding: "10px 16px",
+                  borderRadius: 999,
+                  fontSize: 13,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  border: isSelected ? `2px solid ${product.accentColor}` : "2px solid var(--fb-border)",
+                  background: isSelected ? product.accentColor : "#FFFFFF",
+                  color: isSelected ? "#FFFFFF" : "var(--fb-navy)",
+                  transition: "border-color 0.15s ease, background 0.15s ease, color 0.15s ease",
+                  position: "relative",
+                }}
+              >
+                {v.name}
+                {outOfStock ? (
+                  <span style={{ marginLeft: 6, fontSize: 10, opacity: 0.75, fontWeight: 600 }}>(Pre-Order)</span>
+                ) : null}
+              </button>
+            );
+          })}
+        </div>
+      </section>
+    ) : null;
+
+  const stockNote = (
+    <div
+      style={{
+        fontSize: 13,
+        color: isPreorder ? "#8A6D00" : "var(--fb-text-muted)",
+      }}
+    >
+      {isPreorder
+        ? "Currently a pre-order for this stone — ships in 2-4 weeks."
+        : stockQty <= 2
+        ? `Only ${stockQty} left in stock.`
+        : "In stock, ships within a few days."}
+    </div>
+  );
+
+  const addToCartBlock = (
+    <div>
+      <button
+        onClick={handleAddToCart}
+        style={{
+          background: isPreorder ? "var(--fb-text)" : "var(--fb-navy)",
+          color: "#FFFFFF",
+          border: "none",
+          borderRadius: 10,
+          padding: "14px 28px",
+          fontSize: 15,
+          fontWeight: 700,
+          cursor: "pointer",
+          marginBottom: 8,
+        }}
+      >
+        {added ? "Added ✓" : isPreorder ? "Pre-Order Now" : "Add to Cart"}
+      </button>
+      {stockNote}
+    </div>
+  );
+
+  const materialsBlock = (
+    <section>
+      <h2 style={sectionLabelStyle}>What It&apos;s Made Of</h2>
+      <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--fb-text-secondary)", margin: 0 }}>
+        {materialsDescription} The flag plate on this band is printed with {product.flagDescription}.
+        {selected ? (
+          <>
+            {" "}
+            This one is strung with genuine <strong>{selected.name}</strong> beads.
+          </>
+        ) : null}
+      </p>
+    </section>
+  );
+
+  const causeBlock = (
+    <section
+      style={{
+        background: "var(--fb-off-white)",
+        borderRadius: 14,
+        padding: 24,
+      }}
+    >
+      <h2 style={sectionLabelStyle}>What Your Purchase Supports</h2>
+      <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--fb-text-secondary)", margin: 0 }}>
+        {product.cause.org ? (
+          <>
+            <strong style={{ color: "var(--fb-text)" }}>{product.cause.org}</strong>
+            {" — "}
+          </>
+        ) : null}
+        {product.cause.body}
+      </p>
+    </section>
+  );
+
+  // --- New stacked layout (test), currently limited to NEW_LAYOUT_SLUGS ---
+  if (useNewLayout) {
+    return (
+      <div style={{ maxWidth: 560, margin: "0 auto", display: "flex", flexDirection: "column", gap: 28 }}>
+        {titleBlock}
+        {priceBlock(true)}
+        {imageBlock}
+        {chooseStoneBlock}
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          {priceBlock(false)}
+          {addToCartBlock}
+        </div>
+        {materialsBlock}
+        {causeBlock}
+      </div>
+    );
+  }
+
+  // --- Original two-column layout, unchanged for every other flag ---
   return (
     <div
       style={{
@@ -86,237 +342,17 @@ export default function ProductGallery({
       }}
       className="fb-product-grid"
     >
-      {/* Image stack */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-        <div
-          style={{
-            aspectRatio: "1/1",
-            borderRadius: 16,
-            overflow: "hidden",
-            border: "1px solid var(--fb-border)",
-            background: "#FFFFFF",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: main.fit === "contain" ? "10%" : 0,
-            boxSizing: "border-box",
-          }}
-        >
-          <img
-            key={main.src}
-            src={main.src}
-            alt={main.alt}
-            style={{ width: "100%", height: "100%", objectFit: main.fit, transform: main.transform }}
-          />
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-          {[thumb1, thumb2].map((img, i) => {
-            const position = i + 1; // thumb1 is order[1], thumb2 is order[2]
-            return (
-              <button
-                key={img.key}
-                type="button"
-                onClick={() => promote(position)}
-                aria-label={`Show ${img.alt} as the main image`}
-                style={{
-                  aspectRatio: "1/1",
-                  borderRadius: 16,
-                  overflow: "hidden",
-                  border: "1px solid var(--fb-border)",
-                  background: "#FFFFFF",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: img.fit === "contain" ? "10%" : 0,
-                  boxSizing: "border-box",
-                  cursor: "pointer",
-                  transition: "border-color 0.15s ease, transform 0.15s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "var(--fb-navy)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "var(--fb-border)";
-                }}
-              >
-                <img
-                  key={img.src}
-                  src={img.src}
-                  alt={img.alt}
-                  style={{ width: "100%", height: "100%", objectFit: img.fit, transform: img.transform }}
-                />
-              </button>
-            );
-          })}
-        </div>
-      </div>
+      {imageBlock}
 
-      {/* Details */}
       <div>
-        <span
-          style={{
-            display: "inline-block",
-            background: product.accentColor,
-            color: "#FFFFFF",
-            fontSize: 11,
-            fontWeight: 700,
-            padding: "4px 10px",
-            borderRadius: 4,
-            letterSpacing: "0.05em",
-            marginBottom: 12,
-          }}
-        >
-          {product.label}
-        </span>
-        <h1
-          style={{
-            fontSize: 36,
-            fontWeight: 800,
-            color: "var(--fb-navy)",
-            margin: "0 0 8px",
-            letterSpacing: "-0.01em",
-          }}
-        >
-          {product.name} Flag Band
-        </h1>
-        <div style={{ fontSize: 28, fontWeight: 900, color: "var(--fb-text)", marginBottom: 4 }}>
-          {product.price}
+        {titleBlock}
+        {priceBlock(true)}
+        <div style={{ marginTop: 20, marginBottom: variants && variants.length > 1 ? 24 : 32 }}>
+          {addToCartBlock}
         </div>
-        <div style={{ fontSize: 13, color: "var(--fb-text-muted)", marginBottom: 20 }}>
-          Free shipping included.
-        </div>
-
-        <button
-          onClick={handleAddToCart}
-          style={{
-            background: isPreorder ? "var(--fb-text)" : "var(--fb-navy)",
-            color: "#FFFFFF",
-            border: "none",
-            borderRadius: 10,
-            padding: "14px 28px",
-            fontSize: 15,
-            fontWeight: 700,
-            cursor: "pointer",
-            marginBottom: 8,
-          }}
-        >
-          {added ? "Added ✓" : isPreorder ? "Pre-Order Now" : "Add to Cart"}
-        </button>
-        <div
-          style={{
-            fontSize: 13,
-            color: isPreorder ? "#8A6D00" : "var(--fb-text-muted)",
-            marginBottom: variants && variants.length > 1 ? 24 : 32,
-          }}
-        >
-          {isPreorder
-            ? "Currently a pre-order for this stone — ships in 2-4 weeks."
-            : stockQty <= 2
-            ? `Only ${stockQty} left in stock.`
-            : "In stock, ships within a few days."}
-        </div>
-
-        {variants && variants.length > 1 ? (
-          <section style={{ marginBottom: 32 }}>
-            <h2
-              style={{
-                fontSize: 12,
-                fontWeight: 800,
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                color: "var(--fb-text-muted)",
-                marginBottom: 10,
-              }}
-            >
-              Choose Your Stone
-            </h2>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-              {variants.map((v) => {
-                const isSelected = v.id === selected?.id;
-                const outOfStock = (inventory[v.id] ?? 0) <= 0;
-                return (
-                  <button
-                    key={v.id}
-                    onClick={() => setSelectedId(v.id)}
-                    style={{
-                      padding: "10px 16px",
-                      borderRadius: 999,
-                      fontSize: 13,
-                      fontWeight: 700,
-                      cursor: "pointer",
-                      border: isSelected ? `2px solid ${product.accentColor}` : "2px solid var(--fb-border)",
-                      background: isSelected ? product.accentColor : "#FFFFFF",
-                      color: isSelected ? "#FFFFFF" : "var(--fb-navy)",
-                      transition: "border-color 0.15s ease, background 0.15s ease, color 0.15s ease",
-                      position: "relative",
-                    }}
-                  >
-                    {v.name}
-                    {outOfStock ? (
-                      <span style={{ marginLeft: 6, fontSize: 10, opacity: 0.75, fontWeight: 600 }}>
-                        (Pre-Order)
-                      </span>
-                    ) : null}
-                  </button>
-                );
-              })}
-            </div>
-          </section>
-        ) : null}
-
-        <section style={{ marginBottom: 32 }}>
-          <h2
-            style={{
-              fontSize: 12,
-              fontWeight: 800,
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              color: "var(--fb-text-muted)",
-              marginBottom: 10,
-            }}
-          >
-            What It&apos;s Made Of
-          </h2>
-          <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--fb-text-secondary)", margin: 0 }}>
-            {materialsDescription} The flag plate on this band is printed with {product.flagDescription}.
-            {selected ? (
-              <>
-                {" "}
-                This one is strung with genuine <strong>{selected.name}</strong> beads.
-              </>
-            ) : null}
-          </p>
-        </section>
-
-        <section
-          style={{
-            background: "var(--fb-off-white)",
-            borderRadius: 14,
-            padding: 24,
-          }}
-        >
-          <h2
-            style={{
-              fontSize: 12,
-              fontWeight: 800,
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              color: "var(--fb-text-muted)",
-              marginBottom: 10,
-            }}
-          >
-            What Your Purchase Supports
-          </h2>
-          <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--fb-text-secondary)", margin: 0 }}>
-            {product.cause.org ? (
-              <>
-                <strong style={{ color: "var(--fb-text)" }}>{product.cause.org}</strong>
-                {" — "}
-              </>
-            ) : null}
-            {product.cause.body}
-          </p>
-        </section>
+        {chooseStoneBlock && <div style={{ marginBottom: 32 }}>{chooseStoneBlock}</div>}
+        <div style={{ marginBottom: 32 }}>{materialsBlock}</div>
+        {causeBlock}
       </div>
     </div>
   );
