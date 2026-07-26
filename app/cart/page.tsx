@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import NavBar from "../../components/NavBar";
@@ -12,6 +12,14 @@ function money(cents: number) {
 }
 
 export default function CartPage() {
+  return (
+    <Suspense fallback={null}>
+      <CartPageInner />
+    </Suspense>
+  );
+}
+
+function CartPageInner() {
   const { items, updateQty, removeItem, subtotalCents, clear } = useCart();
   const searchParams = useSearchParams();
   const success = searchParams.get("success") === "1";
