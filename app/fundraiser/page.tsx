@@ -352,7 +352,7 @@ function SiteNav() {
         }}
       >
         <Link href="/" style={{ display: "flex", alignItems: "center" }}>
-          <img src="/logo.svg" alt="Flag Bands" style={{ height: 32, width: "auto" }} />
+          <img src="/logo-landscape.png" alt="Flag Bands" style={{ height: 32, width: "auto" }} />
         </Link>
         <Link href="/" style={{ color: "var(--fb-navy)", fontSize: 14, fontWeight: 700, textDecoration: "none" }}>
           ← Back to Flag Bands
