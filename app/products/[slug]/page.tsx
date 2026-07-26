@@ -47,7 +47,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           }}
         >
           <Link href="/" style={{ display: "flex", alignItems: "center" }}>
-            <img src="/logo.svg" alt="Flag Bands" style={{ height: 32, width: "auto" }} />
+            <img src="/logo-landscape.png" alt="Flag Bands" style={{ height: 32, width: "auto" }} />
           </Link>
           <Link
             href="/"
