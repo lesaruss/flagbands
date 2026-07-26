@@ -168,7 +168,7 @@ function FlagPeru() {
 const PRODUCTS = [
   {
     id: "usa",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230733_d3c7c005-d716-450d-9f8d-e2aa87c76193.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091917_9abbb205-4a74-4075-93f0-f2b37245a0f4.png",
     name: "United States",
     label: "USA",
     price: "$30",
@@ -178,7 +178,7 @@ const PRODUCTS = [
   },
   {
     id: "jamaica",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230734_8e22e53e-33b8-4c58-9113-98406189519a.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091920_4387ec6d-debd-412f-99fd-c188910d57a4.png",
     name: "Jamaica",
     label: "JAM",
     price: "$30",
@@ -188,7 +188,7 @@ const PRODUCTS = [
   },
   {
     id: "haiti",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230735_2663e86b-8a03-4ac7-a661-c0de6cc36859.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091923_ce296847-efb5-4baf-a4b9-d1e1ace34b9f.png",
     name: "Haiti",
     label: "HTI",
     price: "$30",
@@ -198,7 +198,7 @@ const PRODUCTS = [
   },
   {
     id: "venezuela",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230737_6a17d03b-a560-4daa-af16-468d427a8b5d.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091925_5423ff97-f534-4ed7-9724-e46c178cb85e.png",
     name: "Venezuela",
     label: "VEN",
     price: "$30",
@@ -208,7 +208,7 @@ const PRODUCTS = [
   },
   {
     id: "puerto-rico",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230738_7a588193-e49f-4741-a734-3dc3077469e9.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091928_6ca886ef-29cf-464c-aa3c-46e753b61388.png",
     name: "Puerto Rico",
     label: "PRI",
     price: "$30",
@@ -218,7 +218,7 @@ const PRODUCTS = [
   },
   {
     id: "cuba",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230740_9b243608-71f2-4c5d-8ad4-ce76c3139265.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091931_ce431d3d-3b13-4e36-b8da-b3bd31e9fd00.png",
     name: "Cuba",
     label: "CUB",
     price: "$30",
@@ -228,7 +228,7 @@ const PRODUCTS = [
   },
   {
     id: "lgbtq",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230741_5cff3d46-70e3-4bed-b957-a01bcab86687.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091933_3bb901fb-1f0d-4d13-bae7-fa1152bd0f01.png",
     name: "Pride",
     label: "PRIDE",
     price: "$30",
@@ -238,7 +238,7 @@ const PRODUCTS = [
   },
   {
     id: "vegan",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230743_a2f17a74-0395-4d22-93e4-1cc07e20a017.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091936_39034643-0737-4edb-842c-565c902a079f.png",
     name: "Vegan",
     label: "VGN",
     price: "$30",
@@ -248,7 +248,7 @@ const PRODUCTS = [
   },
   {
     id: "peru",
-    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230744_5ebe802c-dae7-456f-ba3d-8b21047875f9.png",
+    photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091939_5292e9f4-7f91-47b4-814f-e3af296d3637.png",
     name: "Peru",
     label: "PER",
     price: "$30",
@@ -598,7 +598,7 @@ function HeroSection({ onShop }: { onShop: () => void }) {
               >
                 {p.photo ? (
                   <div style={{ width: "100%", height: "100%", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <img src={p.photo} alt={`${p.name} flag band`} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
+                    <img src={p.photo} alt={`${p.name} flag band`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
                 ) : (
                   <p.FlagComponent />
