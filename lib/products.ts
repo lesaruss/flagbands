@@ -133,31 +133,31 @@ export const PRODUCTS: ProductContent[] = [
         id: "lava-stone",
         name: "Lava Stone",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112325_42fea8b1-f1b9-4faf-969a-575094c5e32b.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132229_70319ab2-29be-4e76-9644-07ede44c7e51.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112333_4d0ca334-b43a-40fe-aef3-abaab496f66a.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112339_ef35d61c-144f-4ecb-970c-9cf117858dc8.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132231_54abf038-ca6a-4c18-8e4d-1245b72dcad4.png",
       },
       {
         id: "hematite",
         name: "Hematite",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112328_078e7cc5-1d67-4f10-9b93-e1af0c6c8198.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132327_0d77a407-2c98-46ed-87e2-a65bfcdb00bc.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112335_a2fd96bd-20d4-4581-8076-2c3d55fd065b.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112340_18820538-71c6-4d3f-8505-53db0da82f6d.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132329_94e05050-e26f-4348-8c1a-95624a7975ea.png",
       },
       {
         id: "white-agate",
         name: "White Agate",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112518_4cebd021-002e-4de9-839b-1f5304720a6e.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132331_7a09c143-e350-4a2f-9a62-02156132272e.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112337_f8816a2f-b18e-4bf2-a502-ab1f70303878.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112342_ee389fe5-9a09-4cd2-80b2-5887acda8209.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132333_cff8c7f1-27db-49c1-9063-0c84292ac108.png",
       },
     ],
     cause: {
@@ -200,7 +200,7 @@ export const PRODUCTS: ProductContent[] = [
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112614_2712c445-a035-4301-9d35-580a9a5ebcac.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112620_1a9aef88-095d-4672-88e7-31812239ab71.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132541_6816435c-067a-4ae9-bac9-dd0ad5e7ed51.png",
       },
       {
         id: "hematite",
@@ -210,7 +210,7 @@ export const PRODUCTS: ProductContent[] = [
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112616_13268a23-81a2-4277-b0dd-e610e11a5171.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112622_b1616583-ed86-4a2e-b36c-ddc80643e092.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132543_5845fd1f-af25-46ac-be76-a4d1fbd81620.png",
       },
       {
         id: "white-agate",
@@ -220,7 +220,7 @@ export const PRODUCTS: ProductContent[] = [
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112618_9db97557-4d83-4202-a6fa-e8aca2b32513.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112624_2190cd90-daf7-4e04-8d7f-c21c4fc1110f.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132544_20377517-a919-4c2e-aed9-9d1ee5e8edcd.png",
       },
     ],
     cause: {
@@ -259,21 +259,21 @@ export const PRODUCTS: ProductContent[] = [
         id: "lava-stone",
         name: "Lava Stone",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112751_5718c905-6ede-41b4-a28e-50139f3fcb8b.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132334_3d951bdb-d7fe-4325-9361-0a5313e25311.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112759_5e78d565-09e5-4d36-ab52-4b9132d30623.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112805_426c563d-3289-4eb8-ab10-637d140ed454.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132336_32f0d410-6e06-4f8a-bd75-b10cc0a3592a.png",
       },
       {
         id: "hematite",
         name: "Hematite",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112754_5b9266ce-44a5-407f-beed-8e3abe12f51d.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132338_2558d757-8e2c-4383-9e58-e97ed93882ea.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112801_9fd003db-fcb6-431e-a855-be9b97c41bd3.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112807_909ac9e0-16bf-41d4-b2c6-ca04063f0cdb.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132339_ddb10bb1-1f78-4025-95b5-f3bd444b0810.png",
       },
       {
         id: "white-agate",
@@ -322,31 +322,31 @@ export const PRODUCTS: ProductContent[] = [
         id: "lava-stone",
         name: "Lava Stone",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112821_d6a1aea2-05da-48e8-a272-29ac0ca592ad.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132450_328dcc8f-8c14-4d74-829b-a8918dda33c1.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112828_41587ffa-ba9d-4d66-96a9-694a6fe94840.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112836_b4e69cf3-1ac9-4415-94ad-c2f47292d3c9.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132452_3694f7cc-2441-499c-afde-447545cb21f4.png",
       },
       {
         id: "hematite",
         name: "Hematite",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112823_c376f02e-1e1d-4402-bfbb-e13ce41c25f8.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132454_16695fbc-84b0-4136-ae4f-8b75b957d985.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112830_feb82114-15ff-47f1-9a2e-1312b93af9b2.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112837_0aa07b4b-a0d4-4438-8b05-6bf3852346ce.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132456_3046c430-1000-4d9d-b388-c008d27e43db.png",
       },
       {
         id: "white-agate",
         name: "White Agate",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112825_62915850-66d2-4a62-acf8-fa275373ede2.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132458_1bc7702d-6205-45e5-94cb-15e5ea44264b.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112833_79617f37-7083-4737-87f4-196c89ef4d1d.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112839_2c2dfdef-5155-4499-b791-77ab0cbc97c7.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132459_65cad1bb-ae7d-4756-a84e-479b71e59849.png",
       },
     ],
     cause: {
@@ -385,31 +385,31 @@ export const PRODUCTS: ProductContent[] = [
         id: "lava-stone",
         name: "Lava Stone",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113312_a4022f6a-2978-41f9-8a65-bd6b7df9ea32.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132532_edb423ea-3e66-4d7c-a59c-2fd6e0fd918a.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113315_56271b5f-bd4b-4bbc-b888-6bdd906bc5a7.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113319_ee4a9307-7aba-48a4-bc6d-7acd80e2775c.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132533_79def50f-853e-448d-b76c-a6f4ecb790ad.png",
       },
       {
         id: "hematite",
         name: "Hematite",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113313_ceaf0baf-436c-4b14-80d4-9a8c620b3cd2.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132535_afdbee31-d022-47b9-ba1c-4d19661adf7d.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113316_63c5f643-8105-459c-b5c8-ecea6bf94b05.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113320_d35c4862-a35e-4ed4-872f-0bbedbf2b50b.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132536_83da1230-ee2d-460e-88c3-6af68a053ce2.png",
       },
       {
         id: "white-agate",
         name: "White Agate",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113314_0ae67561-fef9-4657-96dc-34350c8e7ef3.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132538_20dad0f7-64e6-4e6a-ac24-75c12ad3e460.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113317_c44cffa5-6812-47c4-8076-93b8f16f4bf2.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113321_ac04ee19-82e4-4c2c-a7f2-9b8cc07e925e.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132539_3ea9d0bb-5c40-438b-bb49-860238abc3fa.png",
       },
     ],
     cause: {
@@ -614,3 +614,4 @@ export const MATERIALS_DESCRIPTION = MATERIALS_BODY;
 export function getProduct(slug: string): ProductContent | undefined {
   return PRODUCTS.find((p) => p.slug === slug);
 }
+
