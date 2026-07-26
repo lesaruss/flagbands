@@ -28,6 +28,12 @@ type Order = {
   paid_at: string | null;
 };
 
+// Where Supabase should send the user after any successful auth (magic
+// link, Google, or Apple). Must be on the project's Redirect URL allow
+// list. Passed explicitly on every call below instead of relying on the
+// project's default Site URL.
+const REDIRECT_TO = "https://flagbands.com/account";
+
 function money(cents: number) {
   return `$${(cents / 100).toFixed(2)}`;
 }
@@ -52,6 +58,7 @@ export default function AccountPage() {
   const [loginSent, setLoginSent] = useState(false);
   const [loginLoading, setLoginLoading] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
+  const [oauthLoading, setOauthLoading] = useState<"google" | "apple" | null>(null);
 
   const [orders, setOrders] = useState<Order[] | null>(null);
   const [ordersError, setOrdersError] = useState<string | null>(null);
@@ -91,25 +98,49 @@ export default function AccountPage() {
       .catch(() => setOrdersError("Could not load your orders. Try refreshing."));
   }, [accessToken]);
 
+  // Client-side magic link via the standard Supabase Auth SDK. This routes
+  // through GoTrue's native email flow (auth-email-hook picks up the Flag
+  // Bands branding from redirect_to) rather than the admin generate_link
+  // REST endpoint, which has a known unresolved bug where a passed
+  // redirectTo is not honored (falls back to the project Site URL:
+  // https://github.com/supabase/auth/issues/1738). Using signInWithOtp here
+  // instead of the old brand-auth-email fetch call is the actual fix.
   const handleSendLink = async () => {
     setLoginError(null);
     setLoginLoading(true);
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/brand-auth-email`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ brand: "flagbands", mode: "login", email: loginEmail }),
-        }
-      );
-      const data = await res.json();
-      if (!res.ok || data.error) throw new Error(data.error || "Could not send sign-in link");
+      const { error } = await supabaseBrowser().auth.signInWithOtp({
+        email: loginEmail,
+        options: {
+          emailRedirectTo: REDIRECT_TO,
+          shouldCreateUser: true,
+        },
+      });
+      if (error) throw error;
       setLoginSent(true);
     } catch (e) {
-      setLoginError(e instanceof Error ? e.message : "Something went wrong");
+      setLoginError(e instanceof Error ? e.message : "Could not send sign-in link");
     } finally {
       setLoginLoading(false);
+    }
+  };
+
+  // Google/Apple use the same client-side OAuth flow, which has always run
+  // through this non-buggy code path (distinct from the magic-link admin
+  // API issue above). Both providers are already enabled project-wide.
+  const handleOAuth = async (provider: "google" | "apple") => {
+    setLoginError(null);
+    setOauthLoading(provider);
+    try {
+      const { error } = await supabaseBrowser().auth.signInWithOAuth({
+        provider,
+        options: { redirectTo: REDIRECT_TO },
+      });
+      if (error) throw error;
+      // Browser navigates away to the provider here; nothing else to do.
+    } catch (e) {
+      setLoginError(e instanceof Error ? e.message : "Something went wrong");
+      setOauthLoading(null);
     }
   };
 
@@ -142,6 +173,19 @@ export default function AccountPage() {
 
   const hasPaidOrder = !!orders?.some((o) => o.status === "paid" || o.status === "fulfilled");
 
+  const oauthButtonStyle = {
+    width: "100%",
+    padding: "12px 16px",
+    borderRadius: 10,
+    border: "1px solid var(--fb-border)",
+    background: "#FFFFFF",
+    color: "var(--fb-navy)",
+    fontSize: 14,
+    fontWeight: 700,
+    cursor: "pointer",
+    marginBottom: 10,
+  };
+
   return (
     <div style={{ minHeight: "100vh", background: "#FFFFFF" }}>
       <NavBar />
@@ -163,6 +207,33 @@ export default function AccountPage() {
           <p style={{ color: "var(--fb-text-muted)", fontSize: 14 }}>Loading&hellip;</p>
         ) : !email ? (
           <div style={{ maxWidth: 420 }}>
+            <p style={{ color: "var(--fb-text-secondary)", fontSize: 15, lineHeight: 1.6, marginBottom: 24 }}>
+              Sign in to see your orders and reorder in one click.
+            </p>
+
+            <button
+              onClick={() => handleOAuth("google")}
+              disabled={oauthLoading !== null}
+              style={{ ...oauthButtonStyle, opacity: oauthLoading && oauthLoading !== "google" ? 0.6 : 1 }}
+            >
+              {oauthLoading === "google" ? "Redirecting…" : "Continue with Google"}
+            </button>
+            <button
+              onClick={() => handleOAuth("apple")}
+              disabled={oauthLoading !== null}
+              style={{ ...oauthButtonStyle, opacity: oauthLoading && oauthLoading !== "apple" ? 0.6 : 1 }}
+            >
+              {oauthLoading === "apple" ? "Redirecting…" : "Continue with Apple"}
+            </button>
+
+            <div style={{ display: "flex", alignItems: "center", gap: 12, margin: "20px 0" }}>
+              <div style={{ flex: 1, height: 1, background: "var(--fb-border)" }} />
+              <span style={{ fontSize: 12, color: "var(--fb-text-muted)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>
+                or
+              </span>
+              <div style={{ flex: 1, height: 1, background: "var(--fb-border)" }} />
+            </div>
+
             <p style={{ color: "var(--fb-text-secondary)", fontSize: 15, lineHeight: 1.6, marginBottom: 24 }}>
               Enter the email you used at checkout and we&apos;ll send you a one-click sign-in
               link. No password to remember.
