@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useCart } from "../lib/cart-context";
 
 const NAV_ITEMS = [
   { label: "Shop", href: "/shop" },
@@ -13,6 +14,7 @@ const NAV_ITEMS = [
 export default function NavBar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const { count } = useCart();
 
   const isActive = (href: string) =>
     href === "/shop" ? pathname === "/shop" || pathname.startsWith("/products") : pathname === href;
@@ -61,6 +63,45 @@ export default function NavBar() {
             </Link>
           ))}
           <Link
+            href="/cart"
+            aria-label="Cart"
+            style={{
+              position: "relative",
+              display: "flex",
+              alignItems: "center",
+              color: isActive("/cart") ? "var(--fb-navy)" : "var(--fb-text-secondary)",
+              textDecoration: "none",
+            }}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
+            {count > 0 && (
+              <span
+                style={{
+                  position: "absolute",
+                  top: -8,
+                  right: -10,
+                  background: "var(--fb-navy)",
+                  color: "#FFFFFF",
+                  fontSize: 10,
+                  fontWeight: 800,
+                  borderRadius: 999,
+                  minWidth: 16,
+                  height: 16,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "0 4px",
+                }}
+              >
+                {count}
+              </span>
+            )}
+          </Link>
+          <Link
             href="/fundraiser"
             style={{
               background: "var(--fb-navy)",
@@ -81,33 +122,68 @@ export default function NavBar() {
         </div>
 
         {/* Mobile hamburger */}
-        <button
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle navigation"
-          style={{
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: 8,
-            display: "none",
-            flexDirection: "column",
-            gap: 5,
-          }}
-          className="show-mobile"
-        >
-          {[0, 1, 2].map((i) => (
-            <span
-              key={i}
-              style={{
-                display: "block",
-                width: 22,
-                height: 2,
-                background: "var(--fb-navy)",
-                borderRadius: 2,
-              }}
-            />
-          ))}
-        </button>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }} className="show-mobile-flex">
+          <Link
+            href="/cart"
+            aria-label="Cart"
+            style={{ position: "relative", display: "flex", alignItems: "center", color: "var(--fb-navy)" }}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
+            {count > 0 && (
+              <span
+                style={{
+                  position: "absolute",
+                  top: -8,
+                  right: -10,
+                  background: "var(--fb-navy)",
+                  color: "#FFFFFF",
+                  fontSize: 10,
+                  fontWeight: 800,
+                  borderRadius: 999,
+                  minWidth: 16,
+                  height: 16,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "0 4px",
+                }}
+              >
+                {count}
+              </span>
+            )}
+          </Link>
+          <button
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle navigation"
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: 8,
+              display: "none",
+              flexDirection: "column",
+              gap: 5,
+            }}
+            className="show-mobile"
+          >
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                style={{
+                  display: "block",
+                  width: 22,
+                  height: 2,
+                  background: "var(--fb-navy)",
+                  borderRadius: 2,
+                }}
+              />
+            ))}
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -163,10 +239,12 @@ export default function NavBar() {
         @media (max-width: 768px) {
           .hide-mobile { display: none !important; }
           .show-mobile { display: flex !important; }
+          .show-mobile-flex { display: flex !important; }
         }
         @media (min-width: 769px) {
           .show-mobile { display: none !important; }
           .hide-mobile { display: flex !important; }
+          .show-mobile-flex { display: none !important; }
         }
       `}</style>
     </nav>
