@@ -114,12 +114,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  padding: "10%",
+                  boxSizing: "border-box",
                 }}
               >
                 <img
                   src={product.heroPhoto}
                   alt={`${product.name} flag band, flat-lay detail`}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
                 />
               </div>
             </div>
@@ -257,12 +259,18 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     overflow: "hidden",
                     border: "1px solid var(--fb-border)",
                     marginBottom: 8,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "10%",
+                    boxSizing: "border-box",
+                    background: "#FFFFFF",
                   }}
                 >
                   <img
                     src={p.heroPhoto}
                     alt={`${p.name} flag band`}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    style={{ width: "100%", height: "100%", objectFit: "contain" }}
                   />
                 </div>
                 <div style={{ fontSize: 13, fontWeight: 700, color: "var(--fb-navy)" }}>{p.name}</div>
