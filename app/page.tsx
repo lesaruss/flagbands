@@ -597,8 +597,8 @@ function HeroSection({ onShop }: { onShop: () => void }) {
                 }}
               >
                 {p.photo ? (
-                  <div style={{ width: "100%", height: "100%", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <img src={p.photo} alt={`${p.name} flag band`} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  <div style={{ width: "100%", height: "100%", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", padding: "12%", boxSizing: "border-box" }}>
+                    <img src={p.photo} alt={`${p.name} flag band`} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
                   </div>
                 ) : (
                   <p.FlagComponent />
@@ -713,13 +713,15 @@ function CollectionSection() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    padding: "12%",
+                    boxSizing: "border-box",
                   }}
                 >
                   {product.photo ? (
                     <img
                       src={product.photo}
                       alt={`${product.name} flag band`}
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      style={{ width: "100%", height: "100%", objectFit: "contain" }}
                       loading="lazy"
                     />
                   ) : (
