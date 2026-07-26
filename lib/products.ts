@@ -80,7 +80,7 @@ export const PRODUCTS: ProductContent[] = [
         id: "hematite",
         name: "Hematite",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100453_090a046d-565e-4b04-b31b-a6a537a6b0e4.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_111202_b833d12d-f15e-4b8a-a1d6-a3f6f0c10ee1.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100455_be930b67-93aa-4609-84fc-e95a60b90b38.png",
         heroPhoto:
