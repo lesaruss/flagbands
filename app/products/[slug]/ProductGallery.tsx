@@ -2,17 +2,23 @@
 
 import { useEffect, useState } from "react";
 import type { ProductContent } from "../../../lib/products";
+import { useCart } from "../../../lib/cart-context";
 
 export default function ProductGallery({
   product,
   materialsDescription,
+  inventory,
 }: {
   product: ProductContent;
   materialsDescription: string;
+  /** quantity in stock per material id, e.g. { "tigers-eye": 2, "hematite": 0 } */
+  inventory: Record<string, number>;
 }) {
   const variants = product.variants;
   const [selectedId, setSelectedId] = useState<string | undefined>(variants?.[0]?.id);
   const selected = variants?.find((v) => v.id === selectedId) ?? variants?.[0];
+  const { addItem } = useCart();
+  const [added, setAdded] = useState(false);
 
   const studioPhoto = selected?.studioPhoto ?? product.studioPhoto;
   const wristPhoto = selected?.wristPhoto ?? product.wristPhoto;
@@ -35,6 +41,7 @@ export default function ProductGallery({
   // materials doesn't carry over a swap made on a different variant's photo set.
   useEffect(() => {
     setOrder([0, 1, 2]);
+    setAdded(false);
   }, [selectedId]);
 
   const promote = (position: number) => {
@@ -49,6 +56,26 @@ export default function ProductGallery({
   const main = galleryImages[order[0]];
   const thumb1 = galleryImages[order[1]];
   const thumb2 = galleryImages[order[2]];
+
+  const selectedMaterialId = selected?.id ?? "tigers-eye";
+  const stockQty = inventory[selectedMaterialId] ?? 0;
+  const isPreorder = stockQty <= 0;
+
+  const unitPriceCents = Math.round(parseFloat(product.price.replace(/[^0-9.]/g, "")) * 100) || 3500;
+
+  const handleAddToCart = () => {
+    addItem({
+      flagSlug: product.slug,
+      materialId: selectedMaterialId,
+      flagName: product.name,
+      materialName: selected?.name ?? "Tiger's Eye",
+      unitPriceCents,
+      image: studioPhoto,
+      preorder: isPreorder,
+    });
+    setAdded(true);
+    window.setTimeout(() => setAdded(false), 1800);
+  };
 
   return (
     <div
@@ -152,13 +179,17 @@ export default function ProductGallery({
         >
           {product.name} Flag Band
         </h1>
-        <div style={{ fontSize: 28, fontWeight: 900, color: "var(--fb-text)", marginBottom: 24 }}>
+        <div style={{ fontSize: 28, fontWeight: 900, color: "var(--fb-text)", marginBottom: 4 }}>
           {product.price}
+        </div>
+        <div style={{ fontSize: 13, color: "var(--fb-text-muted)", marginBottom: 20 }}>
+          Free shipping included.
         </div>
 
         <button
+          onClick={handleAddToCart}
           style={{
-            background: "var(--fb-navy)",
+            background: isPreorder ? "var(--fb-text)" : "var(--fb-navy)",
             color: "#FFFFFF",
             border: "none",
             borderRadius: 10,
@@ -166,11 +197,24 @@ export default function ProductGallery({
             fontSize: 15,
             fontWeight: 700,
             cursor: "pointer",
-            marginBottom: variants && variants.length > 1 ? 32 : 40,
+            marginBottom: 8,
           }}
         >
-          Add to Cart
+          {added ? "Added ✓" : isPreorder ? "Pre-Order Now" : "Add to Cart"}
         </button>
+        <div
+          style={{
+            fontSize: 13,
+            color: isPreorder ? "#8A6D00" : "var(--fb-text-muted)",
+            marginBottom: variants && variants.length > 1 ? 24 : 32,
+          }}
+        >
+          {isPreorder
+            ? "Currently a pre-order for this stone — ships in 2-4 weeks."
+            : stockQty <= 2
+            ? `Only ${stockQty} left in stock.`
+            : "In stock, ships within a few days."}
+        </div>
 
         {variants && variants.length > 1 ? (
           <section style={{ marginBottom: 32 }}>
@@ -189,6 +233,7 @@ export default function ProductGallery({
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
               {variants.map((v) => {
                 const isSelected = v.id === selected?.id;
+                const outOfStock = (inventory[v.id] ?? 0) <= 0;
                 return (
                   <button
                     key={v.id}
@@ -203,9 +248,15 @@ export default function ProductGallery({
                       background: isSelected ? product.accentColor : "#FFFFFF",
                       color: isSelected ? "#FFFFFF" : "var(--fb-navy)",
                       transition: "border-color 0.15s ease, background 0.15s ease, color 0.15s ease",
+                      position: "relative",
                     }}
                   >
                     {v.name}
+                    {outOfStock ? (
+                      <span style={{ marginLeft: 6, fontSize: 10, opacity: 0.75, fontWeight: 600 }}>
+                        (Pre-Order)
+                      </span>
+                    ) : null}
                   </button>
                 );
               })}
