@@ -1,6 +1,6 @@
 // Shared product content for Flag Bands. Used by the homepage shop grid and
 // the individual /products/[slug] pages. Photo URLs are Higgsfield-hosted
-// (background-removed cutout + reference-based studio/wrist renders,
+// (background-removed cutout + reference-based hero/studio/wrist renders,
 // generated from real product photography - not stock or fully synthetic
 // images).
 
@@ -16,6 +16,7 @@ export interface ProductContent {
   price: string;
   accentColor: string;
   flagDescription: string;
+  heroPhoto: string;
   cutoutPhoto: string;
   studioPhoto: string;
   wristPhoto: string;
@@ -33,6 +34,8 @@ export const PRODUCTS: ProductContent[] = [
     price: "$30",
     accentColor: "#002868",
     flagDescription: "the red, white, and blue stars and stripes of the American flag",
+    heroPhoto:
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091917_9abbb205-4a74-4075-93f0-f2b37245a0f4.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230733_d3c7c005-d716-450d-9f8d-e2aa87c76193.png",
     studioPhoto:
@@ -52,6 +55,8 @@ export const PRODUCTS: ProductContent[] = [
     price: "$30",
     accentColor: "#009B3A",
     flagDescription: "the black, gold, and green diagonal saltire of the Jamaican flag",
+    heroPhoto:
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091920_4387ec6d-debd-412f-99fd-c188910d57a4.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230734_8e22e53e-33b8-4c58-9113-98406189519a.png",
     studioPhoto:
@@ -71,10 +76,12 @@ export const PRODUCTS: ProductContent[] = [
     price: "$30",
     accentColor: "#00209F",
     flagDescription: "the blue and red Haitian flag with its white coat of arms emblem",
+    heroPhoto:
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091923_ce296847-efb5-4baf-a4b9-d1e1ace34b9f.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230735_2663e86b-8a03-4ac7-a661-c0de6cc36859.png",
     studioPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233435_0a8b464e-60da-40ac-92c7-d4d849de8a7a.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091857_783f3a72-240f-4b95-89e6-1c1793c53dff.png",
     wristPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_234304_756c417e-918d-4fd6-bf97-d064cfdebf86.png",
     cause: {
@@ -90,6 +97,8 @@ export const PRODUCTS: ProductContent[] = [
     price: "$30",
     accentColor: "#00247D",
     flagDescription: "the yellow, blue, and red stripes and stars of the Venezuelan flag",
+    heroPhoto:
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091925_5423ff97-f534-4ed7-9724-e46c178cb85e.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230737_6a17d03b-a560-4daa-af16-468d427a8b5d.png",
     studioPhoto:
@@ -109,6 +118,8 @@ export const PRODUCTS: ProductContent[] = [
     price: "$30",
     accentColor: "#002868",
     flagDescription: "the red, white, and blue Puerto Rican flag with its star and triangle",
+    heroPhoto:
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091928_6ca886ef-29cf-464c-aa3c-46e753b61388.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230738_7a588193-e49f-4741-a734-3dc3077469e9.png",
     studioPhoto:
@@ -128,6 +139,8 @@ export const PRODUCTS: ProductContent[] = [
     price: "$30",
     accentColor: "#002A8F",
     flagDescription: "the blue and white stripes, red triangle, and white star of the Cuban flag",
+    heroPhoto:
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091931_ce431d3d-3b13-4e36-b8da-b3bd31e9fd00.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230740_9b243608-71f2-4c5d-8ad4-ce76c3139265.png",
     studioPhoto:
@@ -147,6 +160,8 @@ export const PRODUCTS: ProductContent[] = [
     price: "$30",
     accentColor: "#750787",
     flagDescription: "the six-stripe rainbow Pride flag",
+    heroPhoto:
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091933_3bb901fb-1f0d-4d13-bae7-fa1152bd0f01.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230741_5cff3d46-70e3-4bed-b957-a01bcab86687.png",
     studioPhoto:
@@ -166,6 +181,8 @@ export const PRODUCTS: ProductContent[] = [
     price: "$30",
     accentColor: "#2E7D32",
     flagDescription: "the blue and green V of the official Vegan flag",
+    heroPhoto:
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091936_39034643-0737-4edb-842c-565c902a079f.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230743_a2f17a74-0395-4d22-93e4-1cc07e20a017.png",
     studioPhoto:
@@ -185,6 +202,8 @@ export const PRODUCTS: ProductContent[] = [
     price: "$30",
     accentColor: "#D91023",
     flagDescription: "the red, white, red vertical stripes of the Peruvian flag",
+    heroPhoto:
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091939_5292e9f4-7f91-47b4-814f-e3af296d3637.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230744_5ebe802c-dae7-456f-ba3d-8b21047875f9.png",
     studioPhoto:
