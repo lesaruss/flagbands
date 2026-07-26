@@ -374,9 +374,14 @@ export const COUNTRY_STORIES: CountryStory[] = [
     },
     leadershipToday: [
       {
-        role: "President",
+        role: "Interim President",
+        name: "José María Balcázar",
+        note: "Serving out the transitional term ahead of the handover to Peru's newly elected president",
+      },
+      {
+        role: "President-Elect",
         name: "Keiko Fujimori",
-        note: "Peru's first woman president, inaugurated July 28, 2026, succeeding interim president José María Balcázar",
+        note: "Won a razor-thin June 2026 runoff; set to be inaugurated July 28, 2026 as Peru's first woman president",
       },
     ],
     tidbits: [
