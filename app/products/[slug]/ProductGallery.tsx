@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ProductContent } from "../../../lib/products";
 
 export default function ProductGallery({
@@ -17,6 +17,38 @@ export default function ProductGallery({
   const studioPhoto = selected?.studioPhoto ?? product.studioPhoto;
   const wristPhoto = selected?.wristPhoto ?? product.wristPhoto;
   const heroPhoto = selected?.heroPhoto ?? product.heroPhoto;
+
+  const heroTransform =
+    product.slug === "jamaica" ? "rotate(180deg)" : product.slug === "peru" ? "scale(1.22)" : "none";
+
+  // Three gallery images in their default order: flat-lay (main), wrist, circular detail.
+  // "order" holds indices into this fixed list - order[0] is always the current main image.
+  const galleryImages = [
+    { key: "studio", src: studioPhoto, alt: `${product.name} flag band, studio product shot`, fit: "cover" as const, transform: "none" },
+    { key: "wrist", src: wristPhoto, alt: `${product.name} flag band worn on the wrist`, fit: "cover" as const, transform: "none" },
+    { key: "hero", src: heroPhoto, alt: `${product.name} flag band, circular detail`, fit: "contain" as const, transform: heroTransform },
+  ];
+
+  const [order, setOrder] = useState([0, 1, 2]);
+
+  // Reset back to the default order whenever the selected stone changes, so switching
+  // materials doesn't carry over a swap made on a different variant's photo set.
+  useEffect(() => {
+    setOrder([0, 1, 2]);
+  }, [selectedId]);
+
+  const promote = (position: number) => {
+    if (position === 0) return;
+    setOrder((prev) => {
+      const next = [...prev];
+      [next[0], next[position]] = [next[position], next[0]];
+      return next;
+    });
+  };
+
+  const main = galleryImages[order[0]];
+  const thumb1 = galleryImages[order[1]];
+  const thumb2 = galleryImages[order[2]];
 
   return (
     <div
@@ -36,53 +68,59 @@ export default function ProductGallery({
             overflow: "hidden",
             border: "1px solid var(--fb-border)",
             background: "#FFFFFF",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: main.fit === "contain" ? "10%" : 0,
+            boxSizing: "border-box",
           }}
         >
           <img
-            key={studioPhoto}
-            src={studioPhoto}
-            alt={`${product.name} flag band, studio product shot`}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            key={main.src}
+            src={main.src}
+            alt={main.alt}
+            style={{ width: "100%", height: "100%", objectFit: main.fit, transform: main.transform }}
           />
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-          <div
-            style={{
-              aspectRatio: "1/1",
-              borderRadius: 16,
-              overflow: "hidden",
-              border: "1px solid var(--fb-border)",
-              background: "#FFFFFF",
-            }}
-          >
-            <img
-              key={wristPhoto}
-              src={wristPhoto}
-              alt={`${product.name} flag band worn on the wrist`}
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
-          </div>
-          <div
-            style={{
-              aspectRatio: "1/1",
-              borderRadius: 16,
-              overflow: "hidden",
-              border: "1px solid var(--fb-border)",
-              background: "#FFFFFF",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "10%",
-              boxSizing: "border-box",
-            }}
-          >
-            <img
-              key={heroPhoto}
-              src={heroPhoto}
-              alt={`${product.name} flag band, flat-lay detail`}
-              style={{ width: "100%", height: "100%", objectFit: "contain", transform: product.slug === "jamaica" ? "rotate(180deg)" : product.slug === "peru" ? "scale(1.22)" : "none" }}
-            />
-          </div>
+          {[thumb1, thumb2].map((img, i) => {
+            const position = i + 1; // thumb1 is order[1], thumb2 is order[2]
+            return (
+              <button
+                key={img.key}
+                type="button"
+                onClick={() => promote(position)}
+                aria-label={`Show ${img.alt} as the main image`}
+                style={{
+                  aspectRatio: "1/1",
+                  borderRadius: 16,
+                  overflow: "hidden",
+                  border: "1px solid var(--fb-border)",
+                  background: "#FFFFFF",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: img.fit === "contain" ? "10%" : 0,
+                  boxSizing: "border-box",
+                  cursor: "pointer",
+                  transition: "border-color 0.15s ease, transform 0.15s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "var(--fb-navy)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "var(--fb-border)";
+                }}
+              >
+                <img
+                  key={img.src}
+                  src={img.src}
+                  alt={img.alt}
+                  style={{ width: "100%", height: "100%", objectFit: img.fit, transform: img.transform }}
+                />
+              </button>
+            );
+          })}
         </div>
       </div>
 
