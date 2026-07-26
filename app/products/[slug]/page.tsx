@@ -2,6 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PRODUCTS, MATERIALS_DESCRIPTION, getProduct } from "../../../lib/products";
 import ProductGallery from "./ProductGallery";
+import NavBar from "../../../components/NavBar";
+import SiteFooter from "../../../components/SiteFooter";
+import { supabaseServer } from "../../../lib/supabase-server";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -17,54 +20,37 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+async function getInventoryForFlag(slug: string): Promise<Record<string, number>> {
+  try {
+    const supabase = supabaseServer();
+    const { data, error } = await supabase
+      .from("flagbands_inventory")
+      .select("material_id, quantity")
+      .eq("flag_slug", slug);
+
+    if (error || !data) return {};
+    return Object.fromEntries(data.map((row) => [row.material_id, row.quantity]));
+  } catch {
+    // If Supabase env vars aren't configured yet, fall back to "everything in
+    // stock" rather than breaking the page - better a slightly stale badge
+    // than a 500 on every product page.
+    return {};
+  }
+}
+
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) notFound();
 
+  const inventory = await getInventoryForFlag(slug);
+
   return (
     <div style={{ minHeight: "100vh", background: "#FFFFFF" }}>
-      {/* Nav */}
-      <nav
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 100,
-          background: "rgba(255,255,255,0.97)",
-          borderBottom: "1px solid var(--fb-border)",
-          backdropFilter: "blur(16px)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            padding: "0 24px",
-            height: 64,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Link href="/" style={{ display: "flex", alignItems: "center" }}>
-            <img src="/logo-landscape.png" alt="Flag Bands" style={{ height: 32, width: "auto" }} />
-          </Link>
-          <Link
-            href="/"
-            style={{
-              color: "var(--fb-navy)",
-              fontSize: 14,
-              fontWeight: 700,
-              textDecoration: "none",
-            }}
-          >
-            ← Back to Shop
-          </Link>
-        </div>
-      </nav>
+      <NavBar />
 
       <main style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px 96px" }}>
-        <ProductGallery product={product} materialsDescription={MATERIALS_DESCRIPTION} />
+        <ProductGallery product={product} materialsDescription={MATERIALS_DESCRIPTION} inventory={inventory} />
 
         {/* Other flags */}
         <div style={{ marginTop: 80, borderTop: "1px solid var(--fb-border)", paddingTop: 40 }}>
@@ -121,45 +107,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
       </main>
 
-      {/* Footer */}
-      <footer style={{ borderTop: "1px solid var(--fb-border)", padding: "32px 24px" }}>
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 24,
-          }}
-        >
-          <div>
-            <img src="/logo.svg" alt="Flag Bands" style={{ height: 32, width: "auto" }} />
-            <p style={{ color: "var(--fb-text-muted)", fontSize: 13, marginTop: 8, maxWidth: 320, lineHeight: 1.5 }}>
-              Handcrafted wristbands. Real flags. Real causes.
-            </p>
-          </div>
-          <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-            <Link
-              href="/stones"
-              style={{ color: "var(--fb-text-muted)", fontSize: 13, textDecoration: "none", fontWeight: 500 }}
-            >
-              Stone Meanings
-            </Link>
-            {["Contact", "Fundraising", "Returns", "FAQ"].map((link) => (
-              <a
-                key={link}
-                href="/#"
-                style={{ color: "var(--fb-text-muted)", fontSize: 13, textDecoration: "none", fontWeight: 500 }}
-              >
-                {link}
-              </a>
-            ))}
-          </div>
-          <div style={{ color: "var(--fb-text-muted)", fontSize: 12 }}>2026 Flag Bands. All rights reserved.</div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       <style>{`
         @media (max-width: 720px) {
