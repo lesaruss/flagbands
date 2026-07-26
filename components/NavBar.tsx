@@ -102,6 +102,19 @@ export default function NavBar() {
             )}
           </Link>
           <Link
+            href="/account"
+            style={{
+              color: isActive("/account") ? "var(--fb-navy)" : "var(--fb-text-secondary)",
+              fontWeight: isActive("/account") ? 700 : 500,
+              fontSize: 14,
+              letterSpacing: "0.02em",
+              textDecoration: "none",
+              padding: "4px 0",
+            }}
+          >
+            Account
+          </Link>
+          <Link
             href="/fundraiser"
             style={{
               background: "var(--fb-navy)",
@@ -211,6 +224,26 @@ export default function NavBar() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/account"
+            onClick={() => setOpen(false)}
+            style={{
+              display: "block",
+              width: "100%",
+              textAlign: "left",
+              padding: "12px 0",
+              background: "none",
+              border: "none",
+              borderBottom: "1px solid var(--fb-border)",
+              cursor: "pointer",
+              color: "var(--fb-text)",
+              fontWeight: 600,
+              fontSize: 15,
+              textDecoration: "none",
+            }}
+          >
+            Account
+          </Link>
           <Link
             href="/fundraiser"
             onClick={() => setOpen(false)}
