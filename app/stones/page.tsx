@@ -1,4 +1,6 @@
 import Link from "next/link";
+import NavBar from "../../components/NavBar";
+import SiteFooter from "../../components/SiteFooter";
 
 export const metadata = {
   title: "Stone Meanings | Flag Bands",
@@ -123,44 +125,7 @@ function StoneCard({ stone, featured }: { stone: Stone; featured?: boolean }) {
 export default function StoneMeaningsPage() {
   return (
     <div style={{ minHeight: "100vh", background: "#FFFFFF" }}>
-      {/* Nav */}
-      <nav
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 100,
-          background: "rgba(255,255,255,0.97)",
-          borderBottom: "1px solid var(--fb-border)",
-          backdropFilter: "blur(16px)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            padding: "0 24px",
-            height: 64,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Link href="/" style={{ display: "flex", alignItems: "center" }}>
-            <img src="/logo-landscape.png" alt="Flag Bands" style={{ height: 32, width: "auto" }} />
-          </Link>
-          <Link
-            href="/"
-            style={{
-              color: "var(--fb-navy)",
-              fontSize: 14,
-              fontWeight: 700,
-              textDecoration: "none",
-            }}
-          >
-            ← Back to Shop
-          </Link>
-        </div>
-      </nav>
+      <NavBar />
 
       <main style={{ maxWidth: 1000, margin: "0 auto", padding: "48px 24px 96px" }}>
         <h1
@@ -233,39 +198,7 @@ export default function StoneMeaningsPage() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer style={{ borderTop: "1px solid var(--fb-border)", padding: "32px 24px" }}>
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 24,
-          }}
-        >
-          <div>
-            <img src="/logo.svg" alt="Flag Bands" style={{ height: 32, width: "auto" }} />
-            <p style={{ color: "var(--fb-text-muted)", fontSize: 13, marginTop: 8, maxWidth: 320, lineHeight: 1.5 }}>
-              Handcrafted wristbands. Real flags. Real causes.
-            </p>
-          </div>
-          <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-            {["Contact", "Fundraising", "Returns", "FAQ"].map((link) => (
-              <a
-                key={link}
-                href="/#"
-                style={{ color: "var(--fb-text-muted)", fontSize: 13, textDecoration: "none", fontWeight: 500 }}
-              >
-                {link}
-              </a>
-            ))}
-          </div>
-          <div style={{ color: "var(--fb-text-muted)", fontSize: 12 }}>2026 Flag Bands. All rights reserved.</div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
