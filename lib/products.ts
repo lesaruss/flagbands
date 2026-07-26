@@ -44,7 +44,7 @@ export const PRODUCTS: ProductContent[] = [
     slug: "usa",
     name: "United States",
     label: "USA",
-    price: "$30",
+    price: "$35",
     accentColor: "#002868",
     flagDescription: "the red, white, and blue stars and stripes of the American flag",
     heroPhoto:
@@ -107,7 +107,7 @@ export const PRODUCTS: ProductContent[] = [
     slug: "jamaica",
     name: "Jamaica",
     label: "JAM",
-    price: "$30",
+    price: "$35",
     accentColor: "#009B3A",
     flagDescription: "the black, gold, and green diagonal saltire of the Jamaican flag",
     heroPhoto:
@@ -128,7 +128,7 @@ export const PRODUCTS: ProductContent[] = [
     slug: "haiti",
     name: "Haiti",
     label: "HTI",
-    price: "$30",
+    price: "$35",
     accentColor: "#00209F",
     flagDescription: "the blue and red Haitian flag with its white coat of arms emblem",
     heroPhoto:
@@ -149,7 +149,7 @@ export const PRODUCTS: ProductContent[] = [
     slug: "venezuela",
     name: "Venezuela",
     label: "VEN",
-    price: "$30",
+    price: "$35",
     accentColor: "#00247D",
     flagDescription: "the yellow, blue, and red stripes and stars of the Venezuelan flag",
     heroPhoto:
@@ -170,7 +170,7 @@ export const PRODUCTS: ProductContent[] = [
     slug: "puerto-rico",
     name: "Puerto Rico",
     label: "PRI",
-    price: "$30",
+    price: "$35",
     accentColor: "#002868",
     flagDescription: "the red, white, and blue Puerto Rican flag with its star and triangle",
     heroPhoto:
@@ -191,7 +191,7 @@ export const PRODUCTS: ProductContent[] = [
     slug: "cuba",
     name: "Cuba",
     label: "CUB",
-    price: "$30",
+    price: "$35",
     accentColor: "#002A8F",
     flagDescription: "the blue and white stripes, red triangle, and white star of the Cuban flag",
     heroPhoto:
@@ -212,7 +212,7 @@ export const PRODUCTS: ProductContent[] = [
     slug: "lgbtq",
     name: "Pride",
     label: "PRIDE",
-    price: "$30",
+    price: "$35",
     accentColor: "#750787",
     flagDescription: "the six-stripe rainbow Pride flag",
     heroPhoto:
@@ -233,7 +233,7 @@ export const PRODUCTS: ProductContent[] = [
     slug: "vegan",
     name: "Vegan",
     label: "VGN",
-    price: "$30",
+    price: "$35",
     accentColor: "#2E7D32",
     flagDescription: "the blue and green V of the official Vegan flag",
     heroPhoto:
@@ -254,7 +254,7 @@ export const PRODUCTS: ProductContent[] = [
     slug: "peru",
     name: "Peru",
     label: "PER",
-    price: "$30",
+    price: "$35",
     accentColor: "#D91023",
     flagDescription: "the red, white, red vertical stripes of the Peruvian flag",
     heroPhoto:
