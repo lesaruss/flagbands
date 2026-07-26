@@ -171,7 +171,7 @@ const PRODUCTS = [
     photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102826_60facf1c-9ad4-4159-932b-f5ed6ef473fa.png",
     name: "United States",
     label: "USA",
-    price: "$30",
+    price: "$35",
     available: true,
     FlagComponent: FlagUSA,
     accentColor: "#002868",
@@ -181,7 +181,7 @@ const PRODUCTS = [
     photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102831_c92f9e38-8c66-47d9-9e26-ca7e2021001b.png",
     name: "Jamaica",
     label: "JAM",
-    price: "$30",
+    price: "$35",
     available: true,
     FlagComponent: FlagJamaica,
     accentColor: "#009B3A",
@@ -191,7 +191,7 @@ const PRODUCTS = [
     photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102832_b6fde7c3-f1b8-432c-934f-92ed976141fb.png",
     name: "Haiti",
     label: "HTI",
-    price: "$30",
+    price: "$35",
     available: true,
     FlagComponent: FlagHaiti,
     accentColor: "#00209F",
@@ -201,7 +201,7 @@ const PRODUCTS = [
     photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102834_4714d313-f745-461e-bd00-a0eab0e4a3a4.png",
     name: "Venezuela",
     label: "VEN",
-    price: "$30",
+    price: "$35",
     available: true,
     FlagComponent: FlagVenezuela,
     accentColor: "#00247D",
@@ -211,7 +211,7 @@ const PRODUCTS = [
     photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102835_3aee44f6-62ef-4918-b4dd-97f070440cb0.png",
     name: "Puerto Rico",
     label: "PRI",
-    price: "$30",
+    price: "$35",
     available: true,
     FlagComponent: FlagPuertoRico,
     accentColor: "#002868",
@@ -221,7 +221,7 @@ const PRODUCTS = [
     photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102837_8e3cd80a-40df-425b-a709-328bed00754e.png",
     name: "Cuba",
     label: "CUB",
-    price: "$30",
+    price: "$35",
     available: true,
     FlagComponent: FlagCuba,
     accentColor: "#002A8F",
@@ -231,7 +231,7 @@ const PRODUCTS = [
     photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102839_5f5b8c1d-480d-41d2-9055-84217059767e.png",
     name: "Pride",
     label: "PRIDE",
-    price: "$30",
+    price: "$35",
     available: true,
     FlagComponent: FlagLGBT,
     accentColor: "#750787",
@@ -241,7 +241,7 @@ const PRODUCTS = [
     photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102840_4247059d-7e28-4dd1-a886-555c48c9b25c.png",
     name: "Vegan",
     label: "VGN",
-    price: "$30",
+    price: "$35",
     available: true,
     FlagComponent: FlagVegan,
     accentColor: "#3DAE2B",
@@ -251,7 +251,7 @@ const PRODUCTS = [
     photo: "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102841_1591e3be-084c-4312-b349-f05c197df2cc.png",
     name: "Peru",
     label: "PER",
-    price: "$30",
+    price: "$35",
     available: true,
     FlagComponent: FlagPeru,
     accentColor: "#D91023",
@@ -278,8 +278,8 @@ function Nav({ current, onNav }: { current: number; onNav: (i: number) => void }
         left: 0,
         right: 0,
         zIndex: 200,
-        background: current === 0 ? "transparent" : "rgba(255,255,255,0.96)",
-        borderBottom: current === 0 ? "none" : "1px solid rgba(0,0,0,0.08)",
+        background: "rgba(255,255,255,0.96)",
+        borderBottom: "1px solid rgba(0,0,0,0.08)",
         backdropFilter: "blur(16px)",
         transition: "background 0.4s ease, border-color 0.4s ease",
       }}
@@ -311,15 +311,15 @@ function Nav({ current, onNav }: { current: number; onNav: (i: number) => void }
                 background: "none",
                 border: "none",
                 cursor: "pointer",
-                color: current === 0 ? "rgba(255,255,255,0.85)" : "var(--fb-text-secondary)",
+                color: "var(--fb-text-secondary)",
                 fontWeight: 500,
                 fontSize: 14,
                 letterSpacing: "0.02em",
                 transition: "color 0.15s ease",
                 padding: "4px 0",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = current === 0 ? "#fff" : "var(--fb-navy)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = current === 0 ? "rgba(255,255,255,0.85)" : "var(--fb-text-secondary)")}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--fb-navy)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--fb-text-secondary)")}
             >
               {item.label}
             </button>
@@ -327,9 +327,9 @@ function Nav({ current, onNav }: { current: number; onNav: (i: number) => void }
           <button
             onClick={() => onNav(3)}
             style={{
-              background: current === 0 ? "rgba(255,255,255,0.15)" : "var(--fb-navy)",
+              background: "var(--fb-navy)",
               color: "#FFFFFF",
-              border: current === 0 ? "1.5px solid rgba(255,255,255,0.4)" : "none",
+              border: "none",
               padding: "10px 20px",
               borderRadius: 8,
               cursor: "pointer",
@@ -365,7 +365,7 @@ function Nav({ current, onNav }: { current: number; onNav: (i: number) => void }
                 display: "block",
                 width: 22,
                 height: 2,
-                background: current === 0 ? "#FFFFFF" : "var(--fb-navy)",
+                background: "var(--fb-navy)",
                 borderRadius: 2,
               }}
             />
@@ -440,7 +440,7 @@ function HeroSection({ onShop }: { onShop: () => void }) {
       style={{
         width: "100%",
         height: "100%",
-        background: "var(--fb-navy)",
+        background: "#FFFFFF",
         display: "flex",
         alignItems: "center",
         position: "relative",
@@ -451,8 +451,8 @@ function HeroSection({ onShop }: { onShop: () => void }) {
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: `radial-gradient(circle at 15% 50%, rgba(200,16,46,0.15) 0%, transparent 55%),
-                            radial-gradient(circle at 85% 20%, rgba(212,160,23,0.1) 0%, transparent 45%)`,
+          backgroundImage: `radial-gradient(circle at 15% 50%, rgba(200,16,46,0.06) 0%, transparent 55%),
+                            radial-gradient(circle at 85% 20%, rgba(212,160,23,0.05) 0%, transparent 45%)`,
         }}
       />
 
@@ -477,21 +477,21 @@ function HeroSection({ onShop }: { onShop: () => void }) {
               display: "inline-flex",
               alignItems: "center",
               gap: 8,
-              background: "rgba(255,255,255,0.1)",
-              border: "1px solid rgba(255,255,255,0.15)",
+              background: "rgba(92,62,148,0.08)",
+              border: "1px solid rgba(92,62,148,0.18)",
               borderRadius: 100,
               padding: "6px 14px",
               marginBottom: 28,
             }}
           >
-            <span style={{ fontSize: 13, color: "rgba(255,255,255,0.85)", fontWeight: 600, letterSpacing: "0.05em" }}>
+            <span style={{ fontSize: 13, color: "var(--fb-navy)", fontWeight: 600, letterSpacing: "0.05em" }}>
               9 FLAGS NOW AVAILABLE
             </span>
           </div>
 
           <h1
             style={{
-              color: "#FFFFFF",
+              color: "var(--fb-navy)",
               fontSize: "clamp(36px, 5vw, 68px)",
               fontWeight: 900,
               lineHeight: 1.08,
@@ -501,12 +501,12 @@ function HeroSection({ onShop }: { onShop: () => void }) {
           >
             Wear Your Flag.
             <br />
-            <span style={{ color: "rgba(255,255,255,0.5)" }}>Find Your People.</span>
+            <span style={{ color: "var(--fb-navy-mid)" }}>Find Your People.</span>
           </h1>
 
           <p
             style={{
-              color: "rgba(255,255,255,0.72)",
+              color: "var(--fb-text-secondary)",
               fontSize: 18,
               lineHeight: 1.6,
               margin: "0 0 40px",
@@ -521,8 +521,8 @@ function HeroSection({ onShop }: { onShop: () => void }) {
             <button
               onClick={onShop}
               style={{
-                background: "#FFFFFF",
-                color: "var(--fb-navy)",
+                background: "var(--fb-navy)",
+                color: "#FFFFFF",
                 padding: "16px 32px",
                 borderRadius: 10,
                 border: "none",
@@ -534,7 +534,7 @@ function HeroSection({ onShop }: { onShop: () => void }) {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.3)";
+                e.currentTarget.style.boxShadow = "0 8px 24px rgba(92,62,148,0.35)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
@@ -547,13 +547,13 @@ function HeroSection({ onShop }: { onShop: () => void }) {
 
           <div style={{ display: "flex", gap: 36, marginTop: 48, flexWrap: "wrap" }}>
             {[
-              { num: "$30", label: "Per Band" },
+              { num: "$35", label: "Per Band" },
               { num: "9", label: "Flags Available" },
               { num: "$5", label: "Community Contribution" },
             ].map((stat) => (
               <div key={stat.label}>
-                <div style={{ color: "#FFFFFF", fontWeight: 800, fontSize: 22, lineHeight: 1 }}>{stat.num}</div>
-                <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 12, fontWeight: 500, marginTop: 4, letterSpacing: "0.04em" }}>
+                <div style={{ color: "var(--fb-navy)", fontWeight: 800, fontSize: 22, lineHeight: 1 }}>{stat.num}</div>
+                <div style={{ color: "var(--fb-text-muted)", fontSize: 12, fontWeight: 500, marginTop: 4, letterSpacing: "0.04em" }}>
                   {stat.label}
                 </div>
               </div>
@@ -570,7 +570,7 @@ function HeroSection({ onShop }: { onShop: () => void }) {
               gap: 8,
               width: "100%",
               maxWidth: 420,
-              opacity: 0.9,
+              opacity: 1,
             }}
           >
             {PRODUCTS.slice(0, 9).map((p) => (
@@ -581,7 +581,7 @@ function HeroSection({ onShop }: { onShop: () => void }) {
                   aspectRatio: "1/1",
                   borderRadius: 8,
                   overflow: "hidden",
-                  border: "2px solid rgba(255,255,255,0.15)",
+                  border: "2px solid rgba(92,62,148,0.25)",
                   background: "none",
                   cursor: "pointer",
                   padding: 0,
@@ -589,16 +589,16 @@ function HeroSection({ onShop }: { onShop: () => void }) {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "scale(1.05)";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.6)";
+                  e.currentTarget.style.borderColor = "var(--fb-navy)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+                  e.currentTarget.style.borderColor = "rgba(92,62,148,0.25)";
                 }}
               >
                 {p.photo ? (
                   <div style={{ width: "100%", height: "100%", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", padding: "12%", boxSizing: "border-box" }}>
-                    <img src={p.photo} alt={`${p.name} flag band`} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                    <img src={p.photo} alt={`${p.name} flag band`} style={{ width: "100%", height: "100%", objectFit: "contain", transform: p.id === "jamaica" ? "rotate(180deg)" : p.id === "peru" ? "scale(1.22)" : "none" }} />
                   </div>
                 ) : (
                   <p.FlagComponent />
@@ -660,7 +660,7 @@ function CollectionSection() {
             Browse By Flag
           </h2>
           <p style={{ color: "var(--fb-text-secondary)", fontSize: 16, maxWidth: 480, margin: "0 auto", lineHeight: 1.6 }}>
-            9 flags available now. Every band is $30 with free shipping and a $5 community contribution.
+            9 flags available now. Every band is $35 with free shipping and a $5 community contribution.
           </p>
         </div>
 
@@ -717,7 +717,7 @@ function CollectionSection() {
                     <img
                       src={product.photo}
                       alt={`${product.name} flag band`}
-                      style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                      style={{ width: "100%", height: "100%", objectFit: "contain", transform: product.id === "jamaica" ? "rotate(180deg)" : product.id === "peru" ? "scale(1.22)" : "none" }}
                       loading="lazy"
                     />
                   ) : (
@@ -1217,11 +1217,7 @@ export default function Home() {
               height: 44,
               borderRadius: "50%",
               border: "none",
-              background: current === 0
-                ? "rgba(255,255,255,0.15)"
-                : current === 0 || current === 2
-                  ? "rgba(255,255,255,0.85)"
-                  : "rgba(255,255,255,0.85)",
+              background: current === 0 ? "var(--fb-navy)" : "rgba(255,255,255,0.85)",
               cursor: current === 0 ? "default" : "pointer",
               opacity: current === 0 ? 0.3 : 1,
               display: "flex",
@@ -1233,7 +1229,7 @@ export default function Home() {
             }}
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M10 12L6 8L10 4" stroke="var(--fb-navy)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M10 12L6 8L10 4" stroke={current === 0 ? "#FFFFFF" : "var(--fb-navy)"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
 
