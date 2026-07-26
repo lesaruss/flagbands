@@ -9,6 +9,14 @@ export interface ProductCause {
   body: string;
 }
 
+export interface ProductVariant {
+  id: string;
+  name: string;
+  studioPhoto: string;
+  wristPhoto: string;
+  heroPhoto: string;
+}
+
 export interface ProductContent {
   slug: string;
   name: string;
@@ -21,6 +29,11 @@ export interface ProductContent {
   studioPhoto: string;
   wristPhoto: string;
   cause: ProductCause;
+  // Bead-material options. When present (2+ entries), the product page shows
+  // a stone selector above "What It's Made Of" and swaps the gallery photos.
+  // variants[0] is the default shown on load; top-level studioPhoto/wristPhoto
+  // above should match variants[0] for flags that have variants defined.
+  variants?: ProductVariant[];
 }
 
 const MATERIALS_BODY =
@@ -42,6 +55,48 @@ export const PRODUCTS: ProductContent[] = [
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233426_f9fbfbc7-af94-42b3-8181-6e5e0789c0ea.png",
     wristPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233428_ecf3a2d2-d06b-4fc5-a183-84b6e4897d5e.png",
+    variants: [
+      {
+        id: "tigers-eye",
+        name: "Tiger's Eye",
+        studioPhoto:
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233426_f9fbfbc7-af94-42b3-8181-6e5e0789c0ea.png",
+        wristPhoto:
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233428_ecf3a2d2-d06b-4fc5-a183-84b6e4897d5e.png",
+        heroPhoto:
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100504_fb32b61d-39bd-4bc6-84b5-06e33343ea53.png",
+      },
+      {
+        id: "lava-stone",
+        name: "Lava Stone",
+        studioPhoto:
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100448_7312dfdb-b2b0-494f-bcb6-df7026328790.png",
+        wristPhoto:
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100451_23b22016-c721-4d2a-a5c3-abf46d53b390.png",
+        heroPhoto:
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_091917_9abbb205-4a74-4075-93f0-f2b37245a0f4.png",
+      },
+      {
+        id: "hematite",
+        name: "Hematite",
+        studioPhoto:
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100453_090a046d-565e-4b04-b31b-a6a537a6b0e4.png",
+        wristPhoto:
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100455_be930b67-93aa-4609-84fc-e95a60b90b38.png",
+        heroPhoto:
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100457_098d1221-8ad3-4c2c-a8c5-b548b4278a9a.png",
+      },
+      {
+        id: "white-agate",
+        name: "White Agate",
+        studioPhoto:
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100459_2dcbfc55-3041-4569-acb9-0da924b3b772.png",
+        wristPhoto:
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100500_10e574e9-4796-4cb7-81ec-385fa996d1c3.png",
+        heroPhoto:
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100502_9a2eadbc-df81-4355-93e8-eaa6fc1bcdf9.png",
+      },
+    ],
     cause: {
       org: null,
       body:
