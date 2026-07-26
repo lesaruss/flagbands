@@ -15,7 +15,7 @@ export default function SiteFooter() {
         }}
       >
         <div>
-          <img src="/logo.svg" alt="Flag Bands" style={{ height: 32, width: "auto" }} />
+          <img src="/logo-landscape.png" alt="Flag Bands" style={{ height: 24, width: "auto" }} />
           <p style={{ color: "var(--fb-text-muted)", fontSize: 13, marginTop: 8, maxWidth: 320, lineHeight: 1.5 }}>
             Handcrafted wristbands. Real flags. Real causes.
           </p>
