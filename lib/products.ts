@@ -82,7 +82,7 @@ export const PRODUCTS: ProductContent[] = [
         studioPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_111202_b833d12d-f15e-4b8a-a1d6-a3f6f0c10ee1.png",
         wristPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100455_be930b67-93aa-4609-84fc-e95a60b90b38.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135738_0f6da80a-ef6a-42bd-b760-9ca3abf4a414.png",
         heroPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102844_0579f868-b006-4225-b161-bc9290f7e2bc.png",
       },
@@ -111,23 +111,23 @@ export const PRODUCTS: ProductContent[] = [
     accentColor: "#009B3A",
     flagDescription: "the black, gold, and green diagonal saltire of the Jamaican flag",
     heroPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102831_c92f9e38-8c66-47d9-9e26-ca7e2021001b.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134526_0ed4bc7b-abca-44b2-b2d2-6069587d5604.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230734_8e22e53e-33b8-4c58-9113-98406189519a.png",
     studioPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233430_43c6a8d2-6d05-4934-802c-9abfffa6d352.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_133802_48217e50-9beb-4f7f-b137-cada6cfa0e66.png",
     wristPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_234305_4d0872c8-268f-470a-9604-22a20b7aa97f.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_133945_c5097d7c-4ed2-4772-8907-3d7bd38ba2de.png",
     variants: [
       {
         id: "tigers-eye",
         name: "Tiger's Eye",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233430_43c6a8d2-6d05-4934-802c-9abfffa6d352.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_133802_48217e50-9beb-4f7f-b137-cada6cfa0e66.png",
         wristPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_234305_4d0872c8-268f-470a-9604-22a20b7aa97f.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_133945_c5097d7c-4ed2-4772-8907-3d7bd38ba2de.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102831_c92f9e38-8c66-47d9-9e26-ca7e2021001b.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134526_0ed4bc7b-abca-44b2-b2d2-6069587d5604.png",
       },
       {
         id: "lava-stone",
@@ -237,23 +237,23 @@ export const PRODUCTS: ProductContent[] = [
     accentColor: "#00247D",
     flagDescription: "the yellow, blue, and red stripes and stars of the Venezuelan flag",
     heroPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102834_4714d313-f745-461e-bd00-a0eab0e4a3a4.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135026_4bb61224-bdc2-4e87-aec0-5fda2e85f9df.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230737_6a17d03b-a560-4daa-af16-468d427a8b5d.png",
     studioPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233440_5b28f560-3d58-4053-b816-60cee1421d36.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134016_9729c742-d309-4654-842f-998d32fcbf35.png",
     wristPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233442_c10b20a2-a029-46d6-834a-c9b9427c9155.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134301_b0e5e80a-63ab-4624-a288-2995c4a38942.png",
     variants: [
       {
         id: "tigers-eye",
         name: "Tiger's Eye",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233440_5b28f560-3d58-4053-b816-60cee1421d36.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134016_9729c742-d309-4654-842f-998d32fcbf35.png",
         wristPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233442_c10b20a2-a029-46d6-834a-c9b9427c9155.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134301_b0e5e80a-63ab-4624-a288-2995c4a38942.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102834_4714d313-f745-461e-bd00-a0eab0e4a3a4.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135026_4bb61224-bdc2-4e87-aec0-5fda2e85f9df.png",
       },
       {
         id: "lava-stone",
@@ -269,7 +269,7 @@ export const PRODUCTS: ProductContent[] = [
         id: "hematite",
         name: "Hematite",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_132338_2558d757-8e2c-4383-9e58-e97ed93882ea.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135622_d24cbc90-88e8-45f6-a6cc-350743f027fb.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_112801_9fd003db-fcb6-431e-a855-be9b97c41bd3.png",
         heroPhoto:
@@ -300,23 +300,23 @@ export const PRODUCTS: ProductContent[] = [
     accentColor: "#002868",
     flagDescription: "the red, white, and blue Puerto Rican flag with its star and triangle",
     heroPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102835_3aee44f6-62ef-4918-b4dd-97f070440cb0.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134306_eb77802c-c0d3-433c-920e-d07f4dee137c.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230738_7a588193-e49f-4741-a734-3dc3077469e9.png",
     studioPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233444_5baecf5f-a8fb-4121-997a-0cbe1e01965d.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134018_1bbb6d7e-d7e0-4d3f-a3a0-460097165abd.png",
     wristPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233446_a777dbb8-f516-4697-ac6f-b54830f2bc88.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134304_da3de108-0523-4857-97cc-1788c81ec0dd.png",
     variants: [
       {
         id: "tigers-eye",
         name: "Tiger's Eye",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233444_5baecf5f-a8fb-4121-997a-0cbe1e01965d.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134018_1bbb6d7e-d7e0-4d3f-a3a0-460097165abd.png",
         wristPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233446_a777dbb8-f516-4697-ac6f-b54830f2bc88.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134304_da3de108-0523-4857-97cc-1788c81ec0dd.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102835_3aee44f6-62ef-4918-b4dd-97f070440cb0.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134306_eb77802c-c0d3-433c-920e-d07f4dee137c.png",
       },
       {
         id: "lava-stone",
@@ -363,23 +363,23 @@ export const PRODUCTS: ProductContent[] = [
     accentColor: "#002A8F",
     flagDescription: "the blue and white stripes, red triangle, and white star of the Cuban flag",
     heroPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102837_8e3cd80a-40df-425b-a709-328bed00754e.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134310_1ad7bbaf-1d5c-402a-b860-96e8de202d0c.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230740_9b243608-71f2-4c5d-8ad4-ce76c3139265.png",
     studioPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233449_606d9ad0-304a-4969-ae99-3c399e055b31.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134020_124c8d73-3f76-44bc-8fc0-bcad7f917025.png",
     wristPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233451_a5daa9fb-8911-4d14-be3f-fbb3378bfb30.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134309_5cf71938-6a44-4cd4-b9b3-2a757b7a9aa8.png",
     variants: [
       {
         id: "tigers-eye",
         name: "Tiger's Eye",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233449_606d9ad0-304a-4969-ae99-3c399e055b31.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134020_124c8d73-3f76-44bc-8fc0-bcad7f917025.png",
         wristPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233451_a5daa9fb-8911-4d14-be3f-fbb3378bfb30.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134309_5cf71938-6a44-4cd4-b9b3-2a757b7a9aa8.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102837_8e3cd80a-40df-425b-a709-328bed00754e.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134310_1ad7bbaf-1d5c-402a-b860-96e8de202d0c.png",
       },
       {
         id: "lava-stone",
@@ -489,29 +489,29 @@ export const PRODUCTS: ProductContent[] = [
     accentColor: "#2E7D32",
     flagDescription: "the blue and green V of the official Vegan flag",
     heroPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102840_4247059d-7e28-4dd1-a886-555c48c9b25c.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135423_9af39938-61d5-4953-bbd4-67bbc5e30ed5.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230743_a2f17a74-0395-4d22-93e4-1cc07e20a017.png",
     studioPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233424_002b0938-87cb-4549-b8d2-973e94e904aa.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135158_a79f58d3-963a-4fe0-bb5f-c44b138b96b7.png",
     wristPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_232623_b44227b2-af2c-4b32-a1db-356870a0e075.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135456_e27c4013-2f45-458e-b51b-cfddbe66f582.png",
     variants: [
       {
         id: "tigers-eye",
         name: "Tiger's Eye",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233424_002b0938-87cb-4549-b8d2-973e94e904aa.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135158_a79f58d3-963a-4fe0-bb5f-c44b138b96b7.png",
         wristPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_232623_b44227b2-af2c-4b32-a1db-356870a0e075.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135456_e27c4013-2f45-458e-b51b-cfddbe66f582.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102840_4247059d-7e28-4dd1-a886-555c48c9b25c.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135423_9af39938-61d5-4953-bbd4-67bbc5e30ed5.png",
       },
       {
         id: "lava-stone",
         name: "Lava Stone",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113400_33ac37d7-ea05-46d8-b293-446ff2b0e350.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135201_60c54efc-b77a-456c-9188-7f56b960ff2f.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113407_7011e217-8533-41fd-ac4f-c61961775080.png",
         heroPhoto:
@@ -521,7 +521,7 @@ export const PRODUCTS: ProductContent[] = [
         id: "hematite",
         name: "Hematite",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113402_aaa43772-e7c7-4ab4-87cd-8f622b89c88a.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135203_3a5d8457-0706-42cf-8420-0978bc33872c.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113410_f2d3d4ad-4c82-4ad2-8a9f-b37f6a4205ee.png",
         heroPhoto:
@@ -531,7 +531,7 @@ export const PRODUCTS: ProductContent[] = [
         id: "white-agate",
         name: "White Agate",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113405_20570ed9-f1c0-4f74-857f-0b7f3afc78fe.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135205_1cc97b36-1e28-4bef-8a10-2158e0daa8eb.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_113411_8f68d334-7890-4502-bfb8-03806e23d12d.png",
         heroPhoto:
