@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import NavBar from "../../components/NavBar";
 import SiteFooter from "../../components/SiteFooter";
 import { supabaseBrowser } from "../../lib/supabase-browser";
@@ -433,6 +434,7 @@ export default function AccountPage() {
                     {
                       title: "Country Stories",
                       body: "The history and culture behind the flag on your wrist.",
+                      href: "/stories/jamaica",
                     },
                     {
                       title: "Nonprofit Spotlights",
@@ -457,21 +459,41 @@ export default function AccountPage() {
                       <p style={{ fontSize: 13, color: "var(--fb-text-secondary)", margin: "0 0 12px", lineHeight: 1.5 }}>
                         {card.body}
                       </p>
-                      <span
-                        style={{
-                          display: "inline-block",
-                          background: "var(--fb-border)",
-                          color: "var(--fb-text-muted)",
-                          fontSize: 11,
-                          fontWeight: 700,
-                          textTransform: "uppercase",
-                          letterSpacing: "0.06em",
-                          padding: "4px 10px",
-                          borderRadius: 999,
-                        }}
-                      >
-                        Coming soon
-                      </span>
+                      {card.href ? (
+                        <Link
+                          href={card.href}
+                          style={{
+                            display: "inline-block",
+                            background: "var(--fb-navy)",
+                            color: "#FFFFFF",
+                            fontSize: 11,
+                            fontWeight: 700,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.06em",
+                            padding: "4px 10px",
+                            borderRadius: 999,
+                            textDecoration: "none",
+                          }}
+                        >
+                          Read Now
+                        </Link>
+                      ) : (
+                        <span
+                          style={{
+                            display: "inline-block",
+                            background: "var(--fb-border)",
+                            color: "var(--fb-text-muted)",
+                            fontSize: 11,
+                            fontWeight: 700,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.06em",
+                            padding: "4px 10px",
+                            borderRadius: 999,
+                          }}
+                        >
+                          Coming soon
+                        </span>
+                      )}
                     </div>
                   ))}
                 </div>
