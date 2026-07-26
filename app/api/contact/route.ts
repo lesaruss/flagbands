@@ -1,3 +1,4 @@
+// Redeploy trigger: pick up RESEND_API_KEY added after the previous build.
 import { NextResponse } from "next/server";
 import { sendEmail, contactNotificationEmail, CONTACT_INBOX } from "../../../lib/email";
 
