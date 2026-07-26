@@ -14,7 +14,6 @@ export default function Home() {
           background: "#FFFFFF",
           position: "relative",
           overflow: "hidden",
-          paddingTop: 64,
         }}
       >
         <div
@@ -30,7 +29,7 @@ export default function Home() {
           style={{
             maxWidth: 1200,
             margin: "0 auto",
-            padding: "64px 24px 96px",
+            padding: "40px 24px 96px",
             width: "100%",
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
@@ -108,15 +107,15 @@ export default function Home() {
               </Link>
             </div>
 
-            <div style={{ display: "flex", gap: 36, marginTop: 48, flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: 24, marginTop: 48 }}>
               {[
                 { num: "$35", label: "Per Band" },
                 { num: "9", label: "Flags Available" },
                 { num: "$5", label: "Community Contribution" },
               ].map((stat) => (
-                <div key={stat.label}>
+                <div key={stat.label} style={{ maxWidth: 140 }}>
                   <div style={{ color: "var(--fb-navy)", fontWeight: 800, fontSize: 22, lineHeight: 1 }}>{stat.num}</div>
-                  <div style={{ color: "var(--fb-text-muted)", fontSize: 12, fontWeight: 500, marginTop: 4, letterSpacing: "0.04em" }}>
+                  <div style={{ color: "var(--fb-text-muted)", fontSize: 12, fontWeight: 500, marginTop: 4, letterSpacing: "0.04em", lineHeight: 1.3 }}>
                     {stat.label}
                   </div>
                 </div>
