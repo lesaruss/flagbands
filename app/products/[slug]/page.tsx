@@ -117,8 +117,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 }}
               >
                 <img
-                  src={product.cutoutPhoto}
-                  alt={`${product.name} flag band, close-up detail`}
+                  src={product.heroPhoto}
+                  alt={`${product.name} flag band, flat-lay detail`}
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
               </div>
@@ -260,7 +260,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   }}
                 >
                   <img
-                    src={p.cutoutPhoto}
+                    src={p.heroPhoto}
                     alt={`${p.name} flag band`}
                     style={{ width: "100%", height: "100%", objectFit: "cover" }}
                   />
