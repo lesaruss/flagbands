@@ -48,7 +48,7 @@ export default function ProductGallery({
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
           <div
             style={{
-              aspectRatio: "4/5",
+              aspectRatio: "1/1",
               borderRadius: 16,
               overflow: "hidden",
               border: "1px solid var(--fb-border)",
@@ -64,7 +64,7 @@ export default function ProductGallery({
           </div>
           <div
             style={{
-              aspectRatio: "4/5",
+              aspectRatio: "1/1",
               borderRadius: 16,
               overflow: "hidden",
               border: "1px solid var(--fb-border)",
