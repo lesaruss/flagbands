@@ -6,6 +6,11 @@ import NavBar from "../../../components/NavBar";
 import SiteFooter from "../../../components/SiteFooter";
 import { supabaseServer } from "../../../lib/supabase-server";
 
+// Inventory changes with every purchase, so this page can't be a one-time
+// static build: revalidate frequently so the "in stock" / "pre-order" badge
+// and the per-variant stock never lag behind real Stripe purchases.
+export const revalidate = 30;
+
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
 }
