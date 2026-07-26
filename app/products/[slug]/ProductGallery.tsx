@@ -80,7 +80,7 @@ export default function ProductGallery({
               key={heroPhoto}
               src={heroPhoto}
               alt={`${product.name} flag band, flat-lay detail`}
-              style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              style={{ width: "100%", height: "100%", objectFit: "contain", transform: product.slug === "jamaica" ? "rotate(180deg)" : product.slug === "peru" ? "scale(1.22)" : "none" }}
             />
           </div>
         </div>
