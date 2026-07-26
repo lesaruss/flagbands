@@ -27,14 +27,18 @@ export default function SiteFooter() {
           >
             Stone Meanings
           </Link>
-          {["Contact", "Returns", "FAQ"].map((link) => (
-            <a
-              key={link}
-              href="#"
+          {[
+            { label: "Contact", href: "/contact" },
+            { label: "Policies", href: "/policies" },
+            { label: "FAQ", href: "/faq" },
+          ].map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
               style={{ color: "var(--fb-text-muted)", fontSize: 13, textDecoration: "none", fontWeight: 500 }}
             >
-              {link}
-            </a>
+              {link.label}
+            </Link>
           ))}
         </div>
         <div style={{ color: "var(--fb-text-muted)", fontSize: 12 }}>2026 Flag Bands. All rights reserved.</div>
