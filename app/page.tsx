@@ -578,7 +578,7 @@ function HeroSection({ onShop }: { onShop: () => void }) {
                 key={p.id}
                 onClick={onShop}
                 style={{
-                  aspectRatio: "3/2",
+                  aspectRatio: "1/1",
                   borderRadius: 8,
                   overflow: "hidden",
                   border: "2px solid rgba(255,255,255,0.15)",
@@ -622,8 +622,6 @@ function HeroSection({ onShop }: { onShop: () => void }) {
 // ─── Section 2: Collection ────────────────────────────────────────────────────
 
 function CollectionSection() {
-  const [selected, setSelected] = useState<string | null>(null);
-
   return (
     <div
       style={{
@@ -675,38 +673,36 @@ function CollectionSection() {
           className="flag-grid"
         >
           {PRODUCTS.map((product) => {
-            const isSelected = selected === product.id;
             return (
-              <div
+              <Link
                 key={product.id}
-                onClick={() => setSelected(isSelected ? null : product.id)}
+                href={`/products/${product.id}`}
                 style={{
+                  display: "block",
                   background: "#FFFFFF",
                   borderRadius: 14,
-                  border: isSelected ? `2px solid ${product.accentColor}` : "2px solid transparent",
+                  border: "2px solid transparent",
                   overflow: "hidden",
                   cursor: "pointer",
+                  textDecoration: "none",
+                  color: "inherit",
                   transition: "transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease",
-                  boxShadow: isSelected ? `0 8px 32px ${product.accentColor}30` : "0 2px 12px rgba(0,0,0,0.06)",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
                 }}
                 onMouseEnter={(e) => {
-                  if (!isSelected) {
-                    e.currentTarget.style.transform = "translateY(-4px)";
-                    e.currentTarget.style.boxShadow = "0 12px 32px rgba(13,31,60,0.12)";
-                  }
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                  e.currentTarget.style.boxShadow = "0 12px 32px rgba(13,31,60,0.12)";
                 }}
                 onMouseLeave={(e) => {
-                  if (!isSelected) {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.06)";
-                  }
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.06)";
                 }}
               >
-                {/* Product image - large, proportional */}
+                {/* Product image - large, square, click-through to product page */}
                 <div
                   style={{
                     width: "100%",
-                    aspectRatio: "3/2",
+                    aspectRatio: "1/1",
                     overflow: "hidden",
                     borderBottom: "1px solid rgba(0,0,0,0.06)",
                     background: "#FFFFFF",
@@ -759,8 +755,12 @@ function CollectionSection() {
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 8 }}>
                     <span style={{ fontWeight: 900, fontSize: 18, color: "var(--fb-navy)" }}>{product.price}</span>
                     <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                      }}
                       style={{
-                        background: isSelected ? product.accentColor : "var(--fb-navy)",
+                        background: "var(--fb-navy)",
                         color: "#FFFFFF",
                         border: "none",
                         borderRadius: 7,
@@ -772,70 +772,14 @@ function CollectionSection() {
                         transition: "background 0.15s ease",
                       }}
                     >
-                      {isSelected ? "Selected" : "Add to Cart"}
+                      Add to Cart
                     </button>
                   </div>
-                  <Link
-                    href={`/products/${product.id}`}
-                    onClick={(e) => e.stopPropagation()}
-                    style={{
-                      display: "block",
-                      marginTop: 10,
-                      fontSize: 12,
-                      fontWeight: 700,
-                      color: "var(--fb-navy)",
-                      textDecoration: "none",
-                    }}
-                  >
-                    View details →
-                  </Link>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
-
-        {selected && (
-          <div
-            style={{
-              marginTop: 32,
-              background: "#FFFFFF",
-              borderRadius: 16,
-              padding: "24px 32px",
-              border: "1px solid var(--fb-border)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: 24,
-              flexWrap: "wrap",
-            }}
-          >
-            <div>
-              <div style={{ fontWeight: 700, color: "var(--fb-navy)", fontSize: 16 }}>
-                {PRODUCTS.find((p) => p.id === selected)?.name} Flag Band - $30
-              </div>
-              <div style={{ color: "var(--fb-text-muted)", fontSize: 13, marginTop: 4 }}>
-                Free shipping. $5 goes to the community. Ships in 3-5 business days.
-              </div>
-            </div>
-            <button
-              style={{
-                background: "var(--fb-navy)",
-                color: "#FFFFFF",
-                border: "none",
-                borderRadius: 10,
-                padding: "14px 32px",
-                cursor: "pointer",
-                fontWeight: 800,
-                fontSize: 14,
-                letterSpacing: "0.03em",
-                whiteSpace: "nowrap",
-              }}
-            >
-              Checkout - $30
-            </button>
-          </div>
-        )}
       </div>
 
       <style>{`
