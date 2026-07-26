@@ -327,26 +327,8 @@ export default function ProductGallery({
     </section>
   );
 
-  // --- New stacked layout (test), currently limited to NEW_LAYOUT_SLUGS ---
-  if (useNewLayout) {
-    return (
-      <div style={{ maxWidth: 560, margin: "0 auto", display: "flex", flexDirection: "column", gap: 28 }}>
-        {titleBlock}
-        {descriptionBlock}
-        {imageBlock}
-        {chooseStoneBlock}
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          {priceBlock(false)}
-          {addToCartBlock}
-        </div>
-        {materialsBlock}
-        {causeBlock}
-      </div>
-    );
-  }
-
-  // --- Original two-column layout, unchanged for every other flag ---
-  return (
+  // The original two-column layout, identical for every flag including Jamaica on desktop.
+  const desktopLayout = (
     <div
       style={{
         display: "grid",
@@ -369,4 +351,44 @@ export default function ProductGallery({
       </div>
     </div>
   );
+
+  // Mobile-only layout test, currently limited to NEW_LAYOUT_SLUGS (Jamaica). Desktop for
+  // these slugs stays identical to every other flag, this stacked order (Title -> Description
+  // -> Images -> Choose Your Stone -> Price -> Add to Cart -> What It's Made Of -> rest) only
+  // replaces the layout below the same 720px breakpoint the product page already uses for
+  // .fb-product-grid. Both trees render at once and CSS below picks which one shows, so no
+  // JS viewport detection / hydration flash.
+  if (useNewLayout) {
+    return (
+      <>
+        <div className="fb-desktop-only">{desktopLayout}</div>
+        <div
+          className="fb-mobile-only"
+          style={{ maxWidth: 560, margin: "0 auto", flexDirection: "column", gap: 28 }}
+        >
+          {titleBlock}
+          {descriptionBlock}
+          {imageBlock}
+          {chooseStoneBlock}
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            {priceBlock(false)}
+            {addToCartBlock}
+          </div>
+          {materialsBlock}
+          {causeBlock}
+        </div>
+
+        <style>{`
+          .fb-mobile-only { display: none; }
+          @media (max-width: 720px) {
+            .fb-desktop-only { display: none !important; }
+            .fb-mobile-only { display: flex !important; }
+          }
+        `}</style>
+      </>
+    );
+  }
+
+  // Original two-column layout, unchanged for every other flag.
+  return desktopLayout;
 }
