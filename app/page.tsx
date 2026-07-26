@@ -299,7 +299,7 @@ function Nav({ current, onNav }: { current: number; onNav: (i: number) => void }
           onClick={() => onNav(0)}
           style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}
         >
-          <img src="/logo.svg" alt="Flag Bands" style={{ height: 44, width: "auto" }} />
+          <img src="/logo-landscape.png" alt="Flag Bands" style={{ height: 44, width: "auto" }} />
         </button>
 
         <div style={{ display: "flex", alignItems: "center", gap: 32 }} className="hide-mobile">
