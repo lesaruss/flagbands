@@ -5,10 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCart } from "../lib/cart-context";
 
-const NAV_ITEMS = [
-  { label: "Shop", href: "/shop" },
+const MENU_LINKS = [
   { label: "How It Works", href: "/how-it-works" },
   { label: "Partners", href: "/partners" },
+  { label: "Pulse", href: "/pulse" },
+  { label: "Account", href: "/account" },
+  { label: "Start a Fundraiser", href: "/fundraiser" },
 ];
 
 export default function NavBar() {
@@ -16,8 +18,7 @@ export default function NavBar() {
   const pathname = usePathname();
   const { count } = useCart();
 
-  const isActive = (href: string) =>
-    href === "/shop" ? pathname === "/shop" || pathname.startsWith("/products") : pathname === href;
+  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   return (
     <nav
@@ -45,23 +46,7 @@ export default function NavBar() {
           <img src="/logo-landscape.png" alt="Flag Bands" style={{ height: 44, width: "auto" }} />
         </Link>
 
-        <div style={{ display: "flex", alignItems: "center", gap: 32 }} className="hide-mobile">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              style={{
-                color: isActive(item.href) ? "var(--fb-navy)" : "var(--fb-text-secondary)",
-                fontWeight: isActive(item.href) ? 700 : 500,
-                fontSize: 14,
-                letterSpacing: "0.02em",
-                textDecoration: "none",
-                padding: "4px 0",
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
+        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <Link
             href="/cart"
             aria-label="Cart"
@@ -101,87 +86,20 @@ export default function NavBar() {
               </span>
             )}
           </Link>
-          <Link
-            href="/account"
-            style={{
-              color: isActive("/account") ? "var(--fb-navy)" : "var(--fb-text-secondary)",
-              fontWeight: isActive("/account") ? 700 : 500,
-              fontSize: 14,
-              letterSpacing: "0.02em",
-              textDecoration: "none",
-              padding: "4px 0",
-            }}
-          >
-            Account
-          </Link>
-          <Link
-            href="/fundraiser"
-            style={{
-              background: "var(--fb-navy)",
-              color: "#FFFFFF",
-              border: "none",
-              padding: "10px 20px",
-              borderRadius: 8,
-              cursor: "pointer",
-              fontWeight: 700,
-              fontSize: 13,
-              letterSpacing: "0.04em",
-              textDecoration: "none",
-              display: "inline-block",
-            }}
-          >
-            Start a Fundraiser
-          </Link>
-        </div>
 
-        {/* Mobile hamburger */}
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }} className="show-mobile-flex">
-          <Link
-            href="/cart"
-            aria-label="Cart"
-            style={{ position: "relative", display: "flex", alignItems: "center", color: "var(--fb-navy)" }}
-          >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="9" cy="21" r="1" />
-              <circle cx="20" cy="21" r="1" />
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-            </svg>
-            {count > 0 && (
-              <span
-                style={{
-                  position: "absolute",
-                  top: -8,
-                  right: -10,
-                  background: "var(--fb-navy)",
-                  color: "#FFFFFF",
-                  fontSize: 10,
-                  fontWeight: 800,
-                  borderRadius: 999,
-                  minWidth: 16,
-                  height: 16,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: "0 4px",
-                }}
-              >
-                {count}
-              </span>
-            )}
-          </Link>
           <button
             onClick={() => setOpen(!open)}
             aria-label="Toggle navigation"
+            aria-expanded={open}
             style={{
               background: "none",
               border: "none",
               cursor: "pointer",
               padding: 8,
-              display: "none",
+              display: "flex",
               flexDirection: "column",
               gap: 5,
             }}
-            className="show-mobile"
           >
             {[0, 1, 2].map((i) => (
               <span
@@ -200,86 +118,61 @@ export default function NavBar() {
       </div>
 
       {open && (
-        <div style={{ background: "#FFFFFF", borderTop: "1px solid var(--fb-border)", padding: "16px 24px 24px" }}>
-          {NAV_ITEMS.map((item) => (
+        <div
+          style={{
+            background: "#FFFFFF",
+            borderTop: "1px solid var(--fb-border)",
+            padding: "16px 24px 24px",
+          }}
+        >
+          <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+            {MENU_LINKS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                style={{
+                  display: "block",
+                  width: "100%",
+                  textAlign: "left",
+                  padding: "12px 0",
+                  background: "none",
+                  border: "none",
+                  borderBottom: "1px solid var(--fb-border)",
+                  cursor: "pointer",
+                  color: isActive(item.href) ? "var(--fb-navy)" : "var(--fb-text)",
+                  fontWeight: isActive(item.href) ? 800 : 600,
+                  fontSize: 15,
+                  textDecoration: "none",
+                }}
+              >
+                {item.label}
+              </Link>
+            ))}
             <Link
-              key={item.href}
-              href={item.href}
+              href="/shop"
               onClick={() => setOpen(false)}
               style={{
                 display: "block",
                 width: "100%",
-                textAlign: "left",
-                padding: "12px 0",
-                background: "none",
+                marginTop: 16,
+                background: "var(--fb-navy)",
+                color: "#FFFFFF",
                 border: "none",
-                borderBottom: "1px solid var(--fb-border)",
+                padding: "14px 20px",
+                borderRadius: 8,
                 cursor: "pointer",
-                color: "var(--fb-text)",
-                fontWeight: 600,
-                fontSize: 15,
+                fontWeight: 700,
+                fontSize: 14,
+                textAlign: "center",
                 textDecoration: "none",
               }}
             >
-              {item.label}
+              Shop
             </Link>
-          ))}
-          <Link
-            href="/account"
-            onClick={() => setOpen(false)}
-            style={{
-              display: "block",
-              width: "100%",
-              textAlign: "left",
-              padding: "12px 0",
-              background: "none",
-              border: "none",
-              borderBottom: "1px solid var(--fb-border)",
-              cursor: "pointer",
-              color: "var(--fb-text)",
-              fontWeight: 600,
-              fontSize: 15,
-              textDecoration: "none",
-            }}
-          >
-            Account
-          </Link>
-          <Link
-            href="/fundraiser"
-            onClick={() => setOpen(false)}
-            style={{
-              display: "block",
-              width: "100%",
-              marginTop: 16,
-              background: "var(--fb-navy)",
-              color: "#FFFFFF",
-              border: "none",
-              padding: "14px 20px",
-              borderRadius: 8,
-              cursor: "pointer",
-              fontWeight: 700,
-              fontSize: 14,
-              textAlign: "center",
-              textDecoration: "none",
-            }}
-          >
-            Start a Fundraiser
-          </Link>
+          </div>
         </div>
       )}
-
-      <style>{`
-        @media (max-width: 768px) {
-          .hide-mobile { display: none !important; }
-          .show-mobile { display: flex !important; }
-          .show-mobile-flex { display: flex !important; }
-        }
-        @media (min-width: 769px) {
-          .show-mobile { display: none !important; }
-          .hide-mobile { display: flex !important; }
-          .show-mobile-flex { display: none !important; }
-        }
-      `}</style>
     </nav>
   );
 }
