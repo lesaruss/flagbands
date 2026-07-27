@@ -54,7 +54,7 @@ export const PRODUCTS: ProductContent[] = [
     studioPhoto:
       "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/tigerseye_studio.png",
     wristPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233428_ecf3a2d2-d06b-4fc5-a183-84b6e4897d5e.png",
+      "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/tigerseye_wrist.png",
     variants: [
       {
         id: "tigers-eye",
@@ -62,7 +62,7 @@ export const PRODUCTS: ProductContent[] = [
         studioPhoto:
           "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/tigerseye_studio.png",
         wristPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233428_ecf3a2d2-d06b-4fc5-a183-84b6e4897d5e.png",
+          "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/tigerseye_wrist.png",
         heroPhoto:
           "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/tigerseye_hero.png",
       },
@@ -72,7 +72,7 @@ export const PRODUCTS: ProductContent[] = [
         studioPhoto:
           "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/lavastone_studio.png",
         wristPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100451_23b22016-c721-4d2a-a5c3-abf46d53b390.png",
+          "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/lavastone_wrist.png",
         heroPhoto:
           "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/lavastone_hero.png",
       },
@@ -82,7 +82,7 @@ export const PRODUCTS: ProductContent[] = [
         studioPhoto:
           "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/hematite_studio.png",
         wristPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135738_0f6da80a-ef6a-42bd-b760-9ca3abf4a414.png",
+          "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/hematite_wrist.png",
         heroPhoto:
           "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/hematite_hero.png",
       },
@@ -92,7 +92,7 @@ export const PRODUCTS: ProductContent[] = [
         studioPhoto:
           "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/whiteagate_studio.png",
         wristPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100500_10e574e9-4796-4cb7-81ec-385fa996d1c3.png",
+          "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/whiteagate_wrist.png",
         heroPhoto:
           "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/whiteagate_hero.png",
       },
