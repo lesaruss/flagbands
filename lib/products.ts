@@ -48,11 +48,11 @@ export const PRODUCTS: ProductContent[] = [
     accentColor: "#002868",
     flagDescription: "the red, white, and blue stars and stripes of the American flag",
     heroPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102826_60facf1c-9ad4-4159-932b-f5ed6ef473fa.png",
+      "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/tigerseye_hero.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230733_d3c7c005-d716-450d-9f8d-e2aa87c76193.png",
     studioPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233426_f9fbfbc7-af94-42b3-8181-6e5e0789c0ea.png",
+      "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/tigerseye_studio.png",
     wristPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233428_ecf3a2d2-d06b-4fc5-a183-84b6e4897d5e.png",
     variants: [
@@ -60,41 +60,41 @@ export const PRODUCTS: ProductContent[] = [
         id: "tigers-eye",
         name: "Tiger's Eye",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233426_f9fbfbc7-af94-42b3-8181-6e5e0789c0ea.png",
+          "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/tigerseye_studio.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_233428_ecf3a2d2-d06b-4fc5-a183-84b6e4897d5e.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102843_991081e2-d451-4569-8ccd-9332b809b9f3.png",
+          "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/tigerseye_hero.png",
       },
       {
         id: "lava-stone",
         name: "Lava Stone",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100448_7312dfdb-b2b0-494f-bcb6-df7026328790.png",
+          "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/lavastone_studio.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100451_23b22016-c721-4d2a-a5c3-abf46d53b390.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102826_60facf1c-9ad4-4159-932b-f5ed6ef473fa.png",
+          "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/lavastone_hero.png",
       },
       {
         id: "hematite",
         name: "Hematite",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_111202_b833d12d-f15e-4b8a-a1d6-a3f6f0c10ee1.png",
+          "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/hematite_studio.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135738_0f6da80a-ef6a-42bd-b760-9ca3abf4a414.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102844_0579f868-b006-4225-b161-bc9290f7e2bc.png",
+          "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/hematite_hero.png",
       },
       {
         id: "white-agate",
         name: "White Agate",
         studioPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100459_2dcbfc55-3041-4569-acb9-0da924b3b772.png",
+          "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/whiteagate_studio.png",
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_100500_10e574e9-4796-4cb7-81ec-385fa996d1c3.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102846_6cc8ed2b-b1f3-4312-ad6d-51d3c70f2bdc.png",
+          "https://fwbhwfxpncrsfhttimna.supabase.co/storage/v1/object/public/flagbands-media/usa/whiteagate_hero.png",
       },
     ],
     cause: {
