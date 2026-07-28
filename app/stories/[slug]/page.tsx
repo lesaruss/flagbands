@@ -1,19 +1,20 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
-import { COUNTRY_STORIES, getCountryStory } from "../../../lib/country-stories";
+import { getAllCountryStories, getCountryStory } from "../../../lib/pulse-country-stories";
 import { getProduct } from "../../../lib/products";
 import NavBar from "../../../components/NavBar";
 import SiteFooter from "../../../components/SiteFooter";
 import CountrySelector from "./CountrySelector";
 
-export function generateStaticParams() {
-  return COUNTRY_STORIES.map((c) => ({ slug: c.slug }));
+export async function generateStaticParams() {
+  const stories = await getAllCountryStories();
+  return stories.map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const country = getCountryStory(slug);
+  const country = await getCountryStory(slug);
   if (!country || country.comingSoon) return {};
   return {
     title: `${country.name}: Country Story | Flag Bands`,
@@ -40,10 +41,18 @@ function SectionLabel({ children }: { children: ReactNode }) {
 
 export default async function CountryStoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const country = getCountryStory(slug);
+  const [country, allCountries] = await Promise.all([
+    getCountryStory(slug),
+    getAllCountryStories(),
+  ]);
   if (!country) notFound();
 
   const product = getProduct(slug);
+  const countryOptions = allCountries.map((c) => ({
+    slug: c.slug,
+    name: c.name,
+    comingSoon: c.comingSoon,
+  }));
 
   return (
     <div style={{ minHeight: "100vh", background: "#FFFFFF" }}>
@@ -79,7 +88,7 @@ export default async function CountryStoryPage({ params }: { params: Promise<{ s
 
         {/* Country switcher */}
         <div style={{ marginBottom: 32 }}>
-          <CountrySelector currentSlug={country.slug} />
+          <CountrySelector currentSlug={country.slug} countries={countryOptions} />
         </div>
 
         {country.comingSoon ? (
