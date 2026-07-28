@@ -111,7 +111,7 @@ export const PRODUCTS: ProductContent[] = [
     accentColor: "#009B3A",
     flagDescription: "the black, gold, and green diagonal saltire of the Jamaican flag",
     heroPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134526_0ed4bc7b-abca-44b2-b2d2-6069587d5604.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102831_c92f9e38-8c66-47d9-9e26-ca7e2021001b.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230734_8e22e53e-33b8-4c58-9113-98406189519a.png",
     studioPhoto:
@@ -127,7 +127,7 @@ export const PRODUCTS: ProductContent[] = [
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_133945_c5097d7c-4ed2-4772-8907-3d7bd38ba2de.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134526_0ed4bc7b-abca-44b2-b2d2-6069587d5604.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102831_c92f9e38-8c66-47d9-9e26-ca7e2021001b.png",
       },
       {
         id: "lava-stone",
@@ -237,7 +237,7 @@ export const PRODUCTS: ProductContent[] = [
     accentColor: "#00247D",
     flagDescription: "the yellow, blue, and red stripes and stars of the Venezuelan flag",
     heroPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135026_4bb61224-bdc2-4e87-aec0-5fda2e85f9df.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102834_4714d313-f745-461e-bd00-a0eab0e4a3a4.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230737_6a17d03b-a560-4daa-af16-468d427a8b5d.png",
     studioPhoto:
@@ -253,7 +253,7 @@ export const PRODUCTS: ProductContent[] = [
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134301_b0e5e80a-63ab-4624-a288-2995c4a38942.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135026_4bb61224-bdc2-4e87-aec0-5fda2e85f9df.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102834_4714d313-f745-461e-bd00-a0eab0e4a3a4.png",
       },
       {
         id: "lava-stone",
@@ -300,7 +300,7 @@ export const PRODUCTS: ProductContent[] = [
     accentColor: "#002868",
     flagDescription: "the red, white, and blue Puerto Rican flag with its star and triangle",
     heroPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134306_eb77802c-c0d3-433c-920e-d07f4dee137c.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102835_3aee44f6-62ef-4918-b4dd-97f070440cb0.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230738_7a588193-e49f-4741-a734-3dc3077469e9.png",
     studioPhoto:
@@ -316,7 +316,7 @@ export const PRODUCTS: ProductContent[] = [
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134304_da3de108-0523-4857-97cc-1788c81ec0dd.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134306_eb77802c-c0d3-433c-920e-d07f4dee137c.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102835_3aee44f6-62ef-4918-b4dd-97f070440cb0.png",
       },
       {
         id: "lava-stone",
@@ -363,7 +363,7 @@ export const PRODUCTS: ProductContent[] = [
     accentColor: "#002A8F",
     flagDescription: "the blue and white stripes, red triangle, and white star of the Cuban flag",
     heroPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134310_1ad7bbaf-1d5c-402a-b860-96e8de202d0c.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102837_8e3cd80a-40df-425b-a709-328bed00754e.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230740_9b243608-71f2-4c5d-8ad4-ce76c3139265.png",
     studioPhoto:
@@ -379,7 +379,7 @@ export const PRODUCTS: ProductContent[] = [
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134309_5cf71938-6a44-4cd4-b9b3-2a757b7a9aa8.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_134310_1ad7bbaf-1d5c-402a-b860-96e8de202d0c.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102837_8e3cd80a-40df-425b-a709-328bed00754e.png",
       },
       {
         id: "lava-stone",
@@ -489,7 +489,7 @@ export const PRODUCTS: ProductContent[] = [
     accentColor: "#2E7D32",
     flagDescription: "the blue and green V of the official Vegan flag",
     heroPhoto:
-      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135423_9af39938-61d5-4953-bbd4-67bbc5e30ed5.png",
+      "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102840_4247059d-7e28-4dd1-a886-555c48c9b25c.png",
     cutoutPhoto:
       "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260725_230743_a2f17a74-0395-4d22-93e4-1cc07e20a017.png",
     studioPhoto:
@@ -505,7 +505,7 @@ export const PRODUCTS: ProductContent[] = [
         wristPhoto:
           "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135456_e27c4013-2f45-458e-b51b-cfddbe66f582.png",
         heroPhoto:
-          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_135423_9af39938-61d5-4953-bbd4-67bbc5e30ed5.png",
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3CDGnUNmLloVUBJsrfOxR8cZFdv/hf_20260726_102840_4247059d-7e28-4dd1-a886-555c48c9b25c.png",
       },
       {
         id: "lava-stone",
