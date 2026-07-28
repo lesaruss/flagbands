@@ -1,9 +1,20 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { COUNTRY_STORIES } from "../../../lib/country-stories";
 
-export default function CountrySelector({ currentSlug }: { currentSlug: string }) {
+interface CountryOption {
+  slug: string;
+  name: string;
+  comingSoon?: boolean;
+}
+
+export default function CountrySelector({
+  currentSlug,
+  countries,
+}: {
+  currentSlug: string;
+  countries: CountryOption[];
+}) {
   const router = useRouter();
 
   return (
@@ -27,7 +38,7 @@ export default function CountrySelector({ currentSlug }: { currentSlug: string }
         backgroundPosition: "right 14px center",
       }}
     >
-      {COUNTRY_STORIES.map((c) => (
+      {countries.map((c) => (
         <option key={c.slug} value={c.slug}>
           {c.name}
           {c.comingSoon ? " (coming soon)" : ""}
