@@ -152,7 +152,7 @@ export default function Home() {
                   }}
                 >
                   <img
-                    src={p.heroPhoto}
+                    src={p.cutoutPhoto}
                     alt={`${p.name} flag band`}
                     style={{
                       width: "100%",
