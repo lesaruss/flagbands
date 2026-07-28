@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { COUNTRY_STORIES } from "../../lib/country-stories";
+import { getAllCountryStories } from "../../lib/pulse-country-stories";
 import { getProduct } from "../../lib/products";
 import NavBar from "../../components/NavBar";
 import SiteFooter from "../../components/SiteFooter";
@@ -10,8 +10,9 @@ export const metadata = {
     "Country Stories unlocked for Flag Bands customers - the culture, history, and facts behind every flag we carry.",
 };
 
-export default function PulsePage() {
-  const stories = COUNTRY_STORIES.filter((c) => !c.comingSoon);
+export default async function PulsePage() {
+  const allStories = await getAllCountryStories();
+  const stories = allStories.filter((c) => !c.comingSoon);
 
   return (
     <div style={{ minHeight: "100vh", background: "#FFFFFF" }}>
