@@ -39,7 +39,7 @@ export default function ShopPage() {
               Browse By Flag
             </h1>
             <p style={{ color: "var(--fb-text-secondary)", fontSize: 16, maxWidth: 480, margin: "0 auto", lineHeight: 1.6 }}>
-              9 flags available now. Every band is $35 with free shipping and a $5 community contribution.
+              9 flags available now. Every band is $35 with free shipping, and $5 goes to the LESARUSS Foundation.
             </p>
           </div>
 

@@ -15,7 +15,7 @@ const STEPS = [
   {
     num: "03",
     title: "It Ships to You",
-    body: "Free shipping, 3-5 business days. $5 from every sale funds a community cause tied to that flag.",
+    body: "Free shipping, 3-5 business days. $5 from every sale goes to the LESARUSS Foundation.",
   },
 ];
 

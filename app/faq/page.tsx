@@ -37,7 +37,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "How much does a band cost?",
-    a: "$35 per band. $5 of every purchase goes toward a community cause tied to that flag.",
+    a: "$35 per band. $5 of every purchase goes to the LESARUSS Foundation, the nonprofit arm of LESARUSS. Running a fundraiser? Partner organizations keep $5 for every band sold through their page.",
   },
   {
     q: "Which cause does my purchase support?",

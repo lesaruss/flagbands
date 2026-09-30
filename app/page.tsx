@@ -111,7 +111,7 @@ export default function Home() {
               {[
                 { num: "$35", label: "Per Band" },
                 { num: "9", label: "Flags Available" },
-                { num: "$5", label: "Community Contribution" },
+                { num: "$5", label: "To the LESARUSS Foundation" },
               ].map((stat) => (
                 <div key={stat.label} style={{ maxWidth: 140 }}>
                   <div style={{ color: "var(--fb-navy)", fontWeight: 800, fontSize: 22, lineHeight: 1 }}>{stat.num}</div>
