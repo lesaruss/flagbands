@@ -11,10 +11,10 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: { default: "Flag Bands | Wear Your Flag. Find Your People.", template: "%s | Flag Bands" },
-  description: "Handcrafted wearable accessories that let you represent your nationality, culture, heritage, and community. Every purchase supports a cause.",
+  description: "Handcrafted wearable accessories that let you represent your nationality, culture, heritage, and community.",
   openGraph: {
     title: "Flag Bands | Wear Your Flag. Find Your People.",
-    description: "Handcrafted wearable accessories that let you represent your nationality, culture, heritage, and community. Every purchase supports a cause.",
+    description: "Handcrafted wearable accessories that let you represent your nationality, culture, heritage, and community.",
     siteName: "Flag Bands",
     type: "website",
   },

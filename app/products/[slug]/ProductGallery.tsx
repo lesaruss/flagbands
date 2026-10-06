@@ -15,7 +15,7 @@ const NEW_LAYOUT_SLUGS = ["jamaica"];
 // of price/shipping up top. Add an entry here when a flag joins NEW_LAYOUT_SLUGS.
 const SHORT_DESCRIPTIONS: Record<string, string> = {
   jamaica:
-    "A handcrafted wristband featuring Jamaica's black, gold, and green flag, strung with genuine stone beads. Every purchase supports a real cause.",
+    "A handcrafted wristband featuring Jamaica's black, gold, and green flag, strung with genuine stone beads.",
 };
 
 export default function ProductGallery({
@@ -314,7 +314,7 @@ export default function ProductGallery({
         padding: 24,
       }}
     >
-      <h2 style={sectionLabelStyle}>What Your Purchase Supports</h2>
+      <h2 style={sectionLabelStyle}>Run a Fundraiser</h2>
       <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--fb-text-secondary)", margin: 0 }}>
         {product.cause.org ? (
           <>

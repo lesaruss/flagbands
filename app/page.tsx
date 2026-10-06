@@ -83,7 +83,7 @@ export default function Home() {
               }}
             >
               Handcrafted beaded wristbands featuring custom flag plates. Represent your heritage,
-              support your community. Every band funds a cause.
+              support your community.
             </p>
 
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
@@ -111,7 +111,7 @@ export default function Home() {
               {[
                 { num: "$35", label: "Per Band" },
                 { num: "9", label: "Flags Available" },
-                { num: "$5", label: "To the LESARUSS Foundation" },
+                { num: "Free", label: "Shipping" },
               ].map((stat) => (
                 <div key={stat.label} style={{ maxWidth: 140 }}>
                   <div style={{ color: "var(--fb-navy)", fontWeight: 800, fontSize: 22, lineHeight: 1 }}>{stat.num}</div>

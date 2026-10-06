@@ -16,7 +16,7 @@ interface FaqItem {
 const FAQS: FaqItem[] = [
   {
     q: "What is Flag Bands?",
-    a: "Handcrafted beaded wristbands featuring a custom flag plate for the country or community you want to represent. Every band funds a cause.",
+    a: "Handcrafted beaded wristbands featuring a custom flag plate for the country or community you want to represent.",
   },
   {
     q: "What are the bands made of?",
@@ -37,11 +37,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "How much does a band cost?",
-    a: "$35 per band. $5 of every purchase goes to the LESARUSS Foundation, the nonprofit arm of LESARUSS. Running a fundraiser? Partner organizations keep $5 for every band sold through their page.",
-  },
-  {
-    q: "Which cause does my purchase support?",
-    a: "We're finalizing the specific partner organization for each flag. Check the product page for updates as we lock in each partnership.",
+    a: "$35 per band. Running a fundraiser? Partner organizations keep $5 for every band sold through their page.",
   },
   {
     q: "Do you ship internationally?",

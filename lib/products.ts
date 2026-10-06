@@ -98,9 +98,9 @@ export const PRODUCTS: ProductContent[] = [
       },
     ],
     cause: {
-      org: "LESARUSS Foundation",
+      org: "",
       body:
-        "$5 from every USA band goes to the LESARUSS Foundation, the nonprofit arm of LESARUSS. Community organizations can also run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
+        "Community organizations can run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
     },
   },
   {
@@ -161,9 +161,9 @@ export const PRODUCTS: ProductContent[] = [
       },
     ],
     cause: {
-      org: "LESARUSS Foundation",
+      org: "",
       body:
-        "$5 from every Jamaica band goes to the LESARUSS Foundation, the nonprofit arm of LESARUSS. Community organizations can also run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
+        "Community organizations can run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
     },
   },
   {
@@ -224,9 +224,9 @@ export const PRODUCTS: ProductContent[] = [
       },
     ],
     cause: {
-      org: "LESARUSS Foundation",
+      org: "",
       body:
-        "$5 from every Haiti band goes to the LESARUSS Foundation, the nonprofit arm of LESARUSS. Community organizations can also run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
+        "Community organizations can run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
     },
   },
   {
@@ -287,9 +287,9 @@ export const PRODUCTS: ProductContent[] = [
       },
     ],
     cause: {
-      org: "LESARUSS Foundation",
+      org: "",
       body:
-        "$5 from every Venezuela band goes to the LESARUSS Foundation, the nonprofit arm of LESARUSS. Community organizations can also run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
+        "Community organizations can run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
     },
   },
   {
@@ -350,9 +350,9 @@ export const PRODUCTS: ProductContent[] = [
       },
     ],
     cause: {
-      org: "LESARUSS Foundation",
+      org: "",
       body:
-        "$5 from every Puerto Rico band goes to the LESARUSS Foundation, the nonprofit arm of LESARUSS. Community organizations can also run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
+        "Community organizations can run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
     },
   },
   {
@@ -413,9 +413,9 @@ export const PRODUCTS: ProductContent[] = [
       },
     ],
     cause: {
-      org: "LESARUSS Foundation",
+      org: "",
       body:
-        "$5 from every Cuba band goes to the LESARUSS Foundation, the nonprofit arm of LESARUSS. Community organizations can also run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
+        "Community organizations can run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
     },
   },
   {
@@ -476,9 +476,9 @@ export const PRODUCTS: ProductContent[] = [
       },
     ],
     cause: {
-      org: "LESARUSS Foundation",
+      org: "",
       body:
-        "$5 from every Pride band goes to the LESARUSS Foundation, the nonprofit arm of LESARUSS. Community organizations can also run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
+        "Community organizations can run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
     },
   },
   {
@@ -539,9 +539,9 @@ export const PRODUCTS: ProductContent[] = [
       },
     ],
     cause: {
-      org: "LESARUSS Foundation",
+      org: "",
       body:
-        "$5 from every Vegan band goes to the LESARUSS Foundation, home of Vegans Explore, which grows and connects the vegan community.",
+        "Community organizations can run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
     },
   },
   {
@@ -602,9 +602,9 @@ export const PRODUCTS: ProductContent[] = [
       },
     ],
     cause: {
-      org: "LESARUSS Foundation",
+      org: "",
       body:
-        "$5 from every Peru band goes to the LESARUSS Foundation, the nonprofit arm of LESARUSS. Community organizations can also run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
+        "Community organizations can run a Flag Bands fundraiser and keep $5 for every band sold through their page.",
     },
   },
 ];
