@@ -4,6 +4,7 @@ import Link from "next/link";
 import { PRODUCTS } from "../../lib/products";
 import NavBar from "../../components/NavBar";
 import SiteFooter from "../../components/SiteFooter";
+import { sized } from "@/lib/sized";
 
 export default function ShopPage() {
   return (
@@ -91,7 +92,7 @@ export default function ShopPage() {
                   }}
                 >
                   <img
-                    src={product.heroPhoto}
+                    src={sized(product.heroPhoto, 384)}
                     alt={`${product.name} flag band`}
                     style={{
                       width: "100%",

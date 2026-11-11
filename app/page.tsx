@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PRODUCTS } from "../lib/products";
 import NavBar from "../components/NavBar";
 import SiteFooter from "../components/SiteFooter";
+import { sized } from "@/lib/sized";
 
 export default function Home() {
   return (
@@ -152,7 +153,7 @@ export default function Home() {
                   }}
                 >
                   <img
-                    src={p.heroPhoto}
+                    src={sized(p.heroPhoto, 256)}
                     alt={`${p.name} flag band`}
                     style={{
                       width: "100%",

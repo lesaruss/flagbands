@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import NavBar from "../../components/NavBar";
 import SiteFooter from "../../components/SiteFooter";
 import { useCart } from "../../lib/cart-context";
+import { sized } from "@/lib/sized";
 
 function money(cents: number) {
   return `$${(cents / 100).toFixed(2)}`;
@@ -159,7 +160,7 @@ function CartPageInner() {
                       justifyContent: "center",
                     }}
                   >
-                    <img src={item.image} alt={item.flagName} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img src={sized(item.image, 256)} alt={item.flagName} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontWeight: 700, color: "var(--fb-navy)", fontSize: 15 }}>

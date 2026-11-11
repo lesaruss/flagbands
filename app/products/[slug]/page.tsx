@@ -5,6 +5,7 @@ import ProductGallery from "./ProductGallery";
 import NavBar from "../../../components/NavBar";
 import SiteFooter from "../../../components/SiteFooter";
 import { supabaseServer } from "../../../lib/supabase-server";
+import { sized } from "@/lib/sized";
 
 // Inventory changes with every purchase, so this page can't be a one-time
 // static build: revalidate frequently so the "in stock" / "pre-order" badge
@@ -100,7 +101,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   }}
                 >
                   <img
-                    src={p.heroPhoto}
+                    src={sized(p.heroPhoto, 256)}
                     alt={`${p.name} flag band`}
                     style={{ width: "100%", height: "100%", objectFit: "contain", transform: p.slug === "jamaica" ? "rotate(180deg)" : p.slug === "peru" ? "scale(1.22)" : "none" }}
                   />

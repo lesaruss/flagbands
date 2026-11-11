@@ -3,6 +3,7 @@ import { getAllCountryStories } from "../../lib/pulse-country-stories";
 import { getProduct } from "../../lib/products";
 import NavBar from "../../components/NavBar";
 import SiteFooter from "../../components/SiteFooter";
+import { sized } from "@/lib/sized";
 
 export const metadata = {
   title: "Pulse | Flag Bands",
@@ -113,7 +114,7 @@ export default async function PulsePage() {
                   >
                     {product?.heroPhoto && (
                       <img
-                        src={product.heroPhoto}
+                        src={sized(product.heroPhoto, 750)}
                         alt={`${story.name} flag band`}
                         style={{ width: "100%", height: "100%", objectFit: "cover" }}
                       />

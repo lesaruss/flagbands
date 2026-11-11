@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { ProductContent } from "../../../lib/products";
 import { useCart } from "../../../lib/cart-context";
+import { sized } from "@/lib/sized";
 
 // Layout test: Sean wants to try a new stacked product-page order on Jamaica
 // only before deciding whether to roll it out everywhere. New order is
@@ -170,7 +171,7 @@ export default function ProductGallery({
       >
         <img
           key={main.src}
-          src={main.src}
+          src={sized(main.src, 1080)}
           alt={main.alt}
           style={{ width: "100%", height: "100%", objectFit: main.fit, transform: main.transform }}
         />
@@ -207,7 +208,7 @@ export default function ProductGallery({
             >
               <img
                 key={img.src}
-                src={img.src}
+                src={sized(img.src, 256)}
                 alt={img.alt}
                 style={{ width: "100%", height: "100%", objectFit: img.fit, transform: img.transform }}
               />
