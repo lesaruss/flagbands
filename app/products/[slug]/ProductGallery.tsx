@@ -208,7 +208,7 @@ export default function ProductGallery({
             >
               <img
                 key={img.src}
-                src={sized(img.src, 256)}
+                src={sized(img.src, 384)}
                 alt={img.alt}
                 style={{ width: "100%", height: "100%", objectFit: img.fit, transform: img.transform }}
               />
